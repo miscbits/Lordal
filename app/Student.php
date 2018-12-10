@@ -12,7 +12,22 @@ class Student extends Model
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function assessments() {
-        return $this->belongsToMany(Assessment::class, 'assignments');
+        return $this->belongsToMany(Assessment::class)
+            ->using(Assignment::class)
+            ->withPivot([
+                'created_by',
+                'updated_by'
+            ]);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function submissions() {
+        return $this->hasManyThrough(Submission::class, Assignment::class);
     }
 }

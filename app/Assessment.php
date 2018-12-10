@@ -11,7 +11,12 @@ class Assessment extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function submissions() {
-        return $this->belongsToMany(Student::class, 'assignments');
+    public function students() {
+        return $this->belongsToMany(Student::class)
+            ->using(Assignment::class)
+            ->withPivot([
+                'created_by',
+                'updated_by'
+            ]);
     }
 }

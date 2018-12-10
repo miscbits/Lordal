@@ -28,7 +28,9 @@ class AssessmentStudentsController extends Controller
      */
     public function store(Request $request, Assessment $assessment)
     {
-        //
+        $assessment->students()->with('assignments', 'assignments.submission')->get();
+
+        return response()->json();
     }
 
     /**
