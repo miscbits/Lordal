@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class StudentCommentsController extends Controller
 {
@@ -16,7 +17,7 @@ class StudentCommentsController extends Controller
      */
     public function index(Student $student)
     {
-        //
+        return response()->json($student->comments, Response::HTTP_OK);
     }
 
     /**
@@ -28,7 +29,7 @@ class StudentCommentsController extends Controller
      */
     public function store(Request $request, Student $student)
     {
-        //
+        return response()->json($student->comments()->create($request->all()), Response::HTTP_CREATED);
     }
 
     /**
@@ -40,7 +41,11 @@ class StudentCommentsController extends Controller
      */
     public function show(Student $student, Comment $comment)
     {
-        //
+        if($comment->student_id == $student->id) {
+            return response()->json($comment, Response::HTTP_OK);
+        }
+
+        return redirect()->route('api.fallback.404');
     }
 
     /**
@@ -53,7 +58,7 @@ class StudentCommentsController extends Controller
      */
     public function update(Request $request, Student $student, Comment $comment)
     {
-        //
+        return response()->json($comment->student()->associate($student), Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -65,6 +70,6 @@ class StudentCommentsController extends Controller
      */
     public function destroy(Student $student, Comment $comment)
     {
-        //
+        return response()->json($comment->student()->dissociate(), Response::HTTP_ACCEPTED);
     }
 }

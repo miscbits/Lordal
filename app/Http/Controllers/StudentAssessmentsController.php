@@ -11,60 +11,12 @@ class StudentAssessmentsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  \App\Student  $student
+     * @param  int  $student_id
      * @return \Illuminate\Http\Response
      */
-    public function index(Student $student)
+    public function index($student_id)
     {
-        //
+        return response(Student::with("assessments.pivot.submission"));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, Student $student)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Student  $student
-     * @param  \App\Assessment  $assessment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Student $student, Assessment $assessment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
-     * @param  \App\Assessment  $assessment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Student $student, Assessment $assessment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Student  $student
-     * @param  \App\Assessment  $assessment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Student $student, Assessment $assessment)
-    {
-        //
-    }
 }

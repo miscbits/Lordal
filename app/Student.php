@@ -2,12 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Pivots\AssignmentPivot;
 
-class Student extends Model
+class Student extends BaseModel
 {
     protected $fillable = ['name','cell_number','email','github_id','github_username','zipcode_rocks_username','section'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments() {
         return $this->hasMany(Comment::class);
     }
@@ -16,12 +19,9 @@ class Student extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function assessments() {
-        return $this->belongsToMany(Assessment::class)
-            ->using(Assignment::class)
-            ->withPivot([
-                'created_by',
-                'updated_by'
-            ]);
+        return $this->belongsToMany(Assessment::class, 'assignments')
+            ->using(AssignmentPivot::class)
+            ->withPivot(['id']);
     }
 
     /**

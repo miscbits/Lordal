@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Submission extends Model
+class Submission extends BaseModel
 {
     protected $fillable = ['pr_url','submission_url','latest_hash','grade','assignment_id'];
 

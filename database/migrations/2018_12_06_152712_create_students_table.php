@@ -16,12 +16,12 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('cell_number');
+            $table->string('cell_number')->nullable();
             $table->string('email');
-            $table->integer('github_id');
+            $table->integer('github_id')->nullable();
             $table->string('github_username');
-            $table->string('zipcode_rocks_username');
-            $table->string('section');
+            $table->string('zipcode_rocks_username')->nullable();
+            $table->string('section')->nullable();
             $table->timestamps();
         });
     }

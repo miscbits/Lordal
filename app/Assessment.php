@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Assessment extends Model
+class Assessment extends BaseModel
 {
     protected $fillable = ['url', 'name', 'level', 'gradable', 'max_score', 'assigned_date', 'due_date'];
 
@@ -12,11 +10,13 @@ class Assessment extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function students() {
-        return $this->belongsToMany(Student::class)
-            ->using(Assignment::class)
-            ->withPivot([
-                'created_by',
-                'updated_by'
-            ]);
+        return $this->belongsToMany(Student::class, 'assignments')
+            ->using(AssignmentPivot::class)
+            ->withPivot(['id']);
     }
+
+    public function submissions() {
+        return $this->hasManyThrough(Submission::class, Assignment::class);
+    }
+
 }
