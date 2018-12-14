@@ -13,11 +13,16 @@ Route::middleware(['auth.staff'])->group(function () {
     Route::apiResource('submissions', 'SubmissionsController');
     Route::apiResource('assignments', 'AssignmentsController');
     Route::apiResource('students', 'StudentsController');
+
+    Route::apiResource('assessments/{assessment_id}/students', 'AssessmentStudentsController');
+    Route::apiResource('students/{student_id}/assessments', 'StudentAssessmentsController');
+    Route::apiResource('students/{student_id}/comments', 'StudentCommentsController');
 });
 
 
 Route::middleware(['auth.student'])->namespace("LearnerApi")->prefix("learner")->group(function () {
-
+    Route::get('assessments', 'AssessmentsController');
+    Route::get('profile', 'StudentsController');
 });
 
 Route::fallback(function(){

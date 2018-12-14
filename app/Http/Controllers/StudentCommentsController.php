@@ -48,28 +48,4 @@ class StudentCommentsController extends Controller
         return redirect()->route('api.fallback.404');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Student $student, Comment $comment)
-    {
-        return response()->json($comment->student()->associate($student), Response::HTTP_ACCEPTED);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Student  $student
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Student $student, Comment $comment)
-    {
-        return response()->json($comment->student()->dissociate(), Response::HTTP_ACCEPTED);
-    }
 }
