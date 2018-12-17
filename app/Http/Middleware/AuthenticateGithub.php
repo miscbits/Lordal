@@ -23,6 +23,9 @@ class AuthenticateGithub
             return redirect('/home');
         }
 
+        $request->user = $user;
+        $request->student = $student;
+
         return $next($request);
     }
 }

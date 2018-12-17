@@ -23,6 +23,8 @@ class AuthenticateGoogle
             return redirect('/home');
         }
 
+        $request->user = $user;
+
         return $next($request);
     }
 }
