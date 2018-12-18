@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Webhooks;
 
 use App\Assessment;
+use App\Jobs\GradeAssessment;
 use App\Submission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,9 +40,9 @@ class AssessmentSubmissionController extends Controller
             'pr_url' => $request->json('pull_request.url', $request->json('pull_request.html_url')),
         ]);
 
-//        if ( $assessment->level !== 'Lab' ) {
-//            // TODO: if an assessment is gradeable, create a job to grade it
-//        }
+        if ( $assessment->level !== 'Lab' ) {
+            GradeAssessment::dispatch($submission);
+        }
 
         return response('', 200);
     }
