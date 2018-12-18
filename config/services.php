@@ -44,6 +44,7 @@ return [
         'client_id' => env('GITHUB_CLIENT'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => '',
+        'webhook_secret' => env('GITHUB_WEBHOOK_SECRET'),
     ],
 
     'google' => [
