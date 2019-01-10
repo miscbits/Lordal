@@ -7,7 +7,7 @@ Route::get('/', function () {
 Route::post('login/github/callback', 'Auth\LoginController@handleStudentProviderCallback');
 Route::post('login/google/callback', 'Auth\LoginController@handleStaffProviderCallback');
 
-Route::middleware(['auth.staff'])->group(function () {
+Route::middleware(['auth:api', 'auth.staff'])->group(function () {
     Route::apiResource('assessments', 'AssessmentsController');
     Route::apiResource('comments', 'CommentsController');
     Route::apiResource('submissions', 'SubmissionsController');
@@ -19,7 +19,7 @@ Route::middleware(['auth.staff'])->group(function () {
     Route::apiResource('students/{student_id}/comments', 'StudentCommentsController');
 });
 
-Route::middleware(['auth.student'])->namespace("LearnerApi")->prefix("learner")->group(function () {
+Route::middleware(['auth:api', 'auth.student'])->namespace("LearnerApi")->prefix("learner")->group(function () {
     Route::get('assessments', 'AssessmentsController');
     Route::get('profile', 'StudentsController');
 });
