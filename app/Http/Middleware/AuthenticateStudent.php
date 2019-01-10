@@ -2,10 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Socialite;
 use Closure;
 
-class AuthenticateGithub
+class AuthenticateStudent
 {
     /**
      * Handle an incoming request.
@@ -17,14 +16,14 @@ class AuthenticateGithub
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! $user = Socialite::driver('github')->userFromToken($request->input("token"))) {
-            return redirect('/home');
-        } elseif (! $student = Student::where('github_username', $user->username)->first()) {
+        if ( !$request->user()->isStudent() ) {
+            if ( $request->expectsJson() ) {
+                return redirect()->route('api.error.401');
+            }
+
+            toastr()->error('The requested resource is not available for Staff');
             return redirect('/home');
         }
-
-        $request->user = $user;
-        $request->student = $student;
 
         return $next($request);
     }

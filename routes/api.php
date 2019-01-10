@@ -29,7 +29,9 @@ Route::middleware(['github_webhook'])->namespace("Webhooks")->prefix('github')->
 //    Route::get('lab_submission', 'AssessmentSubmissionController');
 });
 
-
+Route::get('/401', function(){
+    return response()->json(['message' => 'Unauthorized.'], 401);
+})->name('api.error.401');
 
 Route::fallback(function(){
     return response()->json(['message' => 'Not Found.'], 404);

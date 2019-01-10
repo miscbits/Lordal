@@ -29,7 +29,7 @@ class StudentCommentsController extends Controller
      */
     public function store(Request $request, Student $student)
     {
-        $comment = ['body' => $request->input('body'), 'note_taker' => $request->user->domain];
+        $comment = ['body' => $request->input('body'), 'user_id' => $request->user()->id];
         return response()->json($student->comments()->create($comment), Response::HTTP_CREATED);
     }
 

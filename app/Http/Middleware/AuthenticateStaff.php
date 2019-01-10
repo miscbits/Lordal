@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Socialite;
 use Closure;
 
-class AuthenticateGoogle
+class AuthenticateStaff
 {
     /**
      * Handle an incoming request.
@@ -17,13 +17,15 @@ class AuthenticateGoogle
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! $user = Socialite::driver('google')->userFromToken($request->input("token"))) {
-            return redirect('/home');
-        } elseif ($user->hd != "zipcodewilmington.com") {
-            return redirect('/home');
-        }
 
-        $request->user = $user;
+        if (!$request->user()->isStaff()) {
+            if ( $request->expectsJson() ) {
+                return redirect()->route('api.error.401');
+            }
+
+            toastr()->error('The requested resource is not available for students');
+            return redirect('/profile');
+        }
 
         return $next($request);
     }

@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->longText('body');
-            $table->string('note_taker');
+            $table->string('user_id');
 
             $table->foreign('student_id')->references('id')->on('students');
             $table->timestamps();

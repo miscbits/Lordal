@@ -40,7 +40,7 @@ class AssessmentSubmissionController extends Controller
             'pr_url' => $request->json('pull_request.url', $request->json('pull_request.html_url')),
         ]);
 
-        if ( $assessment->level !== 'Lab' ) {
+        if ( $assessment->gradable ) {
             GradeAssessment::dispatch($submission);
         }
 

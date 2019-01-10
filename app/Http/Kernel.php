@@ -35,6 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
         ],
 
         'api' => [
@@ -53,8 +54,8 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'github_webhook' => \App\Http\Middleware\VerifyWebhook::class,
-        'auth.staff' => \App\Http\Middleware\AuthenticateGoogle::class,
-        'auth.student' => \App\Http\Middleware\AuthenticateGithub::class,
+        'auth.staff' => \App\Http\Middleware\AuthenticateStaff::class,
+        'auth.student' => \App\Http\Middleware\AuthenticateStudent::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

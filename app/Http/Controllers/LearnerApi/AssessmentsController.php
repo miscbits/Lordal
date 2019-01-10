@@ -13,6 +13,6 @@ class AssessmentsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $request->student->assessments;
+        return $request->user()->student->assessments;
     }
 }

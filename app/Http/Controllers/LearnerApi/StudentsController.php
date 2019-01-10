@@ -14,6 +14,8 @@ class StudentsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $request->student;
+    	$user = $request->user();
+    	$user->student;
+        return $user;
     }
 }

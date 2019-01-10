@@ -16,7 +16,10 @@ class StudentAssessmentsController extends Controller
      */
     public function index($student_id)
     {
-        return response(Student::with("assessments.pivot.submission"));
+        return response()
+            ->json(Student::with("assessments.pivot.submission")
+                ->find($student_id)
+            );
     }
 
 }

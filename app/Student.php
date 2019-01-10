@@ -6,7 +6,7 @@ use App\Pivots\AssignmentPivot;
 
 class Student extends BaseModel
 {
-    protected $fillable = ['name','cell_number','email','github_id','github_username','zipcode_rocks_username','section'];
+    protected $fillable = ['cell_number','github_id','github_username','section','user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -29,5 +29,12 @@ class Student extends BaseModel
      */
     public function submissions() {
         return $this->hasManyThrough(Submission::class, Assignment::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
