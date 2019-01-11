@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <students></students>
-    <labs></labs>
-    <assessments></assessments>
+    <div class="container">
+    	<staffportal></staffportal>
+    <div class="container">
 @endsection
