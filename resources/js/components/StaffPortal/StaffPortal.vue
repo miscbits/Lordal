@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills mb-5">
 		  <li class="nav-item">
 		    <a class="nav-link" v-on:click="activate('students')" v-bind:class="{ active: studentsActive }" href="#">Students</a>
 		  </li>
