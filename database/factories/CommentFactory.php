@@ -13,11 +13,10 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Comment::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'staff' => false,
-        'remember_token' => str_random(10),
+          "student_id" => $faker->randomDigitNotNull
+        , "body"       => $faker->text
+        , "user_id"    => $faker->randomDigitNotNull
     ];
 });

@@ -13,11 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Submission::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'staff' => false,
-        'remember_token' => str_random(10),
+          "pr_url"         => $faker->url
+        , "submission_url" => $faker->url
+        , "latest_hash"    => str_random(20)
+        , "grade"          => $faker->numberBetween(0, 100)
+        , "assignment_id"  => $faker->randomDigitNotNull
     ];
 });

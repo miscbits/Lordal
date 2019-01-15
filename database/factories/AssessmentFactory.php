@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -13,11 +13,14 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Assessment::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'staff' => false,
-        'remember_token' => str_random(10),
+    	  "url" => $faker->url
+    	, "name" => str_random(20)
+    	, "level" => ['Quiz', 'Practice', 'Exam'][$faker->numberBetween(0,3)]
+    	, "gradeable" => $faker->boolean
+    	, "max_score" => 100
+    	, "assigned_date" => Carbon::now()
+    	, "due_date" => Carbon::now()->addDays(7)
     ];
 });
