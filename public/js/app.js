@@ -14033,8 +14033,9 @@ module.exports = __webpack_require__(58);
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14059,6 +14060,8 @@ window.Vue = __webpack_require__(37);
 
 Vue.component('students', __webpack_require__(40));
 Vue.component('assessments', __webpack_require__(43));
+Vue.component('view-student', __webpack_require__(64));
+Vue.component('view-assessment', __webpack_require__(67));
 Vue.component('labs', __webpack_require__(46));
 Vue.component('exams', __webpack_require__(49));
 Vue.component('quizes', __webpack_require__(52));
@@ -47421,17 +47424,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            students: []
+            students: [],
+            activeStudent: { "id": "", "cell_number": "", "github_id": "", "github_username": "", "section": "", "user_id": "", "created_at": "", "updated_at": "", "user": { "id": "", "name": "", "email": "", "staff": "", "created_at": "", "updated_at": "" } },
+            showStudent: false
         };
     },
     mounted: function mounted() {
         var self = this;
         window.axios.get('/api/students').then(function (response) {
             self.students = response.data;
+            self.activeStudent = self.students[0];
         });
     }
 });
@@ -47444,33 +47452,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center" }, [
-    _c(
-      "table",
-      {
-        staticClass: "table table-bordered table-striped",
-        attrs: { id: "studentDataTable" }
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.students, function(student) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(student.id))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(student.user.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(student.github_username))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(student.user.email))])
-            ])
-          })
-        )
-      ]
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "row justify-content-center" },
+    [
+      _c(
+        "table",
+        {
+          staticClass: "table table-bordered table-striped",
+          attrs: { id: "studentDataTable" }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.students, function(student) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(student.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(student.user.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(student.github_username))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(student.user.email))])
+              ])
+            })
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.showStudent
+        ? _c("view-student", { attrs: { student: _vm.activeStudent } })
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -48396,6 +48413,220 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(65)
+/* template */
+var __vue_template__ = __webpack_require__(66)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/StudentComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-22f5eb35", Component.options)
+  } else {
+    hotAPI.reload("data-v-22f5eb35", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['student'],
+    mounted: function mounted() {
+        console.log('component mounted');
+    }
+});
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row justify-content-center" }, [
+    _c("p", [_vm._v(_vm._s(_vm.student.id))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.student.user.name))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.student.github_username))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.student.user.email))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-22f5eb35", module.exports)
+  }
+}
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(68)
+/* template */
+var __vue_template__ = __webpack_require__(69)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/AssessmentComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d77df210", Component.options)
+  } else {
+    hotAPI.reload("data-v-d77df210", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['assessment'],
+    mounted: function mounted() {
+        console.log('component mounted');
+    }
+});
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("p", [_vm._v(_vm._s(_vm.assessment.id))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.assessment.url))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.assessment.name))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.assessment.gradable))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.assessment.max_score))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.assessment.assigned_date))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.assessment.due_date))])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d77df210", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

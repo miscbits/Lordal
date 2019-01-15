@@ -11,7 +11,7 @@ class OAuthController extends Controller
 {
 
     protected $redirectStudent = '/profile';
-    protected $redirectStaff = '/home';
+    protected $redirectStaff = '/staff';
     protected $redirectError = '/';
 
     /**

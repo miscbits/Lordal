@@ -1,10 +1,10 @@
 <?php
 
-Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'HomeController@index')->name('home');
+Route::get('staff', 'HomeController@index')->name('home');
+Route::get('staff/{any}', 'HomeController@index')->where('any', '.*');
 
 Route::get('auth/github', 'Auth\OauthController@redirectToGithubProvider');
 Route::get('auth/google', 'Auth\OauthController@redirectToGoogleProvider');

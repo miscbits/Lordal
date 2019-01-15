@@ -22,7 +22,7 @@ class AuthenticateStudent
             }
 
             toastr()->error('The requested resource is not available for Staff');
-            return redirect('/home');
+            return redirect('/staff');
         }
 
         return $next($request);

@@ -18,6 +18,8 @@
                 </tr>
             </tbody>
         </table>
+
+        <view-student v-if="showStudent" v-bind:student="activeStudent"></view-student>
     </div>
 </template>
 
@@ -25,7 +27,9 @@
     export default {
         data: function() {
             return {
-                students: []
+                students: [],
+                activeStudent: {"id":"","cell_number":"","github_id":"","github_username":"","section":"","user_id":"","created_at":"","updated_at":"","user":{"id":"","name":"","email":"","staff":"","created_at":"","updated_at":""}},
+                showStudent: false
             };
         },
         mounted() {
@@ -33,6 +37,7 @@
             window.axios.get('/api/students')
                 .then(function(response) {
                     self.students = response.data;
+                    self.activeStudent = self.students[0];
                 });
         }
     }

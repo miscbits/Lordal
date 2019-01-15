@@ -22,6 +22,8 @@ window.Vue = require('vue');
 
 Vue.component('students', require('./components/StaffPortal/StudentsComponent.vue'));
 Vue.component('assessments', require('./components/StaffPortal/AssessmentsComponent.vue'));
+Vue.component('view-student', require('./components/StaffPortal/SingleComponents/StudentComponent.vue'));
+Vue.component('view-assessment', require('./components/StaffPortal/SingleComponents/AssessmentComponent.vue'));
 Vue.component('labs', require('./components/StaffPortal/LabsComponent.vue'));
 Vue.component('exams', require('./components/StaffPortal/ExamsComponent.vue'));
 Vue.component('quizes', require('./components/StaffPortal/QuizesComponent.vue'));

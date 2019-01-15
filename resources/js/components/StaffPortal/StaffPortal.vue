@@ -34,7 +34,7 @@
 				assessmentsActive: false,
 				labsActive: false,
 				examsActive: false,
-				quizesActive: false
+				quizesActive: false,
     		}
     	},
         mounted() {
