@@ -6,16 +6,16 @@
         <td>{{assessment.level}}</td>
         <td>{{assessment.gradable ? "Yes" : "No"}}</td>
         <td>
-            <a v-if="assessment.pivot.submission" v-bind:href="assessment.pivot.submission.submission_url">Yes</a>
+            <a v-if="assessment['pivot.submission.submission_url']" v-bind:href="assessment['pivot.submission.submission_url']">Yes</a>
             <span v-else>No</span>
         </td>
         <td>
-            <div v-if="!editingGrade && assessment.gradable && assessment.pivot.submission">
-	        	{{assessment.pivot.submission ? assessment.pivot.submission.grade : ""}}
+            <div v-if="!editingGrade && assessment.gradable && assessment['pivot.submission.submission_url']">
+	        	{{assessment['pivot.submission.grade']}}
                 <button v-on:click="showGradeForm" class="btn btn-info">Modify Grade</button>
             </div>
             <div v-if="editingGrade && assessment.gradable">
-                <input type="number" name="grade" v-model="assessment.pivot.submission.grade">
+                <input type="number" name="grade" v-model="assessment['pivot.submission.grade']">
                 <button class="btn btn-success" v-on:click="updateSubmission">Update</button>
             </div>
 

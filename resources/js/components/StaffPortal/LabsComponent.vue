@@ -8,13 +8,13 @@
             <table v-if="! assessmentActive" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">url</th>
-                        <th scope="col">name</th>
-                        <th scope="col">gradable</th>
-                        <th scope="col">max_score</th>
-                        <th scope="col">assigned_date</th>
-                        <th scope="col">due_date</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('id'))">#</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('url'))">url</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('name'))">name</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('gradable'))">gradable</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('max_score'))">max_score</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('assigned_date'))">assigned_date</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('due_date'))">due_date</th>
                     </tr>
                 </thead>
                 <tbody>

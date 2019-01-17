@@ -8,18 +8,18 @@
             <table v-if="! studentActive" id="studentDataTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Github</th>
-                        <th scope="col">Email</th>
+                        <th scope="col" v-on:click="students.sort($root.comparator('id'))">#</th>
+                        <th scope="col" v-on:click="students.sort($root.comparator('user.name'))">Name</th>
+                        <th scope="col" v-on:click="students.sort($root.comparator('github_username'))">Github</th>
+                        <th scope="col" v-on:click="students.sort($root.comparator('user.email'))">Email</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="student in students">
-                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.id}}</a></td>
-                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.user.name}}</a></td>
-                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.github_username}}</a></td>
-                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.user.email}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student["id"]}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student["user.name"]}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student["github_username"]}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student["user.email"]}}</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -35,7 +35,7 @@
         data: function() {
             return {
                 students: [],
-                activeStudent: {"id":"","cell_number":"","github_id":"","github_username":"","section":"","user_id":"","created_at":"","updated_at":"","user":{"id":"","name":"","email":"","staff":"","created_at":"","updated_at":""}},
+                activeStudent: {"id":"","user.name": "", "github_username": "", "user.email": ""},
                 studentActive: false
             };
         },
@@ -65,7 +65,9 @@
             var self = this;
             window.axios.get('/api/students')
                 .then(function(response) {
-                    self.students = response.data;
+                    response.data.forEach(function(student){
+                        self.students.push((self.$root.flattenObject(student)));
+                    });
                     self.activeStudent = self.students[0];
                 });
         }

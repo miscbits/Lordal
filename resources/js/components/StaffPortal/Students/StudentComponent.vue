@@ -1,10 +1,10 @@
 <template>
     <div class="container mb-5">
         <div id="user_info" class="row mb-3">
-            <div class="col-6"><span><span class="font-weight-bold"> Name: </span> {{student.user.name}}</span></div>
-            <div class="col-6"><span><span class="font-weight-bold"> Email: </span>{{student.user.email}}</span></div>
-            <div class="col-6"><span><span class="font-weight-bold"> Created_at: </span>{{student.user.created_at}}</span></div>
-            <div class="col-6"><span><span class="font-weight-bold"> Updated_at: </span>{{student.user.updated_at}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Name: </span> {{student["user.name"]}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Email: </span>{{student["user.email"]}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Created_at: </span>{{student["user.created_at"]}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Updated_at: </span>{{student["user.updated_at"]}}</span></div>
         </div>
 
         <div class="form">
@@ -33,16 +33,16 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">url</th>
-                        <th scope="col">name</th>
-                        <th scope="col">level</th>
-                        <th scope="col">gradable</th>
-                        <th scope="col">submitted</th>
-                        <th scope="col">score</th>
-                        <th scope="col">max_score</th>
-                        <th scope="col">assigned_date</th>
-                        <th scope="col">due_date</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('id'))">#</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('url'))">url</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('name'))">name</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('level'))">level</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('gradable'))">gradable</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('pivot.submission.submission_url'))">submitted</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('pivot.submission.grade'))">score</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('max_score'))">max_score</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('assigned_date'))">assigned_date</th>
+                        <th scope="col" v-on:click="assessments.sort($root.comparator('due_date'))">due_date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,7 +70,13 @@
             self = this;
             window.axios.get(`/api/students/${self.student.id}/assessments`)
                 .then(function(results) {
-                    self.assessments = results.data.assessments;
+                    console.log(results.data)
+                    results.data.assessments.forEach(function(assessment) {
+                        let flatAssessment = self.$root.flattenObject(assessment);
+                        flatAssessment.submitted = flatAssessment['pivot.submission.submission_url'] != null;
+                        flatAssessment['pivot.submission.grade'] = flatAssessment['pivot.submission.grade'] ? parseInt(flatAssessment['pivot.submission.grade']) : 0
+                        self.assessments.push(flatAssessment);
+                    });
                 })
         },
         methods: {

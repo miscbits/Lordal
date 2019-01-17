@@ -5,14 +5,14 @@
         </div>
 
         <div class="row justify-content-center mt-5">
-            <table v-if="! assessmentActive" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Student Name</th>
-                        <th scope="col">Submission Url</th>
-                        <th scope="col">Latest Hash</th>
-                        <th scope="col">Submitted</th>
-                        <th scope="col">Grade</th>
+                        <th scope="col" v-on:click="submissions.sort($root.comparator(['user.name']))">Student Name</th>
+                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.submission_url']))">Submission Url</th>
+                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.latest_hash']))">Latest Hash</th>
+                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.latest_hash']))">Submitted</th>
+                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.grade']))">Grade</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,9 +33,12 @@
         props: ['assessment_id'],
         mounted() {
             var self = this;
+            var flattenObject = self.$root.flattenObject;
             window.axios.get(`/api/assessments/${this.assessment_id}/students`)
                 .then(function(results) {
-                    self.submissions = results.data.students;
+                    results.data.students.forEach(function(student) {
+                        self.submissions.push(flattenObject(student));
+                    });
                 });
         },
         methods: {

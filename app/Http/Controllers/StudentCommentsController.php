@@ -17,7 +17,7 @@ class StudentCommentsController extends Controller
      */
     public function index(Student $student)
     {
-        return response()->json($student->comments, Response::HTTP_OK);
+        return response()->json($student->comments()->with('user')->get(), Response::HTTP_OK);
     }
 
     /**

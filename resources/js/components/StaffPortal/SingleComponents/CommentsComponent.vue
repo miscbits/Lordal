@@ -4,6 +4,7 @@
             <div class="col-6">
                 <div v-for="comment in comments" class="card mt-3">
                     <div class="card-body">
+                        <h3 class="card-head">{{comment.user.name}}</h3>
                         <p class="card-text">{{comment.body}}</p>
                     </div>
                 </div>

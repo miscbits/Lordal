@@ -34,6 +34,53 @@ Vue.component('exams', require('./components/StaffPortal/ExamsComponent.vue'));
 Vue.component('quizes', require('./components/StaffPortal/QuizesComponent.vue'));
 Vue.component('staffportal', require('./components/StaffPortal/StaffPortal.vue'));
 
+const mixins = {
+    methods: {
+        flattenObject: function(ob) {
+            var toReturn = {};
+            
+            for (var i in ob) {
+                if (!ob.hasOwnProperty(i)) continue;
+                
+                if ((typeof ob[i]) == 'object') {
+                    var flatObject = this.flattenObject(ob[i]);
+                    for (var x in flatObject) {
+                        if (!flatObject.hasOwnProperty(x)) continue;
+                        
+                        toReturn[i + '.' + x] = flatObject[x];
+                    }
+                } else {
+                    toReturn[i] = ob[i];
+                }
+            }
+            return toReturn;
+        },
+        comparator: function sortObj(key) {
+            return function compare(a, b) {
+                a = a[key];
+                b = b[key];
+                
+                if(a == undefined) {
+                    a = 'null';
+                }
+                if(b == undefined) {
+                    b = 'null';
+                }
+                var type = (typeof(a) === 'string' ||
+                            typeof(b) === 'string') ? 'string' : 'number';
+
+
+
+                var result;
+                if (type === 'string') result = a.localeCompare(b);
+                else result = a - b;
+                return result;
+            }
+        }
+
+    }
+}
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -41,5 +88,6 @@ Vue.component('staffportal', require('./components/StaffPortal/StaffPortal.vue')
  */
 
 const app = new Vue({
+    mixins: [mixins],
     el: '#app'
 });
