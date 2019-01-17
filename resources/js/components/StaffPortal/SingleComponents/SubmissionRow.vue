@@ -2,9 +2,9 @@
 <template>
     <tr>
         <td scope="col">{{submission.user.name}}</td>
-        <td scope="col">{{submission.pivot.submission ? "Yes" : "No"}}</td>
         <td scope="col"><a v-if="submission.pivot.submission" v-bind:href="submission.pivot.submission.submission_url" target="_blank">{{submission.pivot.submission.submission_url}}</a></td>
         <td scope="col">{{submission.pivot.submission ? submission.pivot.submission.latest_hash : ""}}</td>
+        <td scope="col">{{submission.pivot.submission ? "Yes" : "No"}}</td>
         <td scope="col">
             <div v-if="!editing && submission.pivot.submission">
                 {{submission.pivot.submission ? submission.pivot.submission.grade : null}} 

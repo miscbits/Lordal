@@ -50725,10 +50725,6 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("td", { attrs: { scope: "col" } }, [
-      _vm._v(_vm._s(_vm.submission.pivot.submission ? "Yes" : "No"))
-    ]),
-    _vm._v(" "),
-    _c("td", { attrs: { scope: "col" } }, [
       _vm.submission.pivot.submission
         ? _c(
             "a",
@@ -50751,6 +50747,10 @@ var render = function() {
             : ""
         )
       )
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { scope: "col" } }, [
+      _vm._v(_vm._s(_vm.submission.pivot.submission ? "Yes" : "No"))
     ]),
     _vm._v(" "),
     _c("td", { attrs: { scope: "col" } }, [
