@@ -17,7 +17,9 @@ class AssessmentStudentsController extends Controller
      */
     public function index($assessment_id)
     {
-        $assessment = Assessment::with('students')->find($assessment_id);
+        $assessment = Assessment::with('students.pivot.submission')
+            ->with('students.user')
+            ->find($assessment_id);
         return response()->json($assessment);
     }
 
@@ -31,7 +33,7 @@ class AssessmentStudentsController extends Controller
     public function show($assessment_id, $student_id)
     {
         $assessment = Assessment::with('students.pivot.submission')
-            ->find($assessment_id);
+            ->where('students.id', $student_id)->find($assessment_id);
 
         return response()->json($assessment, Response::HTTP_OK);
     }
@@ -45,7 +47,7 @@ class AssessmentStudentsController extends Controller
      */
     public function store(Request $request, Assessment $assessment)
     {
-        $assessment->students()->attach(Student::all(['id'])->toArray());
+        $assessment->students()->attach(Student::all(['id']));
         return response('', Response::HTTP_CREATED);
     }
 

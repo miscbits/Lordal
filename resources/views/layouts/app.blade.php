@@ -55,7 +55,14 @@
                                 </ul>
                             </li>
                         @else
-                            <li class="nav-item dropdown">
+                            @if(Auth::user()->staff)
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.students') }}">Students</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.assessments.new') }}">New Assessment</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.labs') }}">Labs</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.exams') }}">Exams</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.quizes') }}">Quizes</a></li>
+                            @endif
+                                <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

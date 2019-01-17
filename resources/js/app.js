@@ -22,7 +22,12 @@ window.Vue = require('vue');
 
 Vue.component('students', require('./components/StaffPortal/StudentsComponent.vue'));
 Vue.component('assessments', require('./components/StaffPortal/AssessmentsComponent.vue'));
-Vue.component('view-student', require('./components/StaffPortal/SingleComponents/StudentComponent.vue'));
+Vue.component('view-student', require('./components/StaffPortal/Students/StudentComponent.vue'));
+Vue.component('student-assessment-row', require('./components/StaffPortal/Students/StudentAssessmentRow.vue'));
+Vue.component('assessment-form', require('./components/StaffPortal/SingleComponents/AssessmentForm.vue'));
+Vue.component('comments', require('./components/StaffPortal/SingleComponents/CommentsComponent.vue'));
+Vue.component('submissions', require('./components/StaffPortal/SingleComponents/SubmissionsComponent.vue'));
+Vue.component('submission-row', require('./components/StaffPortal/SingleComponents/SubmissionRow.vue'));
 Vue.component('view-assessment', require('./components/StaffPortal/SingleComponents/AssessmentComponent.vue'));
 Vue.component('labs', require('./components/StaffPortal/LabsComponent.vue'));
 Vue.component('exams', require('./components/StaffPortal/ExamsComponent.vue'));

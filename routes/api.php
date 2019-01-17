@@ -17,9 +17,10 @@ Route::middleware(['auth:api', 'auth.staff'])->group(function () {
     Route::apiResource('assignments', 'AssignmentsController');
     Route::apiResource('students', 'StudentsController');
 
-    Route::apiResource('assessments/{assessment_id}/students', 'AssessmentStudentsController');
+    Route::get('assessments/{assessment_id}/students', 'AssessmentStudentsController@index');
+    Route::apiResource('assessments/{assessment}/students', 'AssessmentStudentsController')->except('index');
     Route::apiResource('students/{student_id}/assessments', 'StudentAssessmentsController');
-    Route::apiResource('students/{student_id}/comments', 'StudentCommentsController');
+    Route::apiResource('students/{student}/comments', 'StudentCommentsController');
 });
 
 Route::middleware(['auth:api', 'auth.student'])->namespace("LearnerApi")->prefix("learner")->group(function () {

@@ -1,29 +1,32 @@
 <template>
-    <div class="justify-content-center">
-        <table v-if="! studentActive" id="studentDataTable" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Github</th>
-                    <th scope="col">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="student in students">
-                  <td><a href="#" v-on:click="showStudent(student.id)">{{student.id}}</a></td>
-                  <td><a href="#" v-on:click="showStudent(student.id)">{{student.user.name}}</a></td>
-                  <td><a href="#" v-on:click="showStudent(student.id)">{{student.github_username}}</a></td>
-                  <td><a href="#" v-on:click="showStudent(student.id)">{{student.user.email}}</a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <div class=" row justify-content-center">
+            <div class="col mb-3" v-if="studentActive">
+                <button class="btn btn-info"  v-on:click="hideStudent()">&lt; Back</button>
+            </div>
 
-        <view-student v-if="studentActive" v-on:student-changed="onStudentChanged" v-bind:student="activeStudent"></view-student>
-        <div class="col">
-            <button class="btn btn-info" v-if="studentActive" v-on:click="hideStudent()">&lt; Back</button>
+            <table v-if="! studentActive" id="studentDataTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Github</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="student in students">
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.id}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.user.name}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.github_username}}</a></td>
+                      <td><a href="#" v-on:click="showStudent(student.id)">{{student.user.email}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <view-student v-if="studentActive" v-on:student-changed="onStudentChanged" v-bind:student="activeStudent"></view-student>
+
         </div>
-
     </div>
 </template>
 

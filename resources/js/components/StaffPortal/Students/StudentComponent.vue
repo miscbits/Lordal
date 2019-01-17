@@ -27,6 +27,33 @@
 
             <button class="btn btn-success" v-on:click="updateStudent()">Update Student</button>
         </div>
+
+        <h1 class="mt-5">Assessments</h1>
+        <div  id="student_assessments" class="justify-content-center mt-5 mb-5">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">url</th>
+                        <th scope="col">name</th>
+                        <th scope="col">level</th>
+                        <th scope="col">gradable</th>
+                        <th scope="col">submitted</th>
+                        <th scope="col">score</th>
+                        <th scope="col">max_score</th>
+                        <th scope="col">assigned_date</th>
+                        <th scope="col">due_date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <student-assessment-row v-for="assessment in assessments" :assessment="assessment" :key="assessment.id"></student-assessment-row>
+                </tbody>
+            </table>
+        </div>
+
+        <h1 class="mt-5">Comments</h1>
+        <comments v-bind:student_id="student.id"></comments>
+
     </div>
 </template>
 
@@ -34,24 +61,43 @@
     export default {
         data: function() {
             return {
-                studentModel: JSON.parse(JSON.stringify(this.student))
+                studentModel: JSON.parse(JSON.stringify(this.student)),
+                assessments: []
             }
         },
         props: ['student'],
+        created() {
+            self = this;
+            window.axios.get(`/api/students/${self.student.id}/assessments`)
+                .then(function(results) {
+                    self.assessments = results.data.assessments;
+                })
+        },
         methods: {
             updateStudent: function(){
                 var self = this;
                 window.axios.put(`/api/students/${self.studentModel.id}`, self.studentModel)
                     .then(function(response) {
-                        self.$emit('student-changed', self.studentModel)
+                        self.$emit('student-changed', self.studentModel);
+                        window.toastr.success("Student updated");
                     });
             }
         }
     }
 </script>
 
-<style scoped>
-    #user_info {
-        font-size: 1.4em;
+<style scoped lang="scss">
+    #student_assessments {
+        max-height: 500px;
+        overflow-y: scroll;
+        thead {
+            position: sticky;
+            top: 0;
+            th {
+                position: sticky;
+                top: -1px;
+                background-color: #eee;
+            }
+        }
     }
 </style>

@@ -23,6 +23,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect('/staff/students');
     }
+
+    public function assessments() {
+        return view('assessments');
+    }
+
+    public function create_assessment() {
+        return view('create_assessment');
+    }
+
+    public function students() {
+        return view('students');
+    }
+
+    public function exams() {
+        return view('exams');
+    }
+
+    public function quizes() {
+        return view('quizes');
+    }
+
+    public function labs() {
+        return view('labs');
+    }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Pivots\AssignmentPivot;
 
 class Assessment extends BaseModel
 {

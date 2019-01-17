@@ -17,8 +17,8 @@ $factory->define(App\Assessment::class, function (Faker $faker) {
     return [
     	  "url" => $faker->url
     	, "name" => str_random(20)
-    	, "level" => ['Quiz', 'Practice', 'Exam'][$faker->numberBetween(0,3)]
-    	, "gradeable" => $faker->boolean
+    	, "level" => ['Quiz', 'Lab', 'Exam'][$faker->numberBetween(0,2)]
+    	, "gradable" => $faker->boolean
     	, "max_score" => 100
     	, "assigned_date" => Carbon::now()
     	, "due_date" => Carbon::now()->addDays(7)

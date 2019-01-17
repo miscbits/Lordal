@@ -14060,7 +14060,12 @@ window.Vue = __webpack_require__(37);
 
 Vue.component('students', __webpack_require__(40));
 Vue.component('assessments', __webpack_require__(43));
-Vue.component('view-student', __webpack_require__(64));
+Vue.component('view-student', __webpack_require__(95));
+Vue.component('student-assessment-row', __webpack_require__(100));
+Vue.component('assessment-form', __webpack_require__(84));
+Vue.component('comments', __webpack_require__(75));
+Vue.component('submissions', __webpack_require__(81));
+Vue.component('submission-row', __webpack_require__(92));
 Vue.component('view-assessment', __webpack_require__(67));
 Vue.component('labs', __webpack_require__(46));
 Vue.component('exams', __webpack_require__(49));
@@ -47430,6 +47435,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -47478,116 +47486,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "justify-content-center" },
-    [
-      !_vm.studentActive
-        ? _c(
-            "table",
-            {
-              staticClass: "table table-bordered table-striped",
-              attrs: { id: "studentDataTable" }
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.students, function(student) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showStudent(student.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(student.id))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showStudent(student.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(student.user.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showStudent(student.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(student.github_username))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showStudent(student.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(student.user.email))]
-                      )
-                    ])
-                  ])
-                })
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.studentActive
-        ? _c("view-student", {
-            attrs: { student: _vm.activeStudent },
-            on: { "student-changed": _vm.onStudentChanged }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: " row justify-content-center" },
+      [
         _vm.studentActive
-          ? _c(
-              "button",
-              {
-                staticClass: "btn btn-info",
-                on: {
-                  click: function($event) {
-                    _vm.hideStudent()
+          ? _c("div", { staticClass: "col mb-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  on: {
+                    click: function($event) {
+                      _vm.hideStudent()
+                    }
                   }
-                }
+                },
+                [_vm._v("< Back")]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.studentActive
+          ? _c(
+              "table",
+              {
+                staticClass: "table table-bordered table-striped",
+                attrs: { id: "studentDataTable" }
               },
-              [_vm._v("< Back")]
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.students, function(student) {
+                    return _c("tr", [
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.showStudent(student.id)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(student.id))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.showStudent(student.id)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(student.user.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.showStudent(student.id)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(student.github_username))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.showStudent(student.id)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(student.user.email))]
+                        )
+                      ])
+                    ])
+                  })
+                )
+              ]
             )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.studentActive
+          ? _c("view-student", {
+              attrs: { student: _vm.activeStudent },
+              on: { "student-changed": _vm.onStudentChanged }
+            })
           : _vm._e()
-      ])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -47700,11 +47710,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: []
+            assessments: [],
+            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
+            assessmentActive: false
         };
     },
     mounted: function mounted() {
@@ -47712,6 +47731,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.axios.get('/api/assessments').then(function (response) {
             self.assessments = response.data;
         });
+    },
+
+    methods: {
+        showAssessment: function showAssessment(assessment_id) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment_id) {
+                    this.activeAssessment = this.assessments[i];
+                    break;
+                }
+            }
+            this.assessmentActive = true;
+        },
+        hideAssessment: function hideAssessment() {
+            this.assessmentActive = false;
+        },
+        onAssessmentChanged: function onAssessmentChanged(assessment) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment.id) {
+                    this.assessments[i] = assessment;
+                    break;
+                }
+            }
+        }
     }
 });
 
@@ -47723,34 +47765,171 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table table-bordered table-striped" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.assessments, function(assessment) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(assessment.id))]),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm.assessmentActive
+        ? _c("div", { staticClass: "col mb-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                on: {
+                  click: function($event) {
+                    _vm.hideAssessment()
+                  }
+                }
+              },
+              [_vm._v("< Back")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        !_vm.assessmentActive
+          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.url))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.gradable))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.max_score))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.assigned_date))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.due_date))])
+              _c(
+                "tbody",
+                _vm._l(_vm.assessments, function(assessment) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.id))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.url))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.level))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.gradable))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.max_score))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.assigned_date))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.due_date))]
+                      )
+                    ])
+                  ])
+                })
+              )
             ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.assessmentActive
+        ? _c("view-assessment", {
+            attrs: { assessment: _vm.activeAssessment },
+            on: { "assessment-changed": _vm.onAssessmentChanged }
           })
-        )
-      ])
-    ])
-  ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -47764,6 +47943,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("url")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("level")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("gradable")]),
         _vm._v(" "),
@@ -47869,18 +48050,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            labs: []
+            assessments: [],
+            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
+            assessmentActive: false
         };
     },
     mounted: function mounted() {
         var self = this;
         window.axios.get('/api/labs').then(function (response) {
-            self.labs = response.data;
+            self.assessments = response.data;
         });
+    },
+
+    methods: {
+        showAssessment: function showAssessment(assessment_id) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment_id) {
+                    this.activeAssessment = this.assessments[i];
+                    break;
+                }
+            }
+            this.assessmentActive = true;
+        },
+        hideAssessment: function hideAssessment() {
+            this.assessmentActive = false;
+        },
+        onAssessmentChanged: function onAssessmentChanged(assessment) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment.id) {
+                    this.assessments[i] = assessment;
+                    break;
+                }
+            }
+        }
     }
 });
 
@@ -47892,34 +48103,156 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table table-bordered table-striped" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.labs, function(lab) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(lab.id))]),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm.assessmentActive
+        ? _c("div", { staticClass: "col mb-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                on: {
+                  click: function($event) {
+                    _vm.hideAssessment()
+                  }
+                }
+              },
+              [_vm._v("< Back")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        !_vm.assessmentActive
+          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(lab.url))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(lab.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(lab.gradable))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(lab.max_score))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(lab.assigned_date))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(lab.due_date))])
+              _c(
+                "tbody",
+                _vm._l(_vm.assessments, function(assessment) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.id))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.url))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.gradable))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.max_score))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.assigned_date))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.due_date))]
+                      )
+                    ])
+                  ])
+                })
+              )
             ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.assessmentActive
+        ? _c("view-assessment", {
+            attrs: { assessment: _vm.activeAssessment },
+            on: { "assessment-changed": _vm.onAssessmentChanged }
           })
-        )
-      ])
-    ])
-  ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -48036,11 +48369,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: []
+            assessments: [],
+            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
+            assessmentActive: false
         };
     },
     mounted: function mounted() {
@@ -48048,6 +48390,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.axios.get('/api/exams').then(function (response) {
             self.assessments = response.data;
         });
+    },
+
+    methods: {
+        showAssessment: function showAssessment(assessment_id) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment_id) {
+                    this.activeAssessment = this.assessments[i];
+                    break;
+                }
+            }
+            this.assessmentActive = true;
+        },
+        hideAssessment: function hideAssessment() {
+            this.assessmentActive = false;
+        },
+        onAssessmentChanged: function onAssessmentChanged(assessment) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment.id) {
+                    this.assessments[i] = assessment;
+                    break;
+                }
+            }
+        }
     }
 });
 
@@ -48059,32 +48424,156 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table table-bordered table-striped" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.assessments, function(assessment) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(assessment.id))]),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm.assessmentActive
+        ? _c("div", { staticClass: "col mb-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                on: {
+                  click: function($event) {
+                    _vm.hideAssessment()
+                  }
+                }
+              },
+              [_vm._v("< Back")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        !_vm.assessmentActive
+          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.url))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.max_score))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.assigned_date))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.due_date))])
+              _c(
+                "tbody",
+                _vm._l(_vm.assessments, function(assessment) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.id))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.url))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.gradable))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.max_score))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.assigned_date))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.due_date))]
+                      )
+                    ])
+                  ])
+                })
+              )
             ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.assessmentActive
+        ? _c("view-assessment", {
+            attrs: { assessment: _vm.activeAssessment },
+            on: { "assessment-changed": _vm.onAssessmentChanged }
           })
-        )
-      ])
-    ])
-  ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -48098,6 +48587,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("url")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("gradable")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("max_score")]),
         _vm._v(" "),
@@ -48199,11 +48690,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: []
+            assessments: [],
+            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
+            assessmentActive: false
         };
     },
     mounted: function mounted() {
@@ -48211,6 +48711,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.axios.get('/api/quizes').then(function (response) {
             self.assessments = response.data;
         });
+    },
+
+    methods: {
+        showAssessment: function showAssessment(assessment_id) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment_id) {
+                    this.activeAssessment = this.assessments[i];
+                    break;
+                }
+            }
+            this.assessmentActive = true;
+        },
+        hideAssessment: function hideAssessment() {
+            this.assessmentActive = false;
+        },
+        onAssessmentChanged: function onAssessmentChanged(assessment) {
+            for (var i = this.assessments.length - 1; i >= 0; i--) {
+                if (this.assessments[i].id == assessment.id) {
+                    this.assessments[i] = assessment;
+                    break;
+                }
+            }
+        }
     }
 });
 
@@ -48222,32 +48745,156 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table table-bordered table-striped" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.assessments, function(assessment) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(assessment.id))]),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm.assessmentActive
+        ? _c("div", { staticClass: "col mb-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                on: {
+                  click: function($event) {
+                    _vm.hideAssessment()
+                  }
+                }
+              },
+              [_vm._v("< Back")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        !_vm.assessmentActive
+          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.url))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.max_score))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.assigned_date))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(assessment.due_date))])
+              _c(
+                "tbody",
+                _vm._l(_vm.assessments, function(assessment) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.id))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.url))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.gradable))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.max_score))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.assigned_date))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.showAssessment(assessment.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(assessment.due_date))]
+                      )
+                    ])
+                  ])
+                })
+              )
             ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.assessmentActive
+        ? _c("view-assessment", {
+            attrs: { assessment: _vm.activeAssessment },
+            on: { "assessment-changed": _vm.onAssessmentChanged }
           })
-        )
-      ])
-    ])
-  ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -48261,6 +48908,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("url")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("gradable")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("max_score")]),
         _vm._v(" "),
@@ -48601,113 +49250,8 @@ function toComment(sourceMap) {
 /* 61 */,
 /* 62 */,
 /* 63 */,
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(70)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(65)
-/* template */
-var __vue_template__ = __webpack_require__(74)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-22f5eb35"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/StudentComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-22f5eb35", Component.options)
-  } else {
-    hotAPI.reload("data-v-22f5eb35", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            studentModel: JSON.parse(JSON.stringify(this.student))
-        };
-    },
-    props: ['student'],
-    methods: {
-        updateStudent: function updateStudent() {
-            var self = this;
-            window.axios.put('/api/students/' + self.studentModel.id, self.studentModel).then(function (response) {
-                self.$emit('student-changed', self.studentModel);
-            });
-        }
-    }
-});
-
-/***/ }),
+/* 64 */,
+/* 65 */,
 /* 66 */,
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -48775,11 +49319,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            assessmentModel: JSON.parse(JSON.stringify(this.assessment))
+        };
+    },
     props: ['assessment'],
-    mounted: function mounted() {
-        console.log('component mounted');
+    methods: {
+        updateAssessment: function updateAssessment() {
+            var self = this;
+            window.axios.post('/api/assessments/' + self.assessmentModel.id, self.assessmentModel).then(function (response) {
+                self.$emit('assessment-changed', self.assessmentModel);
+                window.toastr.success("Assessment Updated");
+            });
+        }
     }
 });
 
@@ -48791,23 +49372,217 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("p", [_vm._v(_vm._s(_vm.assessment.id))]),
+  return _c(
+    "div",
+    { staticClass: "container mb-5" },
+    [
+      _c("div", { staticClass: "form row" }, [
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "github_username" } }, [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.name,
+                expression: "assessmentModel.name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "github_username" },
+            domProps: { value: _vm.assessmentModel.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.assessmentModel, "name", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "url" } }, [_vm._v("Url")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.url,
+                expression: "assessmentModel.url"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "url" },
+            domProps: { value: _vm.assessmentModel.url },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.assessmentModel, "url", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "level" } }, [_vm._v("Level")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.level,
+                expression: "assessmentModel.level"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "level" },
+            domProps: { value: _vm.assessmentModel.level },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.assessmentModel, "level", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "gradable" } }, [_vm._v("Gradable")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.gradable,
+                expression: "assessmentModel.gradable"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "gradable" },
+            domProps: { value: _vm.assessmentModel.gradable },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.assessmentModel, "gradable", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "max_score" } }, [_vm._v("Max Score")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.max_score,
+                expression: "assessmentModel.max_score"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "max_score" },
+            domProps: { value: _vm.assessmentModel.max_score },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.assessmentModel, "max_score", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "assigned_date" } }, [
+            _vm._v("Assigned Date")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.assigned_date,
+                expression: "assessmentModel.assigned_date"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "assigned_date" },
+            domProps: { value: _vm.assessmentModel.assigned_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.assessmentModel,
+                  "assigned_date",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "due_date" } }, [_vm._v("Due Date")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessmentModel.due_date,
+                expression: "assessmentModel.due_date"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "due_date" },
+            domProps: { value: _vm.assessmentModel.due_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.assessmentModel, "due_date", $event.target.value)
+              }
+            }
+          })
+        ])
+      ]),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.assessment.url))]),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success",
+          on: {
+            click: function($event) {
+              _vm.updateAssessment()
+            }
+          }
+        },
+        [_vm._v("Update Assessment")]
+      ),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.assessment.name))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.assessment.gradable))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.assessment.max_score))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.assessment.assigned_date))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.assessment.due_date))])
-    ])
-  ])
+      _c("submissions", { attrs: { assessment_id: _vm.assessment.id } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48820,46 +49595,8 @@ if (false) {
 }
 
 /***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(71);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(72)("457aa7d5", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-22f5eb35\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./StudentComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-22f5eb35\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./StudentComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(60)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n#user_info[data-v-22f5eb35] {\n    font-size: 1.4em;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 70 */,
+/* 71 */,
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49121,169 +49858,166 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 74 */
+/* 74 */,
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/CommentsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-607fbe46", Component.options)
+  } else {
+    hotAPI.reload("data-v-607fbe46", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            comments: [],
+            newComment: {
+                body: ""
+            }
+        };
+    },
+    props: ['student_id'],
+    mounted: function mounted() {
+        var self = this;
+        window.axios.get("/api/students/" + this.student_id + "/comments").then(function (results) {
+            self.comments = results.data;
+        });
+    },
+
+    methods: {
+        submitComment: function submitComment() {
+            var self = this;
+            window.axios.post("/api/students/" + this.student_id + "/comments", this.newComment).then(function (result) {
+                self.comments.unshift(result.data);
+                self.newComment.body = "";
+                window.toastr.success("Comment Created");
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mb-5" }, [
-    _c("div", { staticClass: "row mb-3", attrs: { id: "user_info" } }, [
-      _c("div", { staticClass: "col-6" }, [
-        _c("span", [
-          _c("span", { staticClass: "font-weight-bold" }, [_vm._v(" Name: ")]),
-          _vm._v(" " + _vm._s(_vm.student.user.name))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c("span", [
-          _c("span", { staticClass: "font-weight-bold" }, [_vm._v(" Email: ")]),
-          _vm._v(_vm._s(_vm.student.user.email))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c("span", [
-          _c("span", { staticClass: "font-weight-bold" }, [
-            _vm._v(" Created_at: ")
-          ]),
-          _vm._v(_vm._s(_vm.student.user.created_at))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c("span", [
-          _c("span", { staticClass: "font-weight-bold" }, [
-            _vm._v(" Updated_at: ")
-          ]),
-          _vm._v(_vm._s(_vm.student.user.updated_at))
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "github_username" } }, [
-          _vm._v("Username")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.studentModel.github_username,
-              expression: "studentModel.github_username"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "github_username" },
-          domProps: { value: _vm.studentModel.github_username },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.studentModel, "github_username", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "cell_number" } }, [
-          _vm._v("Phone Number")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.studentModel.cell_number,
-              expression: "studentModel.cell_number"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "cell_number" },
-          domProps: { value: _vm.studentModel.cell_number },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.studentModel, "cell_number", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "section" } }, [_vm._v("Section")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.studentModel.section,
-              expression: "studentModel.section"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "section" },
-          domProps: { value: _vm.studentModel.section },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.studentModel, "section", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "github_id" } }, [_vm._v("Github ID")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.studentModel.github_id,
-              expression: "studentModel.github_id"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "github_id" },
-          domProps: { value: _vm.studentModel.github_id },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.studentModel, "github_id", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
+  return _c("div", { staticClass: "container p-0" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
       _c(
-        "button",
-        {
-          staticClass: "btn btn-success",
+        "div",
+        { staticClass: "col-6" },
+        _vm._l(_vm.comments, function(comment) {
+          return _c("div", { staticClass: "card mt-3" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(comment.body))
+              ])
+            ])
+          ])
+        })
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model:value",
+              value: _vm.newComment.body,
+              expression: "newComment.body",
+              arg: "value"
+            }
+          ],
+          staticClass: "form-control mt-3",
+          attrs: { placeholder: "New comment", rows: "10" },
+          domProps: { value: _vm.newComment.body },
           on: {
-            click: function($event) {
-              _vm.updateStudent()
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.newComment, "body", $event.target.value)
             }
           }
-        },
-        [_vm._v("Update Student")]
-      )
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success mt-4",
+            on: { click: _vm.submitComment }
+          },
+          [_vm._v("\n                Submit Comment\n            ")]
+        )
+      ])
     ])
   ])
 }
@@ -49293,7 +50027,1445 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-22f5eb35", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-607fbe46", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(83)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/SubmissionsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-471608c9", Component.options)
+  } else {
+    hotAPI.reload("data-v-471608c9", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            submissions: []
+        };
+    },
+    props: ['assessment_id'],
+    mounted: function mounted() {
+        var self = this;
+        window.axios.get("/api/assessments/" + this.assessment_id + "/students").then(function (results) {
+            self.submissions = results.data.students;
+        });
+    },
+
+    methods: {
+        assignAssessment: function assignAssessment() {
+            self = this;
+            window.axios.post("/api/assessments/" + self.assessment_id + "/students").then(function (response) {
+                window.axios.get("/api/assessments/" + self.assessment_id + "/students").then(function (results) {
+                    self.submissions = results.data.students;
+                    window.toastr.success("Assessment Assigned");
+                });
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container p-0" }, [
+    _c("div", { staticClass: "pt-5" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-warning",
+          on: {
+            click: function($event) {
+              _vm.assignAssessment()
+            }
+          }
+        },
+        [_vm._v("Assign")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center mt-5" }, [
+      !_vm.assessmentActive
+        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.submissions, function(submission) {
+                return _c("submission-row", {
+                  key: submission.id,
+                  attrs: { submission: submission }
+                })
+              })
+            )
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Student Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Submission Url")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Latest Hash")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Submitted")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Grade")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-471608c9", module.exports)
+  }
+}
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/AssessmentForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a72b44ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-a72b44ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+    return {
+      assessment: {
+        name: "",
+        url: "",
+        level: "",
+        gradable: false,
+        max_score: null,
+        assigned_date: date,
+        due_date: ""
+      }
+    };
+  },
+  methods: {
+    createAssessment: function createAssessment() {
+      window.axios.post("/api/assessments", this.assessment).then(function (results) {
+        window.location.replace("/staff/assessments");
+        window.toastr.success("Assessment Created");
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "name" } }, [
+          _vm._v("Name")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.assessment.name,
+              expression: "assessment.name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "name" },
+          domProps: { value: _vm.assessment.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.assessment, "name", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+          _vm._v("Url")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.assessment.url,
+              expression: "assessment.url"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "url" },
+          domProps: { value: _vm.assessment.url },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.assessment, "url", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "level" } }, [
+          _vm._v("Level")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.assessment.level,
+                expression: "assessment.level"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "level" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.assessment,
+                  "level",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", [_vm._v("Lab")]),
+            _vm._v(" "),
+            _c("option", [_vm._v("Quiz")]),
+            _vm._v(" "),
+            _c("option", [_vm._v("Exam")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c(
+          "label",
+          { staticClass: "form-label", attrs: { for: "assigned_date" } },
+          [_vm._v("Assigned Date")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.assessment.assigned_date,
+              expression: "assessment.assigned_date"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "assigned_date" },
+          domProps: { value: _vm.assessment.assigned_date },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.assessment, "assigned_date", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "due_date" } }, [
+          _vm._v("Due Date")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.assessment.due_date,
+              expression: "assessment.due_date"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "due_date" },
+          domProps: { value: _vm.assessment.due_date },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.assessment, "due_date", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group col-md-6 col" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "gradable" } }, [
+          _vm._v("Gradeable")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.assessment.gradable,
+              expression: "assessment.gradable"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "checkbox", name: "gradable" },
+          domProps: {
+            checked: Array.isArray(_vm.assessment.gradable)
+              ? _vm._i(_vm.assessment.gradable, null) > -1
+              : _vm.assessment.gradable
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.assessment.gradable,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 &&
+                    _vm.$set(_vm.assessment, "gradable", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.assessment,
+                      "gradable",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
+              } else {
+                _vm.$set(_vm.assessment, "gradable", $$c)
+              }
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-100" }),
+      _vm._v(" "),
+      _vm.assessment.gradable
+        ? _c("div", { staticClass: "form-group col-md-6" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "max_score" } },
+              [_vm._v("Max Score")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.assessment.max_score,
+                  expression: "assessment.max_score"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "number", name: "max_score" },
+              domProps: { value: _vm.assessment.max_score },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.assessment, "max_score", $event.target.value)
+                }
+              }
+            })
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            on: { click: _vm.createAssessment }
+          },
+          [_vm._v("Create Assessment")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a72b44ce", module.exports)
+  }
+}
+
+/***/ }),
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(93)
+/* template */
+var __vue_template__ = __webpack_require__(94)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/SingleComponents/SubmissionRow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5279006a", Component.options)
+  } else {
+    hotAPI.reload("data-v-5279006a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            editing: false
+        };
+    },
+    props: ['submission'],
+    methods: {
+        showGradeForm: function showGradeForm() {
+            this.editing = true;
+        },
+        updateSubmission: function updateSubmission() {
+            var self = this;
+            window.axios.put("/api/submissions/" + self.submission.id, self.submission).then(function (result) {
+                self.editing = false;
+                window.toastr.success("Grade updated");
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("tr", [
+    _c("td", { attrs: { scope: "col" } }, [
+      _vm._v(_vm._s(_vm.submission.user.name))
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { scope: "col" } }, [
+      _vm._v(_vm._s(_vm.submission.pivot.submission ? "Yes" : "No"))
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { scope: "col" } }, [
+      _vm.submission.pivot.submission
+        ? _c(
+            "a",
+            {
+              attrs: {
+                href: _vm.submission.pivot.submission.submission_url,
+                target: "_blank"
+              }
+            },
+            [_vm._v(_vm._s(_vm.submission.pivot.submission.submission_url))]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { scope: "col" } }, [
+      _vm._v(
+        _vm._s(
+          _vm.submission.pivot.submission
+            ? _vm.submission.pivot.submission.latest_hash
+            : ""
+        )
+      )
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { scope: "col" } }, [
+      !_vm.editing && _vm.submission.pivot.submission
+        ? _c("div", [
+            _vm._v(
+              "\n            " +
+                _vm._s(
+                  _vm.submission.pivot.submission
+                    ? _vm.submission.pivot.submission.grade
+                    : null
+                ) +
+                " \n            "
+            ),
+            _c(
+              "button",
+              { staticClass: "btn btn-info", on: { click: _vm.showGradeForm } },
+              [_vm._v("Modify Grade")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.editing && _vm.submission.pivot.submission
+        ? _c("div", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.submission.pivot.submission.grade,
+                  expression: "submission.pivot.submission.grade"
+                }
+              ],
+              attrs: { type: "number", name: "grade" },
+              domProps: { value: _vm.submission.pivot.submission.grade },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.submission.pivot.submission,
+                    "grade",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                on: { click: _vm.updateSubmission }
+              },
+              [_vm._v("Update")]
+            )
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5279006a", module.exports)
+  }
+}
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(96)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(98)
+/* template */
+var __vue_template__ = __webpack_require__(99)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3d78ed5b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/Students/StudentComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d78ed5b", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d78ed5b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(97);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(72)("5f58b0b1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d78ed5b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./StudentComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d78ed5b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./StudentComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(60)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#student_assessments[data-v-3d78ed5b] {\n  max-height: 500px;\n  overflow-y: scroll;\n}\n#student_assessments thead[data-v-3d78ed5b] {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n}\n#student_assessments thead th[data-v-3d78ed5b] {\n      position: -webkit-sticky;\n      position: sticky;\n      top: -1px;\n      background-color: #eee;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            studentModel: JSON.parse(JSON.stringify(this.student)),
+            assessments: []
+        };
+    },
+    props: ['student'],
+    created: function created() {
+        self = this;
+        window.axios.get('/api/students/' + self.student.id + '/assessments').then(function (results) {
+            self.assessments = results.data.assessments;
+        });
+    },
+
+    methods: {
+        updateStudent: function updateStudent() {
+            var self = this;
+            window.axios.put('/api/students/' + self.studentModel.id, self.studentModel).then(function (response) {
+                self.$emit('student-changed', self.studentModel);
+                window.toastr.success("Student updated");
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container mb-5" },
+    [
+      _c("div", { staticClass: "row mb-3", attrs: { id: "user_info" } }, [
+        _c("div", { staticClass: "col-6" }, [
+          _c("span", [
+            _c("span", { staticClass: "font-weight-bold" }, [
+              _vm._v(" Name: ")
+            ]),
+            _vm._v(" " + _vm._s(_vm.student.user.name))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [
+          _c("span", [
+            _c("span", { staticClass: "font-weight-bold" }, [
+              _vm._v(" Email: ")
+            ]),
+            _vm._v(_vm._s(_vm.student.user.email))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [
+          _c("span", [
+            _c("span", { staticClass: "font-weight-bold" }, [
+              _vm._v(" Created_at: ")
+            ]),
+            _vm._v(_vm._s(_vm.student.user.created_at))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [
+          _c("span", [
+            _c("span", { staticClass: "font-weight-bold" }, [
+              _vm._v(" Updated_at: ")
+            ]),
+            _vm._v(_vm._s(_vm.student.user.updated_at))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "github_username" } }, [
+            _vm._v("Username")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.studentModel.github_username,
+                expression: "studentModel.github_username"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "github_username" },
+            domProps: { value: _vm.studentModel.github_username },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.studentModel,
+                  "github_username",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "cell_number" } }, [
+            _vm._v("Phone Number")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.studentModel.cell_number,
+                expression: "studentModel.cell_number"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "cell_number" },
+            domProps: { value: _vm.studentModel.cell_number },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.studentModel, "cell_number", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "section" } }, [_vm._v("Section")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.studentModel.section,
+                expression: "studentModel.section"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "section" },
+            domProps: { value: _vm.studentModel.section },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.studentModel, "section", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "github_id" } }, [_vm._v("Github ID")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.studentModel.github_id,
+                expression: "studentModel.github_id"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "github_id" },
+            domProps: { value: _vm.studentModel.github_id },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.studentModel, "github_id", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            on: {
+              click: function($event) {
+                _vm.updateStudent()
+              }
+            }
+          },
+          [_vm._v("Update Student")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("h1", { staticClass: "mt-5" }, [_vm._v("Assessments")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "justify-content-center mt-5 mb-5",
+          attrs: { id: "student_assessments" }
+        },
+        [
+          _c("table", { staticClass: "table table-bordered table-striped" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.assessments, function(assessment) {
+                return _c("student-assessment-row", {
+                  key: assessment.id,
+                  attrs: { assessment: assessment }
+                })
+              })
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("h1", { staticClass: "mt-5" }, [_vm._v("Comments")]),
+      _vm._v(" "),
+      _c("comments", { attrs: { student_id: _vm.student.id } })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("url")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("level")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("gradable")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("submitted")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("score")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("max_score")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("assigned_date")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("due_date")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3d78ed5b", module.exports)
+  }
+}
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(101)
+/* template */
+var __vue_template__ = __webpack_require__(102)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/Students/StudentAssessmentRow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f95e38d4", Component.options)
+  } else {
+    hotAPI.reload("data-v-f95e38d4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			editingGrade: false
+		};
+	},
+	props: ['assessment'],
+	methods: {
+		showGradeForm: function showGradeForm() {
+			this.editingGrade = true;
+		},
+		updateSubmission: function updateSubmission() {
+			var self = this;
+			window.axios.put("/api/submissions/" + self.assessment.pivot.submission.id, self.assessment.pivot.submission).then(function (result) {
+				self.editingGrade = false;
+				window.toastr.success("Grade updated");
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("tr", [
+    _c("td", [_vm._v(_vm._s(_vm.assessment.id))]),
+    _vm._v(" "),
+    _c("td", [
+      _c("a", { attrs: { href: _vm.assessment.url } }, [
+        _vm._v(_vm._s(_vm.assessment.url))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.assessment.name))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.assessment.level))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.assessment.gradable ? "Yes" : "No"))]),
+    _vm._v(" "),
+    _c("td", [
+      _vm.assessment.pivot.submission
+        ? _c(
+            "a",
+            { attrs: { href: _vm.assessment.pivot.submission.submission_url } },
+            [_vm._v("Yes")]
+          )
+        : _c("span", [_vm._v("No")])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      !_vm.editingGrade &&
+      _vm.assessment.gradable &&
+      _vm.assessment.pivot.submission
+        ? _c("div", [
+            _vm._v(
+              "\n\t        \t" +
+                _vm._s(
+                  _vm.assessment.pivot.submission
+                    ? _vm.assessment.pivot.submission.grade
+                    : ""
+                ) +
+                "\n                "
+            ),
+            _c(
+              "button",
+              { staticClass: "btn btn-info", on: { click: _vm.showGradeForm } },
+              [_vm._v("Modify Grade")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.editingGrade && _vm.assessment.gradable
+        ? _c("div", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.assessment.pivot.submission.grade,
+                  expression: "assessment.pivot.submission.grade"
+                }
+              ],
+              attrs: { type: "number", name: "grade" },
+              domProps: { value: _vm.assessment.pivot.submission.grade },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.assessment.pivot.submission,
+                    "grade",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                on: { click: _vm.updateSubmission }
+              },
+              [_vm._v("Update")]
+            )
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.assessment.max_score))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.assessment.assigned_date))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.assessment.due_date))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f95e38d4", module.exports)
   }
 }
 
