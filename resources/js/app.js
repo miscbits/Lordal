@@ -20,6 +20,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
+// Components for the staff portal
 Vue.component('students', require('./components/StaffPortal/StudentsComponent.vue'));
 Vue.component('assessments', require('./components/StaffPortal/AssessmentsComponent.vue'));
 Vue.component('view-student', require('./components/StaffPortal/Students/StudentComponent.vue'));
@@ -34,6 +35,12 @@ Vue.component('exams', require('./components/StaffPortal/ExamsComponent.vue'));
 Vue.component('quizes', require('./components/StaffPortal/QuizesComponent.vue'));
 Vue.component('staffportal', require('./components/StaffPortal/StaffPortal.vue'));
 
+// Components for the student portal
+Vue.component('student-profile', require('./components/StudentPortal/StudentPortal.vue'));
+Vue.component('student-assessments', require('./components/StudentPortal/StudentAssessmentsComponent.vue'));
+Vue.component('assessment-row', require('./components/StudentPortal/StudentAssessmentRow.vue'));
+
+// mixins to pass to all components. These can be accessed through component.$root.[method name]
 const mixins = {
     methods: {
         flattenObject: function(ob) {

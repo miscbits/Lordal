@@ -20,7 +20,7 @@ class AssessmentSubmissionController extends Controller
     {
         $url = $request->json('repository.html_url');
 
-       $assessment = Assessment::with(['students' => function($query) use ($request) {
+        $assessment = Assessment::with(['students' => function($query) use ($request) {
             $query->orWhere([
                 ['github_username', 'ilike', $request->json('pull_request.user.login')],
                 ['zipcode_rocks_username', 'ilike', $request->json('pull_request.user.login')],

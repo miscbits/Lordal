@@ -55,12 +55,18 @@
                                 </ul>
                             </li>
                         @else
-                            @if(Auth::user()->staff)
+                            @if(Auth::user()->isStaff())
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.students') }}">Students</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.assessments.new') }}">New Assessment</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.labs') }}">Labs</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.exams') }}">Exams</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.quizes') }}">Quizes</a></li>
+                            @elseif(Auth::user()->isStudent())
+                                <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.profile') }}">Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.labs') }}">Labs</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.exams') }}">Exams</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.quizes') }}">Quizes</a></li>
+                                <li class="nav-item"><a class="nav-link" target="_blank" href="https://github.com/{{ Auth::user()->student->github_username }}/repositories">My Github</a></li>
                             @endif
                                 <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -9,9 +9,19 @@ use App\Http\Controllers\Controller;
 class LearnerPages extends Controller
 {
     public function profile(Request $request) {
-        $user = $request->user();
-        $user->student;
-        return view('students.profile')
-            ->with(['user' => $user]);
+        return view('students.profile');
     }
+
+    public function labs() {
+        return view('students.labs');
+    }
+
+    public function exams() {
+        return view('students.exams');
+    }
+
+    public function quizes() {
+        return view('students.quizes');
+    }
+
 }

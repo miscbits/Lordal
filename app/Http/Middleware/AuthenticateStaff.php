@@ -24,7 +24,7 @@ class AuthenticateStaff
             }
 
             toastr()->error('The requested resource is not available for students');
-            return redirect('/profile');
+            return redirect('/student/profile');
         }
 
         return $next($request);

@@ -13,6 +13,7 @@ class AssessmentsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $request->user()->student->assessments->groupBy('level');
+        return $request->user()->student->assessments()
+        	->with('pivot.submission')->get()->groupBy('level');
     }
 }

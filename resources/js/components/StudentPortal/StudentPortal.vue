@@ -1,28 +1,20 @@
 <template>
-	<div>
-		<ul class="nav nav-pills">
-		  <li class="nav-item">
-		    <a class="nav-link" v-on:click="activate('profile')" v-bind:class="{ active: profileActive }" href="#">Profile</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" v-on:click="activate('assessments')" v-bind:class="{ active: assessmentsActive }" href="#">Assessments</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" v-on:click="activate('labs')" v-bind:class="{ active: labsActive }" href="#">Labs</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" v-on:click="activate('exams')" v-bind:class="{ active: examsActive }" href="#">Exams</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" v-on:click="activate('quizes')" v-bind:class="{ active: quizesActive }" href="#">Quizes</a>
-		  </li>
-		</ul>
-
-		<student-profile v-if="profileActive"></student-profile>
-		<student-assessments v-if="assessmentsActive"></student-assessments>
-		<student-labs v-if="labsActive"></student-labs>
-		<student-exams v-if="examsActive"></student-exams>
-		<student-quizes v-if="quizesActive"></student-quizes>
+	<div class="container">
+	    <div class="row justify-content-center">
+	        <div class="col-md-8">
+	            <div class="card">
+	                <div class="card-header">Profile</div>
+	                <div class="card-body">
+	                    <div class="row">
+	                        <div class="col-md-6"><dt>Name:</dt> <p class="text-capitalize">{{student.name}}</p></div>
+	                        <div class="col-md-6"><dt>Email:</dt> <p>{{student.email}}</p></div>
+	                        <div class="col-md-6"><dt>Cell Number:</dt> <p>{{student.student.cell_number}}</p></div>
+	                        <div class="col-md-6"><dt>Github Username:</dt> <p>{{student.student.github_username}}</p></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 </template>
 
@@ -30,24 +22,21 @@
     export default {
     	data: function() {
     		return {
-				profileActive: true,
-				assessmentsActive: false,
-				labsActive: false,
-				examsActive: false,
-				quizesActive: false
+    			student: {student: {}}
     		}
     	},
-        mounted() {
-        	console.log('nav mounted');
-        },
-        methods: {
-        	activate: function(pill) {
-				this.profileActive    = pill == 'profile';
-				this.assessmentsActive = pill == 'assessments';
-				this.labsActive        = pill == 'labs';
-				this.examsActive       = pill == 'exams';
-				this.quizesActive      = pill == 'quizes';
-        	}
-        }
+    	mounted() {
+    		var self = this;
+    		window.axios.get('/api/learner/profile')
+    			.then(function(results) {
+    				self.student = results.data;
+    			});
+    	}
 	}
 </script>
+
+<style scoped>
+	* {
+		font-size: 1.3rem;
+	}
+</style>

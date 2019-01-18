@@ -24,7 +24,6 @@
         <td>{{assessment.assigned_date}}</td>
         <td>{{assessment.due_date}}</td>
     </tr>
-
 </template>
 
 <script>

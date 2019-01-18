@@ -47,7 +47,7 @@
         },
         mounted() {
             var self = this;
-            window.axios.get('/api/assessments')
+            axios.get('/api/assessments')
                 .then(function(response) {
                     self.assessments = response.data;
                 });
