@@ -74,5 +74,6 @@
 <style type="text/scss">
 	.vdatetime-input {
 		border: 0;
+        width:100%;
 	}
 </style>

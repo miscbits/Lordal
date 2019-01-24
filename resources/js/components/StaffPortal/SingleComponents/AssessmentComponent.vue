@@ -16,19 +16,19 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="gradable">Gradable</label>
-                <input class="form-control" type="text" name="gradable" v-model="assessmentModel.gradable">
+                <input class="form-control" type="checkbox" name="gradable" v-model="assessmentModel.gradable">
             </div>
             <div class="form-group col-md-6">
                 <label for="max_score">Max Score</label>
-                <input class="form-control" type="text" name="max_score" v-model="assessmentModel.max_score">
+                <input class="form-control" type="number" name="max_score" v-model="assessmentModel.max_score">
             </div>
             <div class="form-group col-md-6">
                 <label for="assigned_date">Assigned Date</label>
-                <input class="form-control" type="text" name="assigned_date" v-model="assessmentModel.assigned_date">
+                <datetime class="form-control" type="datetime" name="assigned_date" v-model="assessmentModel.assigned_date" value="assessmentModel.assigned_date" use12Hour></datetime>
             </div>
             <div class="form-group col-md-6">
                 <label for="due_date">Due Date</label>
-                <input class="form-control" type="text" name="due_date" v-model="assessmentModel.due_date">
+                <datetime class="form-control" type="datetime" name="due_date" v-model="assessmentModel.due_date" value="assessmentModel.due_date" use12Hour></datetime>
             </div>
         </div>
 
@@ -49,12 +49,19 @@
         methods: {
             updateAssessment: function(){
                 var self = this;
-                window.axios.post(`/api/assessments/${self.assessmentModel.id}`, self.assessmentModel)
+                window.axios.put(`/api/assessments/${self.assessmentModel.id}`, self.assessmentModel)
                     .then(function(response) {
                         self.$emit('assessment-changed', self.assessmentModel)
                         window.toastr.success("Assessment Updated")
                     });
             }
         }
-    }
+    };
 </script>
+
+<style type="text/scss">
+    .vdatetime-input {
+        border: 0;
+        width:100%;
+    }
+</style>

@@ -58778,7 +58778,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n.vdatetime-input {\n\tborder: 0;\n}\n", ""]);
+exports.push([module.i, "\n.vdatetime-input {\n\t\tborder: 0;\n        width:100%;\n}\n", ""]);
 
 // exports
 
@@ -59750,6 +59750,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(111)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(78)
@@ -59758,7 +59762,7 @@ var __vue_template__ = __webpack_require__(79)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -59849,7 +59853,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         updateAssessment: function updateAssessment() {
             var self = this;
-            window.axios.post('/api/assessments/' + self.assessmentModel.id, self.assessmentModel).then(function (response) {
+            window.axios.put('/api/assessments/' + self.assessmentModel.id, self.assessmentModel).then(function (response) {
                 self.$emit('assessment-changed', self.assessmentModel);
                 window.toastr.success("Assessment Updated");
             });
@@ -59961,14 +59965,38 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "gradable" },
-            domProps: { value: _vm.assessmentModel.gradable },
+            attrs: { type: "checkbox", name: "gradable" },
+            domProps: {
+              checked: Array.isArray(_vm.assessmentModel.gradable)
+                ? _vm._i(_vm.assessmentModel.gradable, null) > -1
+                : _vm.assessmentModel.gradable
+            },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              change: function($event) {
+                var $$a = _vm.assessmentModel.gradable,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = null,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 &&
+                      _vm.$set(
+                        _vm.assessmentModel,
+                        "gradable",
+                        $$a.concat([$$v])
+                      )
+                  } else {
+                    $$i > -1 &&
+                      _vm.$set(
+                        _vm.assessmentModel,
+                        "gradable",
+                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                      )
+                  }
+                } else {
+                  _vm.$set(_vm.assessmentModel, "gradable", $$c)
                 }
-                _vm.$set(_vm.assessmentModel, "gradable", $event.target.value)
               }
             }
           })
@@ -59987,7 +60015,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "max_score" },
+            attrs: { type: "number", name: "max_score" },
             domProps: { value: _vm.assessmentModel.max_score },
             on: {
               input: function($event) {
@@ -60000,63 +60028,59 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group col-md-6" }, [
-          _c("label", { attrs: { for: "assigned_date" } }, [
-            _vm._v("Assigned Date")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+        _c(
+          "div",
+          { staticClass: "form-group col-md-6" },
+          [
+            _c("label", { attrs: { for: "assigned_date" } }, [
+              _vm._v("Assigned Date")
+            ]),
+            _vm._v(" "),
+            _c("datetime", {
+              staticClass: "form-control",
+              attrs: {
+                type: "datetime",
+                name: "assigned_date",
+                value: "assessmentModel.assigned_date",
+                use12Hour: ""
+              },
+              model: {
                 value: _vm.assessmentModel.assigned_date,
+                callback: function($$v) {
+                  _vm.$set(_vm.assessmentModel, "assigned_date", $$v)
+                },
                 expression: "assessmentModel.assigned_date"
               }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "assigned_date" },
-            domProps: { value: _vm.assessmentModel.assigned_date },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.assessmentModel,
-                  "assigned_date",
-                  $event.target.value
-                )
-              }
-            }
-          })
-        ]),
+            })
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group col-md-6" }, [
-          _c("label", { attrs: { for: "due_date" } }, [_vm._v("Due Date")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+        _c(
+          "div",
+          { staticClass: "form-group col-md-6" },
+          [
+            _c("label", { attrs: { for: "due_date" } }, [_vm._v("Due Date")]),
+            _vm._v(" "),
+            _c("datetime", {
+              staticClass: "form-control",
+              attrs: {
+                type: "datetime",
+                name: "due_date",
+                value: "assessmentModel.due_date",
+                use12Hour: ""
+              },
+              model: {
                 value: _vm.assessmentModel.due_date,
+                callback: function($$v) {
+                  _vm.$set(_vm.assessmentModel, "due_date", $$v)
+                },
                 expression: "assessmentModel.due_date"
               }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "due_date" },
-            domProps: { value: _vm.assessmentModel.due_date },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.assessmentModel, "due_date", $event.target.value)
-              }
-            }
-          })
-        ])
+            })
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -62454,6 +62478,49 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(112);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(13)("5e40aeae", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d77df210\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d77df210\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.vdatetime-input {\n    border: 0;\n    width:100%;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
