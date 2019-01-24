@@ -11,10 +11,10 @@ Route::get('/staff/exams', 'HomeController@exams')->name('staffportal.exams');
 Route::get('/staff/quizes', 'HomeController@quizes')->name('staffportal.quizes');
 Route::get('/staff/labs', 'HomeController@labs')->name('staffportal.labs');
 
-Route::get('auth/github', 'Auth\OauthController@redirectToGithubProvider');
-Route::get('auth/google', 'Auth\OauthController@redirectToGoogleProvider');
-Route::get('auth/google/callback', 'Auth\OauthController@handleProviderGoogleCallback');
-Route::get('auth/github/callback', 'Auth\OauthController@handleProviderGithubCallback');
+Route::get('auth/github', 'Auth\OAuthController@redirectToGithubProvider');
+Route::get('auth/google', 'Auth\OAuthController@redirectToGoogleProvider');
+Route::get('auth/google/callback', 'Auth\OAuthController@handleProviderGoogleCallback');
+Route::get('auth/github/callback', 'Auth\OAuthController@handleProviderGithubCallback');
 
 Route::namespace("Pages")->group(function () {
     Route::get('/student/profile', 'LearnerPages@profile')->name('studentportal.profile');
