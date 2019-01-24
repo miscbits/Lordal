@@ -19,11 +19,11 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label class="form-label" for="assigned_date">Assigned Date</label>
-				<input class="form-control" type="text" v-model="assessment.assigned_date" name="assigned_date">
+				<datetime class="form-control" type="datetime" use12-hour v-model="assessment.assigned_date" name="assigned_date"></datetime>
 			</div>
 			<div class="form-group col-md-6">
 				<label class="form-label" for="due_date">Due Date</label>
-				<input class="form-control" type="text" v-model="assessment.due_date" name="due_date">
+				<datetime class="form-control" type="datetime" use12-hour v-model="assessment.due_date" name="due_date"></datetime>
 			</div>
 			<div class="form-group col-md-6 col">
 				<label class="form-label" for="gradable">Gradeable</label>
@@ -68,5 +68,11 @@
     				});
     		}
     	}
-    }
+    };
 </script>
+
+<style type="text/scss">
+	.vdatetime-input {
+		border: 0;
+	}
+</style>

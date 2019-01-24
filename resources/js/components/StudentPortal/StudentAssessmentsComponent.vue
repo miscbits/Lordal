@@ -12,6 +12,7 @@
                         <th scope="col" v-on:click="assessments.sort($root.comparator('max_score'))">Max Score</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('assigned_date'))">Assigned</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('due_date'))">Due</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
