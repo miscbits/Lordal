@@ -14,6 +14,8 @@
 	                </div>
 	            </div>
 	        </div>
+
+	        <unsubmitted-labs></unsubmitted-labs>
 	    </div>
 	</div>
 </template>
@@ -32,11 +34,5 @@
     				self.student = results.data;
     			});
     	}
-	}
+	};
 </script>
-
-<style scoped>
-	* {
-		font-size: 1.3rem;
-	}
-</style>

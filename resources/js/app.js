@@ -38,7 +38,9 @@ Vue.component('staffportal', require('./components/StaffPortal/StaffPortal.vue')
 // Components for the student portal
 Vue.component('student-profile', require('./components/StudentPortal/StudentPortal.vue'));
 Vue.component('student-assessments', require('./components/StudentPortal/StudentAssessmentsComponent.vue'));
+Vue.component('unsubmitted-labs', require('./components/StudentPortal/UnsubmittedLabs.vue'));
 Vue.component('assessment-row', require('./components/StudentPortal/StudentAssessmentRow.vue'));
+Vue.component('submission-form', require('./components/StudentPortal/SubmissionForm.vue'));
 
 // mixins to pass to all components. These can be accessed through component.$root.[method name]
 const mixins = {

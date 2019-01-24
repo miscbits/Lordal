@@ -15,8 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Submission::class, function (Faker $faker) {
     return [
-          "pr_url"         => $faker->url
-        , "submission_url" => $faker->url
+          "submission_url"         => $faker->url
         , "latest_hash"    => str_random(20)
         , "grade"          => $faker->numberBetween(0, 100)
         , "assignment_id"  => $faker->randomDigitNotNull

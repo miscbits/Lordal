@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Log;
 use App\Submission;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -32,6 +33,6 @@ class GradeAssessment implements ShouldQueue
      */
     public function handle()
     {
-        // TODO: implement handle method
+        Log::error('this wasn\'t supposed to be handled');
     }
 }

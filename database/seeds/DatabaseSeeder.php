@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 			"staff" => true,
         ]);
 
-        factory(\App\Student::class, 1)->create(['user_id' => 1])
+        factory(\App\Student::class, 1)->create(['user_id' => 1, 'github_username' => 'miscbits'])
         		->each(function($student) {
         			factory(\App\Comment::class, 3)
         				->create(['user_id' => 2, 'student_id' => $student->id]);

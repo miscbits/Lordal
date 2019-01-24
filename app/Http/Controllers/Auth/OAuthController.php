@@ -10,8 +10,8 @@ use App\Http\Controllers\Controller;
 class OAuthController extends Controller
 {
 
-    protected $redirectStudent = '/profile';
-    protected $redirectStaff = '/staff';
+    protected $redirectStudent = '/student/profile';
+    protected $redirectStaff = '/staff/students';
     protected $redirectError = '/';
 
     /**
@@ -53,6 +53,7 @@ class OAuthController extends Controller
         }
 
         Auth::login($auth_user);
+        toastr()->success("Welcome {$auth_user->name}");
 
         return redirect($this->redirectStudent);
     }
@@ -92,6 +93,7 @@ class OAuthController extends Controller
         }
 
         Auth::login($auth_user);
+        toastr()->success("Welcome {$auth_user->name}");
 
         return redirect($this->redirectStaff);
     }

@@ -26,6 +26,9 @@ Route::middleware(['auth:api', 'auth.staff'])->group(function () {
 Route::middleware(['auth:api', 'auth.student'])->namespace("LearnerApi")->prefix("learner")->group(function () {
     Route::get('assessments', 'AssessmentsController');
     Route::get('profile', 'StudentsController');
+    Route::get('unsubmitted', 'UnsubmittedLabsController');
+    Route::get('submission/{assignment_id}', 'SubmissionController@show')->name('submission.show');
+    Route::post('submission/{assignment_id}', 'SubmissionController@store')->name('submission.store');
 });
 
 Route::middleware(['github_webhook'])->namespace("Webhooks")->prefix('github')->group(function () {

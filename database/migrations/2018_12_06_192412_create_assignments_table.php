@@ -21,6 +21,8 @@ class CreateAssignmentsTable extends Migration
             $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('assessment_id')->references('id')->on('assessments');
 
+
+            $table->unique(['student_id','assessment_id']);
             $table->timestamps();
         });
     }

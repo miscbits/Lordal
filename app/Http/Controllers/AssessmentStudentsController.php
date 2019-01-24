@@ -47,7 +47,13 @@ class AssessmentStudentsController extends Controller
      */
     public function store(Request $request, Assessment $assessment)
     {
-        $assessment->students()->attach(Student::all(['id']));
+        $student_ids = Student::select('id')
+            ->whereNotIn('id', 
+                Assignment::where('assessment_id', $assessment->id)
+                    ->select('student_id'))
+            ->get();
+
+        $assessment->students()->attach($student_ids);
         return response('', Response::HTTP_CREATED);
     }
 

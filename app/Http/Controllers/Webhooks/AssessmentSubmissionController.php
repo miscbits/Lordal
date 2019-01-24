@@ -41,7 +41,7 @@ class AssessmentSubmissionController extends Controller
         ]);
 
         if ( $assessment->gradable ) {
-            GradeAssessment::dispatch($submission);
+            GradeAssessment::dispatchNow($submission);
         }
 
         return response('', 200);
