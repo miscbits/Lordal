@@ -29,8 +29,13 @@ class StudentCommentsController extends Controller
      */
     public function store(Request $request, Student $student)
     {
-        $comment = ['body' => $request->input('body'), 'user_id' => $request->user()->id];
-        return response()->json($student->comments()->create($comment), Response::HTTP_CREATED);
+        $comment_data = ['body' => $request->input('body'), 'user_id' => $request->user()->id];
+
+        $comment = $student->comments()->create($comment_data);
+
+        $comment->user = $request->user();
+
+        return response()->json($comment, Response::HTTP_CREATED);
     }
 
     /**
