@@ -1,28 +1,28 @@
 <template>
     <div class="container mb-5">
         <div id="user_info" class="row mb-3">
-            <div class="col-6"><span><span class="font-weight-bold"> Name: </span> {{student["user.name"]}}</span></div>
-            <div class="col-6"><span><span class="font-weight-bold"> Email: </span>{{student["user.email"]}}</span></div>
-            <div class="col-6"><span><span class="font-weight-bold"> Created_at: </span>{{student["user.created_at"]}}</span></div>
-            <div class="col-6"><span><span class="font-weight-bold"> Updated_at: </span>{{student["user.updated_at"]}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Name: </span> {{student.user.name}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Email: </span>{{student.user.email}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Created_at: </span>{{student.user.created_at}}</span></div>
+            <div class="col-6"><span><span class="font-weight-bold"> Updated_at: </span>{{student.user.updated_at}}</span></div>
         </div>
 
         <div class="form">
             <div class="form-group">
                 <label for="github_username">Username</label>
-                <input class="form-control" type="text" name="github_username" v-model="studentModel.github_username">
+                <input class="form-control" type="text" name="github_username" v-model="student.github_username">
             </div>
             <div class="form-group">
                 <label for="cell_number">Phone Number</label>
-                <input class="form-control" type="text" name="cell_number" v-model="studentModel.cell_number">
+                <input class="form-control" type="text" name="cell_number" v-model="student.cell_number">
             </div>
             <div class="form-group">
                 <label for="section">Section</label>
-                <input class="form-control" type="text" name="section" v-model="studentModel.section">
+                <input class="form-control" type="text" name="section" v-model="student.section">
             </div>
             <div class="form-group">
                 <label for="github_id">Github ID</label>
-                <input class="form-control" type="text" name="github_id" v-model="studentModel.github_id">
+                <input class="form-control" type="text" name="github_id" v-model="student.github_id">
             </div>
 
             <button class="btn btn-success" v-on:click="updateStudent()">Update Student</button>
@@ -61,16 +61,18 @@
     export default {
         data: function() {
             return {
-                studentModel: JSON.parse(JSON.stringify(this.student)),
+                student: {id: this.student_id, user: {}},
                 assessments: []
             }
         },
-        props: ['student'],
+        props: ['student_id'],
         created() {
             self = this;
+
             window.axios.get(`/api/students/${self.student.id}/assessments`)
                 .then(function(results) {
-                    console.log(results.data)
+                    self.student = results.data;
+
                     results.data.assessments.forEach(function(assessment) {
                         let flatAssessment = self.$root.flattenObject(assessment);
                         flatAssessment.submitted = flatAssessment['pivot.submission.submission_url'] != null;
@@ -82,9 +84,9 @@
         methods: {
             updateStudent: function(){
                 var self = this;
-                window.axios.put(`/api/students/${self.studentModel.id}`, self.studentModel)
+                window.axios.put(`/api/students/${self.student.id}`, self.student)
                     .then(function(response) {
-                        self.$emit('student-changed', self.studentModel);
+                        self.$emit('student-changed', self.student);
                         window.toastr.success("Student updated");
                     });
             }

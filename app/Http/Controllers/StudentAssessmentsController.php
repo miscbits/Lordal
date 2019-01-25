@@ -18,6 +18,7 @@ class StudentAssessmentsController extends Controller
     {
         return response()
             ->json(Student::with("assessments.pivot.submission")
+                ->with("user")
                 ->find($student_id)
             );
     }

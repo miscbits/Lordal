@@ -68083,43 +68083,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            students: [],
-            activeStudent: { "id": "", "user.name": "", "github_username": "", "user.email": "" },
-            studentActive: false
+            students: []
         };
-    },
-    methods: {
-        showStudent: function showStudent(student_id) {
-            for (var i = this.students.length - 1; i >= 0; i--) {
-                if (this.students[i].id == student_id) {
-                    this.activeStudent = this.students[i];
-                    break;
-                }
-            }
-            this.studentActive = true;
-        },
-        hideStudent: function hideStudent() {
-            this.studentActive = false;
-        },
-        onStudentChanged: function onStudentChanged(student) {
-            for (var i = this.students.length - 1; i >= 0; i--) {
-                if (this.students[i].id == student.id) {
-                    this.students[i] = student;
-                    break;
-                }
-            }
-        }
     },
     mounted: function mounted() {
         var self = this;
@@ -68141,175 +68110,112 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: " row justify-content-center" },
-      [
-        _vm.studentActive
-          ? _c("div", { staticClass: "col mb-3" }, [
+    _c("div", { staticClass: " row justify-content-center" }, [
+      _c(
+        "table",
+        {
+          staticClass: "table table-bordered table-striped",
+          attrs: { id: "studentDataTable" }
+        },
+        [
+          _c("thead", [
+            _c("tr", [
               _c(
-                "button",
+                "th",
                 {
-                  staticClass: "btn btn-info",
+                  attrs: { scope: "col" },
                   on: {
                     click: function($event) {
-                      _vm.hideStudent()
+                      _vm.students.sort(_vm.$root.comparator("id"))
                     }
                   }
                 },
-                [_vm._v("< Back")]
+                [_vm._v("#")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  attrs: { scope: "col" },
+                  on: {
+                    click: function($event) {
+                      _vm.students.sort(_vm.$root.comparator("user.name"))
+                    }
+                  }
+                },
+                [_vm._v("Name")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  attrs: { scope: "col" },
+                  on: {
+                    click: function($event) {
+                      _vm.students.sort(_vm.$root.comparator("github_username"))
+                    }
+                  }
+                },
+                [_vm._v("Github")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  attrs: { scope: "col" },
+                  on: {
+                    click: function($event) {
+                      _vm.students.sort(_vm.$root.comparator("user.email"))
+                    }
+                  }
+                },
+                [_vm._v("Email")]
               )
             ])
-          : _vm._e(),
-        _vm._v(" "),
-        !_vm.studentActive
-          ? _c(
-              "table",
-              {
-                staticClass: "table table-bordered table-striped",
-                attrs: { id: "studentDataTable" }
-              },
-              [
-                _c("thead", [
-                  _c("tr", [
-                    _c(
-                      "th",
-                      {
-                        attrs: { scope: "col" },
-                        on: {
-                          click: function($event) {
-                            _vm.students.sort(_vm.$root.comparator("id"))
-                          }
-                        }
-                      },
-                      [_vm._v("#")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      {
-                        attrs: { scope: "col" },
-                        on: {
-                          click: function($event) {
-                            _vm.students.sort(_vm.$root.comparator("user.name"))
-                          }
-                        }
-                      },
-                      [_vm._v("Name")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      {
-                        attrs: { scope: "col" },
-                        on: {
-                          click: function($event) {
-                            _vm.students.sort(
-                              _vm.$root.comparator("github_username")
-                            )
-                          }
-                        }
-                      },
-                      [_vm._v("Github")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      {
-                        attrs: { scope: "col" },
-                        on: {
-                          click: function($event) {
-                            _vm.students.sort(
-                              _vm.$root.comparator("user.email")
-                            )
-                          }
-                        }
-                      },
-                      [_vm._v("Email")]
-                    )
-                  ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.students, function(student) {
+              return _c("tr", [
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/staff/students/" + student.id } },
+                    [_vm._v(_vm._s(student["id"]))]
+                  )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.students, function(student) {
-                    return _c("tr", [
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                _vm.showStudent(student.id)
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(student["id"]))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                _vm.showStudent(student.id)
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(student["user.name"]))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                _vm.showStudent(student.id)
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(student["github_username"]))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                _vm.showStudent(student.id)
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(student["user.email"]))]
-                        )
-                      ])
-                    ])
-                  }),
-                  0
-                )
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.studentActive
-          ? _c("view-student", {
-              attrs: { student: _vm.activeStudent },
-              on: { "student-changed": _vm.onStudentChanged }
-            })
-          : _vm._e()
-      ],
-      1
-    )
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/staff/students/" + student.id } },
+                    [_vm._v(_vm._s(student["user.name"]))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/staff/students/" + student.id } },
+                    [_vm._v(_vm._s(student["github_username"]))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/staff/students/" + student.id } },
+                    [_vm._v(_vm._s(student["user.email"]))]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -69141,15 +69047,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            studentModel: JSON.parse(JSON.stringify(this.student)),
+            student: { id: this.student_id, user: {} },
             assessments: []
         };
     },
-    props: ['student'],
+    props: ['student_id'],
     created: function created() {
         self = this;
+
         window.axios.get('/api/students/' + self.student.id + '/assessments').then(function (results) {
-            console.log(results.data);
+            self.student = results.data;
+
             results.data.assessments.forEach(function (assessment) {
                 var flatAssessment = self.$root.flattenObject(assessment);
                 flatAssessment.submitted = flatAssessment['pivot.submission.submission_url'] != null;
@@ -69162,8 +69070,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         updateStudent: function updateStudent() {
             var self = this;
-            window.axios.put('/api/students/' + self.studentModel.id, self.studentModel).then(function (response) {
-                self.$emit('student-changed', self.studentModel);
+            window.axios.put('/api/students/' + self.student.id, self.student).then(function (response) {
+                self.$emit('student-changed', self.student);
                 window.toastr.success("Student updated");
             });
         }
@@ -69188,7 +69096,7 @@ var render = function() {
             _c("span", { staticClass: "font-weight-bold" }, [
               _vm._v(" Name: ")
             ]),
-            _vm._v(" " + _vm._s(_vm.student["user.name"]))
+            _vm._v(" " + _vm._s(_vm.student.user.name))
           ])
         ]),
         _vm._v(" "),
@@ -69197,7 +69105,7 @@ var render = function() {
             _c("span", { staticClass: "font-weight-bold" }, [
               _vm._v(" Email: ")
             ]),
-            _vm._v(_vm._s(_vm.student["user.email"]))
+            _vm._v(_vm._s(_vm.student.user.email))
           ])
         ]),
         _vm._v(" "),
@@ -69206,7 +69114,7 @@ var render = function() {
             _c("span", { staticClass: "font-weight-bold" }, [
               _vm._v(" Created_at: ")
             ]),
-            _vm._v(_vm._s(_vm.student["user.created_at"]))
+            _vm._v(_vm._s(_vm.student.user.created_at))
           ])
         ]),
         _vm._v(" "),
@@ -69215,7 +69123,7 @@ var render = function() {
             _c("span", { staticClass: "font-weight-bold" }, [
               _vm._v(" Updated_at: ")
             ]),
-            _vm._v(_vm._s(_vm.student["user.updated_at"]))
+            _vm._v(_vm._s(_vm.student.user.updated_at))
           ])
         ])
       ]),
@@ -69231,23 +69139,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.studentModel.github_username,
-                expression: "studentModel.github_username"
+                value: _vm.student.github_username,
+                expression: "student.github_username"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "github_username" },
-            domProps: { value: _vm.studentModel.github_username },
+            domProps: { value: _vm.student.github_username },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(
-                  _vm.studentModel,
-                  "github_username",
-                  $event.target.value
-                )
+                _vm.$set(_vm.student, "github_username", $event.target.value)
               }
             }
           })
@@ -69263,19 +69167,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.studentModel.cell_number,
-                expression: "studentModel.cell_number"
+                value: _vm.student.cell_number,
+                expression: "student.cell_number"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "cell_number" },
-            domProps: { value: _vm.studentModel.cell_number },
+            domProps: { value: _vm.student.cell_number },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.studentModel, "cell_number", $event.target.value)
+                _vm.$set(_vm.student, "cell_number", $event.target.value)
               }
             }
           })
@@ -69289,19 +69193,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.studentModel.section,
-                expression: "studentModel.section"
+                value: _vm.student.section,
+                expression: "student.section"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "section" },
-            domProps: { value: _vm.studentModel.section },
+            domProps: { value: _vm.student.section },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.studentModel, "section", $event.target.value)
+                _vm.$set(_vm.student, "section", $event.target.value)
               }
             }
           })
@@ -69315,19 +69219,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.studentModel.github_id,
-                expression: "studentModel.github_id"
+                value: _vm.student.github_id,
+                expression: "student.github_id"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "github_id" },
-            domProps: { value: _vm.studentModel.github_id },
+            domProps: { value: _vm.student.github_id },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.studentModel, "github_id", $event.target.value)
+                _vm.$set(_vm.student, "github_id", $event.target.value)
               }
             }
           })
@@ -69650,7 +69554,11 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.assessment.name))]),
+    _c("td", [
+      _c("a", { attrs: { href: "/staff/assessment/2" + _vm.assessment.id } }, [
+        _vm._v(_vm._s(_vm.assessment.name))
+      ])
+    ]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.assessment.level))]),
     _vm._v(" "),
@@ -70654,7 +70562,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("tr", [
     _c("td", { attrs: { scope: "col" } }, [
-      _vm._v(_vm._s(_vm.submission["user.name"]))
+      _c("a", { attrs: { href: "/staff/students/" + _vm.submission.id } }, [
+        _vm._v(_vm._s(_vm.submission["user.name"]))
+      ])
     ]),
     _vm._v(" "),
     _c("td", { attrs: { scope: "col" } }, [

@@ -7,6 +7,7 @@ Route::get('/staff/', 'HomeController@index')->name('staffportal.home');
 Route::get('/staff/assessments', 'HomeController@assessments')->name('staffportal.assessments');
 Route::get('/staff/assessments/new', 'HomeController@create_assessment')->name('staffportal.assessments.new');
 Route::get('/staff/students', 'HomeController@students')->name('staffportal.students');
+Route::get('/staff/students/{student_id}', 'HomeController@student')->name('staffportal.student');
 Route::get('/staff/exams', 'HomeController@exams')->name('staffportal.exams');
 Route::get('/staff/quizes', 'HomeController@quizes')->name('staffportal.quizes');
 Route::get('/staff/labs', 'HomeController@labs')->name('staffportal.labs');

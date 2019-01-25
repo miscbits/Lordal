@@ -38,6 +38,11 @@ class HomeController extends Controller
         return view('students');
     }
 
+    public function student($student_id) {
+        return view('show_student')
+            ->with(['student_id' => $student_id]);
+    }
+
     public function exams() {
         return view('exams');
     }

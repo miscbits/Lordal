@@ -1,8 +1,8 @@
 <template>
     <tr>
         <td>{{assessment.id}}</td>
-        <td><a v-bind:href="assessment.url">{{assessment.url}}</a></td>
-        <td>{{assessment.name}}</td>
+        <td><a :href="assessment.url">{{assessment.url}}</a></td>
+        <td><a :href="'/staff/assessment/2' + assessment.id">{{assessment.name}}</a></td>
         <td>{{assessment.level}}</td>
         <td>{{assessment.gradable ? "Yes" : "No"}}</td>
         <td>

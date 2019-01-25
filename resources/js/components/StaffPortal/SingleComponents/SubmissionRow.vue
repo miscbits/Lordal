@@ -1,7 +1,7 @@
 
 <template>
     <tr>
-        <td scope="col">{{submission['user.name']}}</td>
+        <td scope="col"><a :href="'/staff/students/' + submission.id">{{submission['user.name']}}</a></td>
         <td scope="col"><a v-if="submission['pivot.submission.submission_url']" v-bind:href="submission['pivot.submission.submission_url']" target="_blank">{{submission['pivot.submission.submission_url']}}</a></td>
         <td scope="col">{{submission['pivot.submission.latest_hash']}}</td>
         <td scope="col">{{submission['pivot.submission.submission_url'] ? "Yes" : "No"}}</td>
