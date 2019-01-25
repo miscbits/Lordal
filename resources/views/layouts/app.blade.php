@@ -49,10 +49,10 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a href="{{ url('/auth/github') }}" class="btn btn-github"><i class="fa fa-github"></i>Student</a>
+                                        <a href="{{ url('/auth/github') }}" class="btn btn-github"><i class="fab fa-github"></i>Student</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/auth/google') }}" class="btn btn-github"><i class="fa fa-github"></i>Staff</a>
+                                        <a href="{{ url('/auth/google') }}" class="btn btn-github"><i class="fab fa-google"></i>Staff</a>
                                     </li>
                                 </ul>
                             </li>
