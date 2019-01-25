@@ -69852,7 +69852,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 due_date: ""
             },
             options: {
-                format: 'YYYY-MM-DD HH:mm:ssa'
+                format: 'YYYY-MM-DD HH:mm:ss'
             }
         };
     },
@@ -69990,11 +69990,7 @@ var render = function() {
           _vm._v(" "),
           _c("date-picker", {
             staticClass: "form-control",
-            attrs: {
-              config: _vm.options,
-              value: _vm.assessment.assigned_date,
-              name: "assigned_date"
-            },
+            attrs: { config: _vm.options, name: "assigned_date" },
             model: {
               value: _vm.assessment.assigned_date,
               callback: function($$v) {
@@ -70019,11 +70015,7 @@ var render = function() {
           _vm._v(" "),
           _c("date-picker", {
             staticClass: "form-control",
-            attrs: {
-              config: _vm.options,
-              value: _vm.assessment.due_date,
-              name: "due_date"
-            },
+            attrs: { config: _vm.options, name: "due_date" },
             model: {
               value: _vm.assessment.due_date,
               callback: function($$v) {
@@ -70855,8 +70847,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             assessment: {},
             options: {
-                format: 'YYYY-MM-DD HH:mm:ssa',
-                useCurrent: false
+                format: 'YYYY-MM-DD HH:mm:ss'
             }
         };
     },

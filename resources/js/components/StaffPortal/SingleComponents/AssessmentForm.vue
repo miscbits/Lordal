@@ -19,11 +19,11 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label class="form-label" for="assigned_date">Assigned Date</label>
-				<date-picker :config="options" class="form-control" v-model="assessment.assigned_date" :value="assessment.assigned_date" name="assigned_date"></date-picker>
+				<date-picker :config="options" class="form-control" v-model="assessment.assigned_date" name="assigned_date"></date-picker>
 			</div>
 			<div class="form-group col-md-6">
 				<label class="form-label" for="due_date">Due Date</label>
-				<date-picker :config="options" class="form-control" v-model="assessment.due_date" :value="assessment.due_date" name="due_date"></date-picker>
+				<date-picker :config="options" class="form-control" v-model="assessment.due_date" name="due_date"></date-picker>
 			</div>
 			<div class="form-group col-md-6 col">
 				<label class="form-label" for="gradable">Gradeable</label>
@@ -55,7 +55,7 @@
 					, due_date: ""
     			},
                 options: {
-                    format: 'YYYY-MM-DD HH:mm:ssa'
+                    format: 'YYYY-MM-DD HH:mm:ss'
                 }       
     		}
     	},

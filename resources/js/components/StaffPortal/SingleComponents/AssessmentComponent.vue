@@ -44,8 +44,7 @@
             return {
                 assessment: {},
                 options: {
-                    format: 'YYYY-MM-DD HH:mm:ssa',
-                    useCurrent: false,
+                    format: 'YYYY-MM-DD HH:mm:ss'
                 }       
             }
         },
