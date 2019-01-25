@@ -12,5 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
-   .copy('node_modules/vue-datetime/dist/vue-datetime.min.css', 'public/css/vue-datetime.css');
+   .sass('resources/sass/app.scss', 'public/css');
+
+mix.autoload({
+    'jquery': ['$', 'window.jQuery', 'jQuery'],
+    'moment': ['moment','window.moment'],   
+  })

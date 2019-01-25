@@ -5,9 +5,13 @@
  */
 
 require('./bootstrap');
-import { Datetime } from 'vue-datetime'
 
 window.Vue = require('vue');
+
+import datePicker from 'vue-bootstrap-datetimepicker';
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+
+Vue.use(datePicker);
 
 /**
  * The following block of code may be used to automatically register your
@@ -41,7 +45,6 @@ Vue.component('student-assessments', require('./components/StudentPortal/Student
 Vue.component('unsubmitted-labs', require('./components/StudentPortal/UnsubmittedLabs.vue'));
 Vue.component('assessment-row', require('./components/StudentPortal/StudentAssessmentRow.vue'));
 Vue.component('submission-form', require('./components/StudentPortal/SubmissionForm.vue'));
-Vue.component('datetime', Datetime);
 
 // mixins to pass to all components. These can be accessed through component.$root.[method name]
 const mixins = {

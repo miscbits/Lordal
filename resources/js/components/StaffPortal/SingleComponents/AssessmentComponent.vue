@@ -24,11 +24,11 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="assigned_date">Assigned Date</label>
-                <datetime input-class="form-control" type="datetime" name="assigned_date" v-model="assessment.assigned_date" :format="'yyyy-MM-dd HH-mm-ss'" :value="assessment.assigned_date" use12Hour></datetime>
+                <date-picker :config="options" class="form-control" type="datetime" name="assigned_date" v-model="assessment.assigned_date"></date-picker>
             </div>
             <div class="form-group col-md-6">
                 <label for="due_date">Due Date</label>
-                <datetime input-class="form-control" type="datetime" name="due_date" v-model="assessment.due_date" :format="'yyyy-MM-dd HH-mm-ss'" :value="assessment.due_date" use12Hour></datetime>
+                <date-picker :config="options" class="form-control" type="datetime" name="due_date" v-model="assessment.due_date"></date-picker>
             </div>
         </div>
 
@@ -42,7 +42,11 @@
     export default {
         data: function() {
             return {
-                assessment: {}
+                assessment: {},
+                options: {
+                    format: 'YYYY-MM-DD HH:mm:ssa',
+                    useCurrent: false,
+                }       
             }
         },
         props: ['assessment_id'],

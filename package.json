@@ -20,8 +20,6 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "luxon": "^1.10.0",
-        "vue-datetime": "^1.0.0-beta.10",
-        "weekstart": "^1.0.0"
+        "vue-bootstrap-datetimepicker": "^5.0.1"
     }
 }
