@@ -1,18 +1,18 @@
 <?php
 
 namespace App;
+use Carbon\Carbon;
 use App\Pivots\AssignmentPivot;
 
 class Assessment extends BaseModel
 {
     protected $fillable = ['url', 'name', 'level', 'gradable', 'max_score', 'assigned_date', 'due_date'];
 
-    protected $dates = [
-          'assigned_date'
-        , 'due_date'
-    ];
-
     protected $dateFormat = 'Y-m-d H:i:s';
+
+    public function getDateOfBirthAttribute($value) {
+        return Carbon::createFromFormat('Y-m-d H:i:sP',$value);
+    }
 
 
     /**
