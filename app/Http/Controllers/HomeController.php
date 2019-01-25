@@ -50,4 +50,9 @@ class HomeController extends Controller
         return view('labs');
     }
 
+    public function updateAssessment($assessment_id) {
+        return view('update_assessment')
+            ->with(['assessment_id' => $assessment_id]);
+    }
+
 }

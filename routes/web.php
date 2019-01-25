@@ -10,6 +10,7 @@ Route::get('/staff/students', 'HomeController@students')->name('staffportal.stud
 Route::get('/staff/exams', 'HomeController@exams')->name('staffportal.exams');
 Route::get('/staff/quizes', 'HomeController@quizes')->name('staffportal.quizes');
 Route::get('/staff/labs', 'HomeController@labs')->name('staffportal.labs');
+Route::get('/staff/assessment/{assessment_id}', 'HomeController@updateAssessment')->name('staffportal.assessment.update');
 
 Route::get('auth/github', 'Auth\OAuthController@redirectToGithubProvider');
 Route::get('auth/google', 'Auth\OAuthController@redirectToGoogleProvider');

@@ -19,11 +19,11 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label class="form-label" for="assigned_date">Assigned Date</label>
-				<datetime class="form-control" type="datetime" use12-hour v-model="assessment.assigned_date" name="assigned_date"></datetime>
+				<datetime input-class="form-control" type="datetime" :format="'yyyy-MM-dd HH-mm-ss'" use12-hour v-model="assessment.assigned_date" :value="assessment.assigned_date" name="assigned_date"></datetime>
 			</div>
 			<div class="form-group col-md-6">
 				<label class="form-label" for="due_date">Due Date</label>
-				<datetime class="form-control" type="datetime" use12-hour v-model="assessment.due_date" name="due_date"></datetime>
+				<datetime input-class="form-control" type="datetime" :format="'yyyy-MM-dd HH-mm-ss'" use12-hour v-model="assessment.due_date" :value="assessment.due_date" name="due_date"></datetime>
 			</div>
 			<div class="form-group col-md-6 col">
 				<label class="form-label" for="gradable">Gradeable</label>
@@ -44,9 +44,6 @@
 <script>
     export default {
     	data: function() {
-    		var today = new Date();
-    		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
     		return {
     			assessment: {
 					  name: ""
@@ -54,7 +51,7 @@
 					, level: ""
 					, gradable: false
 					, max_score: null
-					, assigned_date: date
+					, assigned_date: null
 					, due_date: ""
     			}
     		}
@@ -70,10 +67,3 @@
     	}
     };
 </script>
-
-<style type="text/scss">
-	.vdatetime-input {
-		border: 0;
-        width:100%;
-	}
-</style>

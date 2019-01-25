@@ -34,7 +34,8 @@
         mounted() {
             var self = this;
             var flattenObject = self.$root.flattenObject;
-            window.axios.get(`/api/assessments/${this.assessment_id}/students`)
+            console.log(`/api/assessments/${self.assessment_id}/students`);
+            window.axios.get(`/api/assessments/${self.assessment_id}/students`)
                 .then(function(results) {
                     results.data.students.forEach(function(student) {
                         self.submissions.push(flattenObject(student));

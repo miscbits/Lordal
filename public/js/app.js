@@ -57558,18 +57558,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: [],
-            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
-            assessmentActive: false
+            assessments: []
         };
     },
     mounted: function mounted() {
@@ -57580,18 +57573,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        showAssessment: function showAssessment(assessment_id) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment_id) {
-                    this.activeAssessment = this.assessments[i];
-                    break;
-                }
-            }
-            this.assessmentActive = true;
-        },
-        hideAssessment: function hideAssessment() {
-            this.assessmentActive = false;
-        },
         onAssessmentChanged: function onAssessmentChanged(assessment) {
             for (var i = this.assessments.length - 1; i >= 0; i--) {
                 if (this.assessments[i].id == assessment.id) {
@@ -57611,282 +57592,191 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm.assessmentActive
-        ? _c("div", { staticClass: "col mb-3" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("table", { staticClass: "table table-bordered table-striped" }, [
+        _c("thead", [
+          _c("tr", [
             _c(
-              "button",
+              "th",
               {
-                staticClass: "btn btn-info",
+                attrs: { scope: "col" },
                 on: {
                   click: function($event) {
-                    _vm.hideAssessment()
+                    _vm.assessments.sort(_vm.$root.comparator("id"))
                   }
                 }
               },
-              [_vm._v("< Back")]
+              [_vm._v("#")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("url"))
+                  }
+                }
+              },
+              [_vm._v("url")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("name"))
+                  }
+                }
+              },
+              [_vm._v("name")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("level"))
+                  }
+                }
+              },
+              [_vm._v("level")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("gradable"))
+                  }
+                }
+              },
+              [_vm._v("gradable")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("max_score"))
+                  }
+                }
+              },
+              [_vm._v("max_score")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("assigned_date"))
+                  }
+                }
+              },
+              [_vm._v("assigned_date")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("due_date"))
+                  }
+                }
+              },
+              [_vm._v("due_date")]
             )
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        !_vm.assessmentActive
-          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("id"))
-                        }
-                      }
-                    },
-                    [_vm._v("#")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("url"))
-                        }
-                      }
-                    },
-                    [_vm._v("url")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("name"))
-                        }
-                      }
-                    },
-                    [_vm._v("name")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("level"))
-                        }
-                      }
-                    },
-                    [_vm._v("level")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("gradable"))
-                        }
-                      }
-                    },
-                    [_vm._v("gradable")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(
-                            _vm.$root.comparator("max_score")
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("max_score")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(
-                            _vm.$root.comparator("assigned_date")
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("assigned_date")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("due_date"))
-                        }
-                      }
-                    },
-                    [_vm._v("due_date")]
-                  )
-                ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.assessments, function(assessment) {
+            return _c("tr", [
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.id))]
+                )
               ]),
               _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.assessments, function(assessment) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.id))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.url))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.level))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.gradable))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.max_score))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.assigned_date))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.due_date))]
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.url))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.name))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.level))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.gradable))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.max_score))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.assigned_date))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.due_date))]
+                )
+              ])
             ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm.assessmentActive
-        ? _c("view-assessment", {
-            attrs: { assessment: _vm.activeAssessment },
-            on: { "assessment-changed": _vm.onAssessmentChanged }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+          }),
+          0
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -58697,10 +58587,6 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(64)
-}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(66)
@@ -58709,7 +58595,7 @@ var __vue_template__ = __webpack_require__(67)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -58744,46 +58630,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(65);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(13)("c1f3dab4", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a72b44ce\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentForm.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a72b44ce\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentForm.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.vdatetime-input {\n\t\tborder: 0;\n        width:100%;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 64 */,
+/* 65 */,
 /* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -58835,9 +58683,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
     return {
       assessment: {
         name: "",
@@ -58845,7 +58690,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         level: "",
         gradable: false,
         max_score: null,
-        assigned_date: date,
+        assigned_date: null,
         due_date: ""
       }
     };
@@ -58983,10 +58828,12 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("datetime", {
-            staticClass: "form-control",
             attrs: {
+              "input-class": "form-control",
               type: "datetime",
+              format: "yyyy-MM-dd HH-mm-ss",
               "use12-hour": "",
+              value: _vm.assessment.assigned_date,
               name: "assigned_date"
             },
             model: {
@@ -59012,8 +58859,14 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("datetime", {
-            staticClass: "form-control",
-            attrs: { type: "datetime", "use12-hour": "", name: "due_date" },
+            attrs: {
+              "input-class": "form-control",
+              type: "datetime",
+              format: "yyyy-MM-dd HH-mm-ss",
+              "use12-hour": "",
+              value: _vm.assessment.due_date,
+              name: "due_date"
+            },
             model: {
               value: _vm.assessment.due_date,
               callback: function($$v) {
@@ -59399,7 +59252,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var self = this;
         var flattenObject = self.$root.flattenObject;
-        window.axios.get("/api/assessments/" + this.assessment_id + "/students").then(function (results) {
+        console.log("/api/assessments/" + self.assessment_id + "/students");
+        window.axios.get("/api/assessments/" + self.assessment_id + "/students").then(function (results) {
             results.data.students.forEach(function (student) {
                 self.submissions.push(flattenObject(student));
             });
@@ -59750,10 +59604,6 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(111)
-}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(78)
@@ -59762,7 +59612,7 @@ var __vue_template__ = __webpack_require__(79)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -59846,15 +59696,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessmentModel: JSON.parse(JSON.stringify(this.assessment))
+            assessment: {}
         };
     },
-    props: ['assessment'],
+    props: ['assessment_id'],
+    mounted: function mounted() {
+        var self = this;
+        window.axios.get('/api/assessments/' + self.assessment_id).then(function (results) {
+            self.assessment = results.data;
+        });
+    },
+
     methods: {
         updateAssessment: function updateAssessment() {
             var self = this;
-            window.axios.put('/api/assessments/' + self.assessmentModel.id, self.assessmentModel).then(function (response) {
-                self.$emit('assessment-changed', self.assessmentModel);
+            window.axios.put('/api/assessments/' + self.assessment.id, self.assessment).then(function (response) {
+                self.$emit('assessment-changed', self.assessment);
                 window.toastr.success("Assessment Updated");
             });
         }
@@ -59882,19 +59739,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.assessmentModel.name,
-                expression: "assessmentModel.name"
+                value: _vm.assessment.name,
+                expression: "assessment.name"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "github_username" },
-            domProps: { value: _vm.assessmentModel.name },
+            domProps: { value: _vm.assessment.name },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.assessmentModel, "name", $event.target.value)
+                _vm.$set(_vm.assessment, "name", $event.target.value)
               }
             }
           })
@@ -59908,19 +59765,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.assessmentModel.url,
-                expression: "assessmentModel.url"
+                value: _vm.assessment.url,
+                expression: "assessment.url"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "url" },
-            domProps: { value: _vm.assessmentModel.url },
+            domProps: { value: _vm.assessment.url },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.assessmentModel, "url", $event.target.value)
+                _vm.$set(_vm.assessment, "url", $event.target.value)
               }
             }
           })
@@ -59934,19 +59791,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.assessmentModel.level,
-                expression: "assessmentModel.level"
+                value: _vm.assessment.level,
+                expression: "assessment.level"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", name: "level" },
-            domProps: { value: _vm.assessmentModel.level },
+            domProps: { value: _vm.assessment.level },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.assessmentModel, "level", $event.target.value)
+                _vm.$set(_vm.assessment, "level", $event.target.value)
               }
             }
           })
@@ -59960,20 +59817,20 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.assessmentModel.gradable,
-                expression: "assessmentModel.gradable"
+                value: _vm.assessment.gradable,
+                expression: "assessment.gradable"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "checkbox", name: "gradable" },
             domProps: {
-              checked: Array.isArray(_vm.assessmentModel.gradable)
-                ? _vm._i(_vm.assessmentModel.gradable, null) > -1
-                : _vm.assessmentModel.gradable
+              checked: Array.isArray(_vm.assessment.gradable)
+                ? _vm._i(_vm.assessment.gradable, null) > -1
+                : _vm.assessment.gradable
             },
             on: {
               change: function($event) {
-                var $$a = _vm.assessmentModel.gradable,
+                var $$a = _vm.assessment.gradable,
                   $$el = $event.target,
                   $$c = $$el.checked ? true : false
                 if (Array.isArray($$a)) {
@@ -59981,21 +59838,17 @@ var render = function() {
                     $$i = _vm._i($$a, $$v)
                   if ($$el.checked) {
                     $$i < 0 &&
-                      _vm.$set(
-                        _vm.assessmentModel,
-                        "gradable",
-                        $$a.concat([$$v])
-                      )
+                      _vm.$set(_vm.assessment, "gradable", $$a.concat([$$v]))
                   } else {
                     $$i > -1 &&
                       _vm.$set(
-                        _vm.assessmentModel,
+                        _vm.assessment,
                         "gradable",
                         $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                       )
                   }
                 } else {
-                  _vm.$set(_vm.assessmentModel, "gradable", $$c)
+                  _vm.$set(_vm.assessment, "gradable", $$c)
                 }
               }
             }
@@ -60010,19 +59863,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.assessmentModel.max_score,
-                expression: "assessmentModel.max_score"
+                value: _vm.assessment.max_score,
+                expression: "assessment.max_score"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "number", name: "max_score" },
-            domProps: { value: _vm.assessmentModel.max_score },
+            domProps: { value: _vm.assessment.max_score },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.assessmentModel, "max_score", $event.target.value)
+                _vm.$set(_vm.assessment, "max_score", $event.target.value)
               }
             }
           })
@@ -60037,19 +59890,20 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("datetime", {
-              staticClass: "form-control",
               attrs: {
+                "input-class": "form-control",
                 type: "datetime",
                 name: "assigned_date",
-                value: "assessmentModel.assigned_date",
+                format: "yyyy-MM-dd HH-mm-ss",
+                value: _vm.assessment.assigned_date,
                 use12Hour: ""
               },
               model: {
-                value: _vm.assessmentModel.assigned_date,
+                value: _vm.assessment.assigned_date,
                 callback: function($$v) {
-                  _vm.$set(_vm.assessmentModel, "assigned_date", $$v)
+                  _vm.$set(_vm.assessment, "assigned_date", $$v)
                 },
-                expression: "assessmentModel.assigned_date"
+                expression: "assessment.assigned_date"
               }
             })
           ],
@@ -60063,19 +59917,20 @@ var render = function() {
             _c("label", { attrs: { for: "due_date" } }, [_vm._v("Due Date")]),
             _vm._v(" "),
             _c("datetime", {
-              staticClass: "form-control",
               attrs: {
+                "input-class": "form-control",
                 type: "datetime",
                 name: "due_date",
-                value: "assessmentModel.due_date",
+                format: "yyyy-MM-dd HH-mm-ss",
+                value: _vm.assessment.due_date,
                 use12Hour: ""
               },
               model: {
-                value: _vm.assessmentModel.due_date,
+                value: _vm.assessment.due_date,
                 callback: function($$v) {
-                  _vm.$set(_vm.assessmentModel, "due_date", $$v)
+                  _vm.$set(_vm.assessment, "due_date", $$v)
                 },
-                expression: "assessmentModel.due_date"
+                expression: "assessment.due_date"
               }
             })
           ],
@@ -60096,7 +59951,7 @@ var render = function() {
         [_vm._v("Update Assessment")]
       ),
       _vm._v(" "),
-      _c("submissions", { attrs: { assessment_id: _vm.assessment.id } })
+      _c("submissions", { attrs: { assessment_id: _vm.assessment_id } })
     ],
     1
   )
@@ -60195,18 +60050,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: [],
-            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
-            assessmentActive: false
+            assessments: []
         };
     },
     mounted: function mounted() {
@@ -60214,29 +60062,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.axios.get('/api/labs').then(function (response) {
             self.assessments = response.data;
         });
-    },
-
-    methods: {
-        showAssessment: function showAssessment(assessment_id) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment_id) {
-                    this.activeAssessment = this.assessments[i];
-                    break;
-                }
-            }
-            this.assessmentActive = true;
-        },
-        hideAssessment: function hideAssessment() {
-            this.assessmentActive = false;
-        },
-        onAssessmentChanged: function onAssessmentChanged(assessment) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment.id) {
-                    this.assessments[i] = assessment;
-                    break;
-                }
-            }
-        }
     }
 });
 
@@ -60248,254 +60073,174 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm.assessmentActive
-        ? _c("div", { staticClass: "col mb-3" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      !_vm.assessmentActive
+        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+            _c("thead", [
+              _c("tr", [
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("id"))
+                      }
+                    }
+                  },
+                  [_vm._v("#")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("url"))
+                      }
+                    }
+                  },
+                  [_vm._v("url")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("name"))
+                      }
+                    }
+                  },
+                  [_vm._v("name")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("gradable"))
+                      }
+                    }
+                  },
+                  [_vm._v("gradable")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("max_score"))
+                      }
+                    }
+                  },
+                  [_vm._v("max_score")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(
+                          _vm.$root.comparator("assigned_date")
+                        )
+                      }
+                    }
+                  },
+                  [_vm._v("assigned_date")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("due_date"))
+                      }
+                    }
+                  },
+                  [_vm._v("due_date")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
             _c(
-              "button",
-              {
-                staticClass: "btn btn-info",
-                on: {
-                  click: function($event) {
-                    _vm.hideAssessment()
-                  }
-                }
-              },
-              [_vm._v("< Back")]
+              "tbody",
+              _vm._l(_vm.assessments, function(assessment) {
+                return _c("tr", [
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.id))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.url))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.gradable))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.max_score))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.assigned_date))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.due_date))]
+                    )
+                  ])
+                ])
+              }),
+              0
             )
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        !_vm.assessmentActive
-          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("id"))
-                        }
-                      }
-                    },
-                    [_vm._v("#")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("url"))
-                        }
-                      }
-                    },
-                    [_vm._v("url")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("name"))
-                        }
-                      }
-                    },
-                    [_vm._v("name")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("gradable"))
-                        }
-                      }
-                    },
-                    [_vm._v("gradable")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(
-                            _vm.$root.comparator("max_score")
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("max_score")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(
-                            _vm.$root.comparator("assigned_date")
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("assigned_date")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("due_date"))
-                        }
-                      }
-                    },
-                    [_vm._v("due_date")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.assessments, function(assessment) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.id))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.url))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.gradable))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.max_score))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.assigned_date))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.due_date))]
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm.assessmentActive
-        ? _c("view-assessment", {
-            attrs: { assessment: _vm.activeAssessment },
-            on: { "assessment-changed": _vm.onAssessmentChanged }
-          })
         : _vm._e()
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -60600,9 +60345,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: [],
-            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
-            assessmentActive: false
+            assessments: []
         };
     },
     mounted: function mounted() {
@@ -60610,29 +60353,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.axios.get('/api/exams').then(function (response) {
             self.assessments = response.data;
         });
-    },
-
-    methods: {
-        showAssessment: function showAssessment(assessment_id) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment_id) {
-                    this.activeAssessment = this.assessments[i];
-                    break;
-                }
-            }
-            this.assessmentActive = true;
-        },
-        hideAssessment: function hideAssessment() {
-            this.assessmentActive = false;
-        },
-        onAssessmentChanged: function onAssessmentChanged(assessment) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment.id) {
-                    this.assessments[i] = assessment;
-                    break;
-                }
-            }
-        }
     }
 });
 
@@ -60775,12 +60495,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.id))]
                       )
@@ -60790,12 +60505,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.url))]
                       )
@@ -60805,12 +60515,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.name))]
                       )
@@ -60820,12 +60525,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.gradable))]
                       )
@@ -60835,12 +60535,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.max_score))]
                       )
@@ -60850,12 +60545,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.assigned_date))]
                       )
@@ -60865,12 +60555,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
+                          attrs: { href: "/staff/assessment/" + assessment.id }
                         },
                         [_vm._v(_vm._s(assessment.due_date))]
                       )
@@ -60987,18 +60672,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            assessments: [],
-            activeAssessment: { "id": 1, "url": "", "name": "", "level": "", "gradable": "", "max_score": "", "assigned_date": "", "due_date": "", "created_at": "", "updated_at": "" },
-            assessmentActive: false
+            assessments: []
         };
     },
     mounted: function mounted() {
@@ -61006,29 +60684,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.axios.get('/api/quizes').then(function (response) {
             self.assessments = response.data;
         });
-    },
-
-    methods: {
-        showAssessment: function showAssessment(assessment_id) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment_id) {
-                    this.activeAssessment = this.assessments[i];
-                    break;
-                }
-            }
-            this.assessmentActive = true;
-        },
-        hideAssessment: function hideAssessment() {
-            this.assessmentActive = false;
-        },
-        onAssessmentChanged: function onAssessmentChanged(assessment) {
-            for (var i = this.assessments.length - 1; i >= 0; i--) {
-                if (this.assessments[i].id == assessment.id) {
-                    this.assessments[i] = assessment;
-                    break;
-                }
-            }
-        }
     }
 });
 
@@ -61040,254 +60695,174 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm.assessmentActive
-        ? _c("div", { staticClass: "col mb-3" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      !_vm.assessmentActive
+        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+            _c("thead", [
+              _c("tr", [
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("id"))
+                      }
+                    }
+                  },
+                  [_vm._v("#")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("url"))
+                      }
+                    }
+                  },
+                  [_vm._v("url")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("name"))
+                      }
+                    }
+                  },
+                  [_vm._v("name")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("gradable"))
+                      }
+                    }
+                  },
+                  [_vm._v("gradable")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("max_score"))
+                      }
+                    }
+                  },
+                  [_vm._v("max_score")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(
+                          _vm.$root.comparator("assigned_date")
+                        )
+                      }
+                    }
+                  },
+                  [_vm._v("assigned_date")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    attrs: { scope: "col" },
+                    on: {
+                      click: function($event) {
+                        _vm.assessments.sort(_vm.$root.comparator("due_date"))
+                      }
+                    }
+                  },
+                  [_vm._v("due_date")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
             _c(
-              "button",
-              {
-                staticClass: "btn btn-info",
-                on: {
-                  click: function($event) {
-                    _vm.hideAssessment()
-                  }
-                }
-              },
-              [_vm._v("< Back")]
+              "tbody",
+              _vm._l(_vm.assessments, function(assessment) {
+                return _c("tr", [
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.id))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.url))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.gradable))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.max_score))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.assigned_date))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/staff/assessment/" + assessment.id } },
+                      [_vm._v(_vm._s(assessment.due_date))]
+                    )
+                  ])
+                ])
+              }),
+              0
             )
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        !_vm.assessmentActive
-          ? _c("table", { staticClass: "table table-bordered table-striped" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("id"))
-                        }
-                      }
-                    },
-                    [_vm._v("#")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("url"))
-                        }
-                      }
-                    },
-                    [_vm._v("url")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("name"))
-                        }
-                      }
-                    },
-                    [_vm._v("name")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("gradable"))
-                        }
-                      }
-                    },
-                    [_vm._v("gradable")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(
-                            _vm.$root.comparator("max_score")
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("max_score")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(
-                            _vm.$root.comparator("assigned_date")
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("assigned_date")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      attrs: { scope: "col" },
-                      on: {
-                        click: function($event) {
-                          _vm.assessments.sort(_vm.$root.comparator("due_date"))
-                        }
-                      }
-                    },
-                    [_vm._v("due_date")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.assessments, function(assessment) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.id))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.url))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.gradable))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.max_score))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.assigned_date))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.showAssessment(assessment.id)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(assessment.due_date))]
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm.assessmentActive
-        ? _c("view-assessment", {
-            attrs: { assessment: _vm.activeAssessment },
-            on: { "assessment-changed": _vm.onAssessmentChanged }
-          })
         : _vm._e()
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62478,49 +62053,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(112);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(13)("5e40aeae", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d77df210\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d77df210\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 112 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.vdatetime-input {\n    border: 0;\n    width:100%;\n}\n", ""]);
-
-// exports
-
 
 /***/ })
 /******/ ]);

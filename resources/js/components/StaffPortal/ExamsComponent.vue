@@ -19,13 +19,13 @@
                 </thead>
                 <tbody>
                     <tr v-for="assessment in assessments">
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.id}}</a></td>
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.url}}</a></td>
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.name}}</a></td>
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.gradable}}</a></td>
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.max_score}}</a></td>
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.assigned_date}}</a></td>
-                        <td><a href="#" v-on:click="showAssessment(assessment.id)">{{assessment.due_date}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.id}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.url}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.name}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.gradable}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.max_score}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.assigned_date}}</a></td>
+                        <td><a :href="'/staff/assessment/' + assessment.id">{{assessment.due_date}}</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -38,9 +38,7 @@
     export default {
         data: function() {
             return {
-                assessments: [],
-                activeAssessment: {"id":1,"url":"","name":"","level":"","gradable":"","max_score":"","assigned_date":"","due_date":"","created_at":"","updated_at":""},
-                assessmentActive: false
+                assessments: []
             };
         },
         mounted() {
@@ -49,28 +47,6 @@
                 .then(function(response) {
                     self.assessments = response.data;
                 });
-        },
-        methods: {
-            showAssessment: function(assessment_id) {
-                for (var i = this.assessments.length - 1; i >= 0; i--) {
-                    if(this.assessments[i].id == assessment_id) {
-                        this.activeAssessment=this.assessments[i];
-                        break;
-                    }
-                }
-                this.assessmentActive = true;
-            },
-            hideAssessment: function() {
-                this.assessmentActive = false;
-            },
-            onAssessmentChanged: function(assessment) {
-                for (var i = this.assessments.length - 1; i >= 0; i--) {
-                    if(this.assessments[i].id == assessment.id) {
-                        this.assessments[i]=assessment;
-                        break;
-                    }
-                }
-            }
         }
-    }
+    };
 </script>

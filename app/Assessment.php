@@ -7,6 +7,12 @@ class Assessment extends BaseModel
 {
     protected $fillable = ['url', 'name', 'level', 'gradable', 'max_score', 'assigned_date', 'due_date'];
 
+    protected $dates = [
+          'assigned_date'
+        , 'due_date'
+    ];
+
+
     /**
      * Scope a query to only include Labs.
      *
