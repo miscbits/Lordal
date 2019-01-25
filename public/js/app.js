@@ -71133,170 +71133,166 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      !_vm.assessmentActive
-        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
-            _c("thead", [
-              _c("tr", [
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("id"))
-                      }
-                    }
-                  },
-                  [_vm._v("#")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("url"))
-                      }
-                    }
-                  },
-                  [_vm._v("url")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("name"))
-                      }
-                    }
-                  },
-                  [_vm._v("name")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("gradable"))
-                      }
-                    }
-                  },
-                  [_vm._v("gradable")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("max_score"))
-                      }
-                    }
-                  },
-                  [_vm._v("max_score")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(
-                          _vm.$root.comparator("assigned_date")
-                        )
-                      }
-                    }
-                  },
-                  [_vm._v("assigned_date")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("due_date"))
-                      }
-                    }
-                  },
-                  [_vm._v("due_date")]
-                )
-              ])
-            ]),
+      _c("table", { staticClass: "table table-bordered table-striped" }, [
+        _c("thead", [
+          _c("tr", [
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("id"))
+                  }
+                }
+              },
+              [_vm._v("#")]
+            ),
             _vm._v(" "),
             _c(
-              "tbody",
-              _vm._l(_vm.assessments, function(assessment) {
-                return _c("tr", [
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.id))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.url))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.name))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.gradable))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.max_score))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.assigned_date))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.due_date))]
-                    )
-                  ])
-                ])
-              }),
-              0
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("url"))
+                  }
+                }
+              },
+              [_vm._v("url")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("name"))
+                  }
+                }
+              },
+              [_vm._v("name")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("gradable"))
+                  }
+                }
+              },
+              [_vm._v("gradable")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("max_score"))
+                  }
+                }
+              },
+              [_vm._v("max_score")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("assigned_date"))
+                  }
+                }
+              },
+              [_vm._v("assigned_date")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("due_date"))
+                  }
+                }
+              },
+              [_vm._v("due_date")]
             )
           ])
-        : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.assessments, function(assessment) {
+            return _c("tr", [
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.id))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.url))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.name))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.gradable))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.max_score))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.assigned_date))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.due_date))]
+                )
+              ])
+            ])
+          }),
+          0
+        )
+      ])
     ])
   ])
 }
@@ -71755,170 +71751,166 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      !_vm.assessmentActive
-        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
-            _c("thead", [
-              _c("tr", [
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("id"))
-                      }
-                    }
-                  },
-                  [_vm._v("#")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("url"))
-                      }
-                    }
-                  },
-                  [_vm._v("url")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("name"))
-                      }
-                    }
-                  },
-                  [_vm._v("name")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("gradable"))
-                      }
-                    }
-                  },
-                  [_vm._v("gradable")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("max_score"))
-                      }
-                    }
-                  },
-                  [_vm._v("max_score")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(
-                          _vm.$root.comparator("assigned_date")
-                        )
-                      }
-                    }
-                  },
-                  [_vm._v("assigned_date")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
-                        _vm.assessments.sort(_vm.$root.comparator("due_date"))
-                      }
-                    }
-                  },
-                  [_vm._v("due_date")]
-                )
-              ])
-            ]),
+      _c("table", { staticClass: "table table-bordered table-striped" }, [
+        _c("thead", [
+          _c("tr", [
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("id"))
+                  }
+                }
+              },
+              [_vm._v("#")]
+            ),
             _vm._v(" "),
             _c(
-              "tbody",
-              _vm._l(_vm.assessments, function(assessment) {
-                return _c("tr", [
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.id))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.url))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.name))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.gradable))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.max_score))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.assigned_date))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: "/staff/assessment/" + assessment.id } },
-                      [_vm._v(_vm._s(assessment.due_date))]
-                    )
-                  ])
-                ])
-              }),
-              0
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("url"))
+                  }
+                }
+              },
+              [_vm._v("url")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("name"))
+                  }
+                }
+              },
+              [_vm._v("name")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("gradable"))
+                  }
+                }
+              },
+              [_vm._v("gradable")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("max_score"))
+                  }
+                }
+              },
+              [_vm._v("max_score")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("assigned_date"))
+                  }
+                }
+              },
+              [_vm._v("assigned_date")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                attrs: { scope: "col" },
+                on: {
+                  click: function($event) {
+                    _vm.assessments.sort(_vm.$root.comparator("due_date"))
+                  }
+                }
+              },
+              [_vm._v("due_date")]
             )
           ])
-        : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.assessments, function(assessment) {
+            return _c("tr", [
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.id))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.url))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.name))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.gradable))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.max_score))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.assigned_date))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.due_date))]
+                )
+              ])
+            ])
+          }),
+          0
+        )
+      ])
     ])
   ])
 }

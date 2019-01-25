@@ -12,7 +12,7 @@ class Assessment extends BaseModel
         , 'due_date'
     ];
 
-    protected $dateFormat = 'Y-m-d H:i:ss';
+    protected $dateFormat = 'Y-m-d H:i:s';
 
 
     /**
