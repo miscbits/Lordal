@@ -12,6 +12,8 @@ class Assessment extends BaseModel
         , 'due_date'
     ];
 
+    protected $dateFormat = 'Y-m-d H:i:ss';
+
 
     /**
      * Scope a query to only include Labs.
