@@ -72384,7 +72384,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -72429,19 +72428,6 @@ var render = function() {
                 }
               },
               [_vm._v("#")]
-            ),
-            _vm._v(" "),
-            _c(
-              "th",
-              {
-                attrs: { scope: "col" },
-                on: {
-                  click: function($event) {
-                    _vm.assessments.sort(_vm.$root.comparator("url"))
-                  }
-                }
-              },
-              [_vm._v("Url")]
             ),
             _vm._v(" "),
             _c(
@@ -72633,8 +72619,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -72676,19 +72660,6 @@ var render = function() {
                 }
               },
               [_vm._v("#")]
-            ),
-            _vm._v(" "),
-            _c(
-              "th",
-              {
-                attrs: { scope: "col" },
-                on: {
-                  click: function($event) {
-                    _vm.assessments.sort(_vm.$root.comparator("url"))
-                  }
-                }
-              },
-              [_vm._v("Url")]
             ),
             _vm._v(" "),
             _c(
@@ -72739,12 +72710,6 @@ var render = function() {
           _vm._l(_vm.assessments, function(assessment) {
             return _c("tr", [
               _c("td", [_vm._v(_vm._s(assessment.id))]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { target: "_blank", href: assessment.url } }, [
-                  _vm._v(_vm._s(assessment.url))
-                ])
-              ]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(assessment.name))]),
               _vm._v(" "),
@@ -72851,7 +72816,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['assessment']
@@ -72867,12 +72831,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("tr", [
     _c("td", [_vm._v(_vm._s(_vm.assessment.id))]),
-    _vm._v(" "),
-    _c("td", [
-      _c("a", { attrs: { target: "_blank", href: _vm.assessment.url } }, [
-        _vm._v(_vm._s(_vm.assessment.url))
-      ])
-    ]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.assessment.name))]),
     _vm._v(" "),

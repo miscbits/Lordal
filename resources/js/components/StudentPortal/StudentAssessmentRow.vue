@@ -1,7 +1,6 @@
 <template>
 	<tr>
 	    <td>{{assessment.id}}</td>
-	    <td><a target="_blank" v-bind:href="assessment.url">{{assessment.url}}</a></td>
 	    <td>{{assessment.name}}</td>
 	    <td>
 	    	<a target="_blank" v-if="assessment['pivot.submission.latest_hash']" v-bind:href="assessment['pivot.submission.submission_url']">Yes</a>

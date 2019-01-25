@@ -6,7 +6,6 @@
                 <thead>
                     <tr>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('id'))">#</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('url'))">Url</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('name'))">Name</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('assigned_date'))">Assigned</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('due_date'))">Due</th>
@@ -16,7 +15,6 @@
                 <tbody>
                     <tr v-for="assessment in assessments">
                         <td>{{assessment.id}}</td>
-                        <td><a target="_blank" v-bind:href="assessment.url">{{assessment.url}}</a></td>
                         <td>{{assessment.name}}</td>
                         <td>{{assessment.assigned_date}}</td>
                         <td>{{assessment.due_date}}</td>

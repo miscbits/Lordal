@@ -5,7 +5,6 @@
                 <thead>
                     <tr>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('id'))">#</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('url'))">Url</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('name'))">Name</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('submitted'))">Submitted?</th>
                         <th scope="col" v-on:click="assessments.sort($root.comparator('pivot.submission.grade'))">Grade</th>
