@@ -8,12 +8,12 @@ class Assessment extends BaseModel
 {
     protected $fillable = ['url', 'name', 'level', 'gradable', 'max_score', 'assigned_date', 'due_date'];
 
+    protected $casts = [
+        'assigned_date' => 'datetime:Y-m-d H:i:s',
+        'due_date' => 'datetime:Y-m-d H:i:s',
+    ];
+
     protected $dateFormat = 'Y-m-d H:i:s';
-
-    public function getDateOfBirthAttribute($value) {
-        return Carbon::createFromFormat('Y-m-d H:i:sP',$value);
-    }
-
 
     /**
      * Scope a query to only include Labs.
