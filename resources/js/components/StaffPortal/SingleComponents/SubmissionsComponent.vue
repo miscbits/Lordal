@@ -8,15 +8,15 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" v-on:click="submissions.sort($root.comparator(['user.name']))">Student Name</th>
-                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.submission_url']))">Submission Url</th>
-                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.latest_hash']))">Latest Hash</th>
-                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.latest_hash']))">Submitted</th>
-                        <th scope="col" v-on:click="submissions.sort($root.comparator(['pivot.submission.grade']))">Grade</th>
+                        <th @click="sort('user.name')">Student Name</th>
+                        <th @click="sort('pivot.submission.submission_url')">Submission Url</th>
+                        <th @click="sort('pivot.submission.latest_hash')">Latest Hash</th>
+                        <th @click="sort('pivot.submission.latest_hash')">Submitted</th>
+                        <th @click="sort('pivot.submission.grade')">Grade</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <submission-row v-for="submission in submissions" :submission="submission" :key="submission.id"></submission-row>
+                    <submission-row v-for="submission in sortSubmissions" :submission="submission" :key="submission.id"></submission-row>
                 </tbody>
             </table>
         </div>
@@ -27,7 +27,9 @@
     export default {
         data: function() {
             return {
-                submissions: []
+                submissions: [],
+                currentSortDir: 'asc',
+                currentSort: 'id'
             }
         },
         props: ['assessment_id'],
@@ -38,7 +40,11 @@
             window.axios.get(`/api/assessments/${self.assessment_id}/students`)
                 .then(function(results) {
                     results.data.students.forEach(function(student) {
-                        self.submissions.push(flattenObject(student));
+                        var flatStudent = flattenObject(student);
+                        flatStudent['pivot.submission.submission_url'] = flatStudent['pivot.submission.submission_url'] || "";
+                        flatStudent['pivot.submission.latest_hash'] = flatStudent['pivot.submission.latest_hash'] || "";
+                        flatStudent['pivot.submission.grade'] = flatStudent['pivot.submission.grade'] || 0;
+                        self.submissions.push(flatStudent);
                     });
                 });
         },
@@ -53,7 +59,28 @@
                                 window.toastr.success("Assessment Assigned")
                         });
                     });
+            },
+            sort(s) {
+                if(s === this.currentSort) {
+                  this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+                } else {
+                    this.currentSort = s;
+                    this.currentSortDir==='asc';
+                }
             }
+        },
+        computed: {
+            sortSubmissions() {
+                var self = this;
+                return this.submissions.sort(function(a, b) {
+                    let modifier = 1;
+                    if(self.currentSortDir === 'desc') modifier = -1;
+                    if(a[self.currentSort] < b[self.currentSort]) return -1 * modifier;
+                    if(a[self.currentSort] > b[self.currentSort]) return 1 * modifier;
+                    return 0;
+                });
+            }
+
         }
-    }
+    };
 </script>

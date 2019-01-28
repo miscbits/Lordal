@@ -33,20 +33,20 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('id'))">#</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('url'))">url</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('name'))">name</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('level'))">level</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('gradable'))">gradable</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('pivot.submission.submission_url'))">submitted</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('pivot.submission.grade'))">score</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('max_score'))">max_score</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('assigned_date'))">assigned_date</th>
-                        <th scope="col" v-on:click="assessments.sort($root.comparator('due_date'))">due_date</th>
+                        <th @click="sort('id')">#</th>
+                        <th @click="sort('url')">url</th>
+                        <th @click="sort('name')">name</th>
+                        <th @click="sort('level')">level</th>
+                        <th @click="sort('gradable')">gradable</th>
+                        <th @click="sort('submitted')">submitted</th>
+                        <th @click="sort('pivot.submission.grade')">score</th>
+                        <th @click="sort('max_score')">max_score</th>
+                        <th @click="sort('assigned_date')">assigned_date</th>
+                        <th @click="sort('due_date')">due_date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <student-assessment-row v-for="assessment in assessments" :assessment="assessment" :key="assessment.id"></student-assessment-row>
+                    <student-assessment-row v-for="assessment in sortAssessments" :assessment="assessment" :key="assessment.id"></student-assessment-row>
                 </tbody>
             </table>
         </div>
@@ -62,7 +62,9 @@
         data: function() {
             return {
                 student: {id: this.student_id, user: {}},
-                assessments: []
+                assessments: [],
+                currentSortDir: 'asc',
+                currentSort: 'id'
             }
         },
         props: ['student_id'],
@@ -89,9 +91,30 @@
                         self.$emit('student-changed', self.student);
                         window.toastr.success("Student updated");
                     });
+            },
+            sort(s) {
+                if(s === this.currentSort) {
+                  this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+                } else {
+                    this.currentSort = s;
+                    this.currentSortDir==='asc';
+                }
+            }
+
+        },
+        computed: {
+            sortAssessments() {
+                var self = this;
+                return this.assessments.sort(function(a, b) {
+                    let modifier = 1;
+                    if(self.currentSortDir === 'desc') modifier = -1;
+                    if(a[self.currentSort] < b[self.currentSort]) return -1 * modifier;
+                    if(a[self.currentSort] > b[self.currentSort]) return 1 * modifier;
+                    return 0;
+                });
             }
         }
-    }
+    };
 </script>
 
 <style scoped lang="scss">

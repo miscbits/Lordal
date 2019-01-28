@@ -26,7 +26,6 @@ Vue.use(datePicker);
 
 // Components for the staff portal
 Vue.component('students', require('./components/StaffPortal/StudentsComponent.vue'));
-Vue.component('assessments', require('./components/StaffPortal/AssessmentsComponent.vue'));
 Vue.component('view-student', require('./components/StaffPortal/Students/StudentComponent.vue'));
 Vue.component('student-assessment-row', require('./components/StaffPortal/Students/StudentAssessmentRow.vue'));
 Vue.component('assessment-form', require('./components/StaffPortal/SingleComponents/AssessmentForm.vue'));
@@ -46,54 +45,6 @@ Vue.component('unsubmitted-labs', require('./components/StudentPortal/Unsubmitte
 Vue.component('assessment-row', require('./components/StudentPortal/StudentAssessmentRow.vue'));
 Vue.component('submission-form', require('./components/StudentPortal/SubmissionForm.vue'));
 
-// mixins to pass to all components. These can be accessed through component.$root.[method name]
-const mixins = {
-    methods: {
-        flattenObject: function(ob) {
-            var toReturn = {};
-            
-            for (var i in ob) {
-                if (!ob.hasOwnProperty(i)) continue;
-                
-                if ((typeof ob[i]) == 'object') {
-                    var flatObject = this.flattenObject(ob[i]);
-                    for (var x in flatObject) {
-                        if (!flatObject.hasOwnProperty(x)) continue;
-                        
-                        toReturn[i + '.' + x] = flatObject[x];
-                    }
-                } else {
-                    toReturn[i] = ob[i];
-                }
-            }
-            return toReturn;
-        },
-        comparator: function sortObj(key) {
-            return function compare(a, b) {
-                a = a[key];
-                b = b[key];
-                
-                if(a == undefined) {
-                    a = 'null';
-                }
-                if(b == undefined) {
-                    b = 'null';
-                }
-                var type = (typeof(a) === 'string' ||
-                            typeof(b) === 'string') ? 'string' : 'number';
-
-
-
-                var result;
-                if (type === 'string') result = a.localeCompare(b);
-                else result = a - b;
-                return result;
-            }
-        }
-
-    }
-}
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -101,6 +52,5 @@ const mixins = {
  */
 
 const app = new Vue({
-    mixins: [mixins],
     el: '#app'
 });
