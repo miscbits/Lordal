@@ -69,7 +69,12 @@ return [
                 'port' => env('PAPERTRAIL_PORT'),
             ],
         ],
-
+        'rollbar' => [
+            'driver' => 'monolog',
+            'handler' => \Rollbar\Laravel\MonologHandler::class,
+            'access_token' => env('ROLLBAR_TOKEN'),
+            'level' => 'error',
+        ],
         'stderr' => [
             'driver' => 'monolog',
             'handler' => StreamHandler::class,
