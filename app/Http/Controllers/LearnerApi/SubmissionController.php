@@ -36,6 +36,7 @@ class SubmissionController extends Controller
     public function store(Request $request, $assignment_id)
     {
         $assignment = Assignment::find($assignment_id);
+        $assessment = $assignment->assessment;
 
         $user = $request->user();
 
@@ -48,8 +49,8 @@ class SubmissionController extends Controller
             ['submission_url' => $request->input('submission_url')]
         );
 
-        if ( $assignment->assessment->gradable ) {
-            GradeAssessment::dispatchNow($submission);
+        if ( $assessment->gradable ) {
+            GradeAssessment::dispatchNow($submission, $assessment);
         }
 
         return $submission;
