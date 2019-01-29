@@ -43,10 +43,17 @@ class SubmissionController extends Controller
             abort(400);
         }
 
-        return Submission::updateOrCreate(
+        $submission = Submission::updateOrCreate(
             ['assignment_id' => $assignment_id],
             ['submission_url' => $request->input('submission_url')]
         );
+
+        if ( $assignment->assessment->gradable ) {
+            GradeAssessment::dispatchNow($submission);
+        }
+
+        return $submission;
+
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use Log;
 use App\Submission;
+use App\Assessment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,6 +15,7 @@ class GradeAssessment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    private $assessment;
     private $submission;
 
     /**
@@ -21,9 +23,10 @@ class GradeAssessment implements ShouldQueue
      *
      * @param Submission $submission
      */
-    public function __construct(Submission $submission)
+    public function __construct(Submission $submission, Assessment $assessment)
     {
         $this->submission = $submission;
+        $this->assessment = $assessment;
     }
 
     /**
@@ -33,6 +36,6 @@ class GradeAssessment implements ShouldQueue
      */
     public function handle()
     {
-        Log::error('this wasn\'t supposed to be handled');
+        Log::error("Grading Execution should not be handled by Laravel");
     }
 }
