@@ -5,6 +5,7 @@ namespace App\Http\Controllers\LearnerApi;
 use App\Submission;
 use App\Assignment;
 use Illuminate\Http\Request;
+use App\Jobs\GradeAssessment;
 use App\Http\Controllers\Controller;
 
 class SubmissionController extends Controller
@@ -50,7 +51,7 @@ class SubmissionController extends Controller
         );
 
         if ( $assessment->gradable ) {
-            GradeAssessment::dispatchNow($submission, $assessment);
+            GradeAssessment::dispatch($submission, $assessment);
         }
 
         return $submission;
