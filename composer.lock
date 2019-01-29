@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d508feb2cec76f85ac9945fa16edb3c7",
+    "content-hash": "ae3bf6247f27252d0c76992cf1af1395",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1758,6 +1758,57 @@
                 "server"
             ],
             "time": "2018-11-21T21:42:43+00:00"
+        },
+        {
+            "name": "maqe/laravel-sqs-fifo",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maqe/laravel-sqs-fifo.git",
+                "reference": "c3ea2e8b6746c46c81154d6e8b9ddac9261ac797"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maqe/laravel-sqs-fifo/zipball/c3ea2e8b6746c46c81154d6e8b9ddac9261ac797",
+                "reference": "c3ea2e8b6746c46c81154d6e8b9ddac9261ac797",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php": "~3.0",
+                "illuminate/queue": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maqe\\LaravelSqsFifo\\": "src/",
+                    "Maqe\\LaravelSqsFifo\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MAQE team",
+                    "email": "hello@maqe.com",
+                    "homepage": "https://www.maqe.com/"
+                }
+            ],
+            "description": "Laravel package that enables support for SQS FIFO Queue",
+            "keywords": [
+                "fifo",
+                "job",
+                "laravel",
+                "queue",
+                "sqs"
+            ],
+            "time": "2016-12-07T12:55:43+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -30876,6 +30876,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_bootstrap_datetimepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_bootstrap_datetimepicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pc_bootstrap4_datetimepicker_build_css_bootstrap_datetimepicker_css__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pc_bootstrap4_datetimepicker_build_css_bootstrap_datetimepicker_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pc_bootstrap4_datetimepicker_build_css_bootstrap_datetimepicker_css__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -30923,6 +30925,50 @@ Vue.component('unsubmitted-labs', __webpack_require__(221));
 Vue.component('assessment-row', __webpack_require__(224));
 Vue.component('submission-form', __webpack_require__(227));
 
+// mixins to pass to all components. These can be accessed through component.$root.[method name]
+var mixins = {
+    methods: {
+        flattenObject: function flattenObject(ob) {
+            var toReturn = {};
+
+            for (var i in ob) {
+                if (!ob.hasOwnProperty(i)) continue;
+
+                if (_typeof(ob[i]) == 'object') {
+                    var flatObject = this.flattenObject(ob[i]);
+                    for (var x in flatObject) {
+                        if (!flatObject.hasOwnProperty(x)) continue;
+
+                        toReturn[i + '.' + x] = flatObject[x];
+                    }
+                } else {
+                    toReturn[i] = ob[i];
+                }
+            }
+            return toReturn;
+        },
+        comparator: function sortObj(key) {
+            return function compare(a, b) {
+                a = a[key];
+                b = b[key];
+
+                if (a == undefined) {
+                    a = 'null';
+                }
+                if (b == undefined) {
+                    b = 'null';
+                }
+                var type = typeof a === 'string' || typeof b === 'string' ? 'string' : 'number';
+
+                var result;
+                if (type === 'string') result = a.localeCompare(b);else result = a - b;
+                return result;
+            };
+        }
+
+    }
+};
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -30930,7 +30976,8 @@ Vue.component('submission-form', __webpack_require__(227));
  */
 
 var app = new Vue({
-  el: '#app'
+    mixins: [mixins],
+    el: '#app'
 });
 
 /***/ }),
