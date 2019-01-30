@@ -64,6 +64,7 @@
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.labs') }}">Labs</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.exams') }}">Exams</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.quizes') }}">Quizes</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.tokens') }}">API</a></li>
                             @elseif(Auth::user()->isStudent())
                                 <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.profile') }}">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.labs') }}">Labs</a></li>

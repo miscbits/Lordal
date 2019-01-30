@@ -21,6 +21,15 @@ Vue.use(datePicker);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+/**
+ * Passport Vues
+ */
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
+
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 

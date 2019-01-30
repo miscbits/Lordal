@@ -25,8 +25,8 @@ class GradeAssessment implements ShouldQueue
      */
     public function __construct(Submission $submission, Assessment $assessment)
     {
-        $this->submission = $submission;
-        $this->assessment = $assessment;
+        $this->submission = $submission->toJson();
+        $this->assessment = $assessment->toJson();
     }
 
     /**

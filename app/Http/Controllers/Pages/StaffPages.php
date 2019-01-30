@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class StaffPages extends Controller
 {
     /**
      * Create a new controller instance.
@@ -53,6 +54,10 @@ class HomeController extends Controller
 
     public function labs() {
         return view('labs');
+    }
+
+    public function tokens() {
+        return view('tokens');
     }
 
     public function updateAssessment($assessment_id) {

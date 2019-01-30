@@ -3,15 +3,18 @@
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/staff/', 'HomeController@index')->name('staffportal.home');
-Route::get('/staff/assessments', 'HomeController@assessments')->name('staffportal.assessments');
-Route::get('/staff/assessments/new', 'HomeController@create_assessment')->name('staffportal.assessments.new');
-Route::get('/staff/students', 'HomeController@students')->name('staffportal.students');
-Route::get('/staff/students/{student_id}', 'HomeController@student')->name('staffportal.student');
-Route::get('/staff/exams', 'HomeController@exams')->name('staffportal.exams');
-Route::get('/staff/quizes', 'HomeController@quizes')->name('staffportal.quizes');
-Route::get('/staff/labs', 'HomeController@labs')->name('staffportal.labs');
-Route::get('/staff/assessment/{assessment_id}', 'HomeController@updateAssessment')->name('staffportal.assessment.update');
+Route::namespace("Pages")->group(function () {
+	Route::get('/staff/', 'StaffPages@index')->name('staffportal.home');
+	Route::get('/staff/assessments', 'StaffPages@assessments')->name('staffportal.assessments');
+	Route::get('/staff/assessments/new', 'StaffPages@create_assessment')->name('staffportal.assessments.new');
+	Route::get('/staff/students', 'StaffPages@students')->name('staffportal.students');
+	Route::get('/staff/students/{student_id}', 'StaffPages@student')->name('staffportal.student');
+	Route::get('/staff/exams', 'StaffPages@exams')->name('staffportal.exams');
+	Route::get('/staff/quizes', 'StaffPages@quizes')->name('staffportal.quizes');
+	Route::get('/staff/labs', 'StaffPages@labs')->name('staffportal.labs');
+	Route::get('/staff/assessment/{assessment_id}', 'StaffPages@updateAssessment')->name('staffportal.assessment.update');
+	Route::get('/staff/tokens', 'StaffPages@tokens')->name('staffportal.tokens');
+});
 
 Route::get('auth/github', 'Auth\OAuthController@redirectToGithubProvider');
 Route::get('auth/google', 'Auth\OAuthController@redirectToGoogleProvider');
