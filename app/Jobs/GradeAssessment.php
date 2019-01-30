@@ -32,6 +32,7 @@ class GradeAssessment implements ShouldQueue
      * Create a new job instance.
      *
      * @param Submission $submission
+     * @param Asessment $assessment
      */
     public function __construct(Submission $submission, Assessment $assessment)
     {
