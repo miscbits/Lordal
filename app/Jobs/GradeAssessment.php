@@ -6,6 +6,7 @@ use Log;
 use App\Submission;
 use App\Assessment;
 use Illuminate\Bus\Queueable;
+use App\Bus\PendingRawDispatch;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,8 +16,17 @@ class GradeAssessment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $assessment;
-    private $submission;
+    public $payload;
+
+    /**
+     * Dispatch the job with the given arguments.
+     *
+     * @return \Illuminate\Foundation\Bus\PendingDispatch
+     */
+    public static function dispatch()
+    {
+        return new PendingRawDispatch(new static(...func_get_args()));
+    }
 
     /**
      * Create a new job instance.
@@ -25,8 +35,10 @@ class GradeAssessment implements ShouldQueue
      */
     public function __construct(Submission $submission, Assessment $assessment)
     {
-        $this->submission = $submission->toJson();
-        $this->assessment = $assessment->toJson();
+        $this->payload = json_encode([
+            "submission" => $submission,
+            "assessment" => $assessment,
+        ]);
     }
 
     /**
