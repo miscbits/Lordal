@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use App\Assessment;
+use App\Assignment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -47,8 +48,8 @@ class AssessmentStudentsController extends Controller
      */
     public function store(Request $request, Assessment $assessment)
     {
-        $student_ids = Student::select('id')
-            ->whereNotIn('id', 
+        $student_ids = Student::with('user')
+            ->whereNotIn('students.id',
                 Assignment::where('assessment_id', $assessment->id)
                     ->select('student_id'))
             ->get();

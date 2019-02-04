@@ -46,7 +46,14 @@ class OAuthController extends Controller
     {
         $user = Socialite::driver('github')->user();
 
-        $auth_user = Student::with('user')->where('github_username', $user->nickname)->first()->user;
+        $auth_student = Student::with('user')->where('github_username', $user->nickname)->first();
+        $auth_user = $auth_student->user;
+
+        if(! $auth_student->github_id) {
+            $auth_student->github_id = $user->getId();
+            $auth_student->save();
+        }
+
         if( !$auth_user ) {
             toastr()->error('Students must be registered with their github username before being able to sign in. Please contact an admin and request access', 'Not Registered');
             return redirect($this->redirectError);
