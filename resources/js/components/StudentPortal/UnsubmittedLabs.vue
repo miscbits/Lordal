@@ -15,7 +15,7 @@
                 <tbody>
                     <tr v-for="assessment in assessments">
                         <td>{{assessment.id}}</td>
-                        <td>{{assessment.name}}</td>
+                        <td><a :href="assessment.url" target="_blank">{{assessment.name}}</a></td>
                         <td>{{assessment.assigned_date}}</td>
                         <td>{{assessment.due_date}}</td>
                         <td><a v-bind:href="'/student/submission/' + assessment.pivot.id" class="btn btn-success">Submit</a></td>
