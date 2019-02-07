@@ -10,7 +10,7 @@
 				<input class="form-control" type="text" v-model="assessment.url" name="url">
 			</div>
 			<div class="form-group col-md-6">
-				<label class="form-label" for="level">Level</label>
+				<label class="form-label" for="level">Assignment Type</label>
 				<select class="form-control" type="text" v-model="assessment.level" name="level">
 					<option>Lab</option>
 					<option>Quiz</option>
