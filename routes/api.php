@@ -18,8 +18,8 @@ Route::middleware(['auth:api', 'auth.staff'])->group(function () {
     Route::apiResource('students', 'StudentsController');
 
     Route::get('assessments/{assessment_id}/students', 'AssessmentStudentsController@index');
-    Route::apiResource('assessments/{assessment}/students', 'AssessmentStudentsController')->except('index');
-    Route::apiResource('students/{student_id}/assessments', 'StudentAssessmentsController');
+    Route::apiResource('assessments/{assessment}/students', 'AssessmentStudentsController')->except(['index']);
+    Route::apiResource('students/{student_id}/assessments', 'StudentAssessmentsController')->only(['index']);
     Route::apiResource('students/{student}/comments', 'StudentCommentsController');
 });
 
