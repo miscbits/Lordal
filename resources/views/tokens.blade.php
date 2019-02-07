@@ -30,7 +30,7 @@ HEAD:
 
 		<div>
 			<h1>Endpoints</h1>
-			<p>Below is a table of endpoints along with required params if any. Params marked with an <span class="red">*</span> are considered optional</p>
+			<p>Below is a table of endpoints along with required params if any. Params marked with an <code>*</code> are considered optional</p>
 			<p>This api fetches and stores data using the following resources</p>
 			<ul>
 				<li>
