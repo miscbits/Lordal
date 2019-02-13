@@ -31230,7 +31230,7 @@ Vue.component('submission-row', __webpack_require__(203));
 Vue.component('view-assessment', __webpack_require__(206));
 Vue.component('labs', __webpack_require__(209));
 Vue.component('exams', __webpack_require__(212));
-Vue.component('quizzes', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/StaffPortal/QuizzesComponent.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
+Vue.component('quizzes', __webpack_require__(215));
 Vue.component('staffportal', __webpack_require__(218));
 
 // Components for the student portal
@@ -72652,9 +72652,306 @@ if (false) {
 }
 
 /***/ }),
-/* 215 */,
-/* 216 */,
-/* 217 */,
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(216)
+/* template */
+var __vue_template__ = __webpack_require__(217)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/StaffPortal/QuizzesComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-06e9d9d8", Component.options)
+  } else {
+    hotAPI.reload("data-v-06e9d9d8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 216 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            assessments: [],
+            currentSortDir: 'asc',
+            currentSort: 'id'
+        };
+    },
+    mounted: function mounted() {
+        var self = this;
+        window.axios.get('/api/quizes').then(function (response) {
+            self.assessments = response.data;
+        });
+    },
+
+    methods: {
+        sort: function sort(s) {
+            if (s === this.currentSort) {
+                this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+            } else {
+                this.currentSort = s;
+                this.currentSortDir === 'asc';
+            }
+        }
+    },
+    computed: {
+        sortAssessments: function sortAssessments() {
+            var self = this;
+            return this.assessments.sort(function (a, b) {
+                var modifier = 1;
+                if (self.currentSortDir === 'desc') modifier = -1;
+                if (a[self.currentSort] < b[self.currentSort]) return -1 * modifier;
+                if (a[self.currentSort] > b[self.currentSort]) return 1 * modifier;
+                return 0;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("table", { staticClass: "table table-bordered table-striped" }, [
+        _c("thead", [
+          _c("tr", [
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("id")
+                  }
+                }
+              },
+              [_vm._v("#")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("url")
+                  }
+                }
+              },
+              [_vm._v("url")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("name")
+                  }
+                }
+              },
+              [_vm._v("name")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("gradable")
+                  }
+                }
+              },
+              [_vm._v("gradable")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("max_score")
+                  }
+                }
+              },
+              [_vm._v("max_score")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("assigned_date")
+                  }
+                }
+              },
+              [_vm._v("assigned_date")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.sort("due_date")
+                  }
+                }
+              },
+              [_vm._v("due_date")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.sortAssessments, function(assessment) {
+            return _c("tr", [
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.id))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.url))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.name))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.gradable))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.max_score))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.assigned_date))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  { attrs: { href: "/staff/assessment/" + assessment.id } },
+                  [_vm._v(_vm._s(assessment.due_date))]
+                )
+              ])
+            ])
+          }),
+          0
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-06e9d9d8", module.exports)
+  }
+}
+
+/***/ }),
 /* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
