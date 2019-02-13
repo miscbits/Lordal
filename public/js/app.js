@@ -31173,7 +31173,7 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(144);
-module.exports = __webpack_require__(236);
+module.exports = __webpack_require__(233);
 
 
 /***/ }),
@@ -31231,14 +31231,13 @@ Vue.component('view-assessment', __webpack_require__(206));
 Vue.component('labs', __webpack_require__(209));
 Vue.component('exams', __webpack_require__(212));
 Vue.component('quizzes', __webpack_require__(215));
-Vue.component('staffportal', __webpack_require__(218));
 
 // Components for the student portal
-Vue.component('student-profile', __webpack_require__(221));
-Vue.component('student-assessments', __webpack_require__(224));
-Vue.component('unsubmitted-labs', __webpack_require__(227));
-Vue.component('assessment-row', __webpack_require__(230));
-Vue.component('submission-form', __webpack_require__(233));
+Vue.component('student-profile', __webpack_require__(218));
+Vue.component('student-assessments', __webpack_require__(221));
+Vue.component('unsubmitted-labs', __webpack_require__(224));
+Vue.component('assessment-row', __webpack_require__(227));
+Vue.component('submission-form', __webpack_require__(230));
 
 // mixins to pass to all components. These can be accessed through component.$root.[method name]
 var mixins = {
@@ -72746,7 +72745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var self = this;
-        window.axios.get('/api/quizes').then(function (response) {
+        window.axios.get('/api/quizzes').then(function (response) {
             self.assessments = response.data;
         });
     },
@@ -72977,234 +72976,6 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/StaffPortal/StaffPortal.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0d8d940e", Component.options)
-  } else {
-    hotAPI.reload("data-v-0d8d940e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 219 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            studentsActive: true,
-            assessmentsActive: false,
-            labsActive: false,
-            examsActive: false,
-            quizesActive: false
-        };
-    },
-    mounted: function mounted() {
-        console.log('nav mounted');
-    },
-
-    methods: {
-        activate: function activate(pill) {
-            this.studentsActive = pill == 'students';
-            this.assessmentsActive = pill == 'assessments';
-            this.labsActive = pill == 'labs';
-            this.examsActive = pill == 'exams';
-            this.quizesActive = pill == 'quizes';
-        }
-    }
-});
-
-/***/ }),
-/* 220 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("ul", { staticClass: "nav nav-pills mb-5" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              class: { active: _vm.studentsActive },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.activate("students")
-                }
-              }
-            },
-            [_vm._v("Students")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              class: { active: _vm.assessmentsActive },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.activate("assessments")
-                }
-              }
-            },
-            [_vm._v("Assessments")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              class: { active: _vm.labsActive },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.activate("labs")
-                }
-              }
-            },
-            [_vm._v("Labs")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              class: { active: _vm.examsActive },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.activate("exams")
-                }
-              }
-            },
-            [_vm._v("Exams")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              class: { active: _vm.quizesActive },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.activate("quizes")
-                }
-              }
-            },
-            [_vm._v("Quizes")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.studentsActive ? _c("students") : _vm._e(),
-      _vm._v(" "),
-      _vm.assessmentsActive ? _c("assessments") : _vm._e(),
-      _vm._v(" "),
-      _vm.labsActive ? _c("labs") : _vm._e(),
-      _vm._v(" "),
-      _vm.examsActive ? _c("exams") : _vm._e(),
-      _vm._v(" "),
-      _vm.quizesActive ? _c("quizes") : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0d8d940e", module.exports)
-  }
-}
-
-/***/ }),
-/* 221 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(222)
-/* template */
-var __vue_template__ = __webpack_require__(223)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
 Component.options.__file = "resources/js/components/StudentPortal/StudentPortal.vue"
 
 /* hot reload */
@@ -73227,7 +72998,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73270,7 +73041,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 223 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73335,15 +73106,15 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(225)
+var __vue_script__ = __webpack_require__(222)
 /* template */
-var __vue_template__ = __webpack_require__(226)
+var __vue_template__ = __webpack_require__(223)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73382,7 +73153,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 225 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73462,7 +73233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 226 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73587,15 +73358,15 @@ if (false) {
 }
 
 /***/ }),
-/* 227 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(228)
+var __vue_script__ = __webpack_require__(225)
 /* template */
-var __vue_template__ = __webpack_require__(229)
+var __vue_template__ = __webpack_require__(226)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73634,7 +73405,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 228 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73683,7 +73454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 229 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73800,15 +73571,15 @@ if (false) {
 }
 
 /***/ }),
-/* 230 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(231)
+var __vue_script__ = __webpack_require__(228)
 /* template */
-var __vue_template__ = __webpack_require__(232)
+var __vue_template__ = __webpack_require__(229)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73847,7 +73618,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 231 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73874,7 +73645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 232 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73936,15 +73707,15 @@ if (false) {
 }
 
 /***/ }),
-/* 233 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(234)
+var __vue_script__ = __webpack_require__(231)
 /* template */
-var __vue_template__ = __webpack_require__(235)
+var __vue_template__ = __webpack_require__(232)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73983,7 +73754,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 234 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74032,7 +73803,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 235 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74113,7 +73884,7 @@ if (false) {
 }
 
 /***/ }),
-/* 236 */
+/* 233 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

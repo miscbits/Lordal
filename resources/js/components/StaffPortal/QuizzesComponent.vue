@@ -40,7 +40,7 @@
         },
         mounted() {
             var self = this;
-            window.axios.get('/api/quizes')
+            window.axios.get('/api/quizzes')
                 .then(function(response) {
                     self.assessments = response.data;
                 });
