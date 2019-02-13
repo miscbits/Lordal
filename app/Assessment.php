@@ -38,12 +38,12 @@ class Assessment extends BaseModel
     }
 
     /**
-     * Scope a query to only include Quizes.
+     * Scope a query to only include Quizzes.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeQuizes($query)
+    public function scopeQuizzes($query)
     {
         return $query->where('level', 'Quiz');
     }
