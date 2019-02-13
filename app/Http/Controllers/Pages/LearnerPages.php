@@ -31,8 +31,8 @@ class LearnerPages extends Controller
         return view('students.exams');
     }
 
-    public function quizes() {
-        return view('students.quizes');
+    public function quizzes() {
+        return view('students.quizzes');
     }
 
     public function submission(Request $request, $assignment_id) {

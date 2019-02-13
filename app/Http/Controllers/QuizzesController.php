@@ -6,7 +6,7 @@ use App\Assessment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class QuizesController extends Controller
+class QuizzesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class QuizesController extends Controller
      */
     public function index()
     {
-        return response()->json(Assessment::quizes()->get());
+        return response()->json(Assessment::quizzes()->get());
     }
 
     /**

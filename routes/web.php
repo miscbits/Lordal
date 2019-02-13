@@ -10,7 +10,7 @@ Route::namespace("Pages")->group(function () {
 	Route::get('/staff/students', 'StaffPages@students')->name('staffportal.students');
 	Route::get('/staff/students/{student_id}', 'StaffPages@student')->name('staffportal.student');
 	Route::get('/staff/exams', 'StaffPages@exams')->name('staffportal.exams');
-	Route::get('/staff/quizes', 'StaffPages@quizes')->name('staffportal.quizes');
+	Route::get('/staff/quizzes', 'StaffPages@quizzes')->name('staffportal.quizzes');
 	Route::get('/staff/labs', 'StaffPages@labs')->name('staffportal.labs');
 	Route::get('/staff/assessment/{assessment_id}', 'StaffPages@updateAssessment')->name('staffportal.assessment.update');
 	Route::get('/staff/tokens', 'StaffPages@tokens')->name('staffportal.tokens');
@@ -24,7 +24,7 @@ Route::get('auth/github/callback', 'Auth\OAuthController@handleProviderGithubCal
 Route::namespace("Pages")->group(function () {
     Route::get('/student/profile', 'LearnerPages@profile')->name('studentportal.profile');
     Route::get('/student/exams', 'LearnerPages@exams')->name('studentportal.exams');
-    Route::get('/student/quizes', 'LearnerPages@quizes')->name('studentportal.quizes');
+    Route::get('/student/quizzes', 'LearnerPages@quizzes')->name('studentportal.quizzes');
     Route::get('/student/labs', 'LearnerPages@labs')->name('studentportal.labs');
     Route::get('/student/submission/{assignment_id}', 'LearnerPages@submission')->name('studentportal.submission_form');
 });

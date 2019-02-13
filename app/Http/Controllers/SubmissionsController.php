@@ -49,7 +49,8 @@ class SubmissionsController extends Controller
      */
     public function update(Request $request, Submission $submission)
     {
-        return response()->json($submission->update($request->all()), Response::HTTP_ACCEPTED);
+        Submission::where('id', $submission->id)->update($request->all());
+        return response()->json(true, Response::HTTP_ACCEPTED);
     }
 
     /**

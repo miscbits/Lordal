@@ -48,8 +48,8 @@ class StaffPages extends Controller
         return view('exams');
     }
 
-    public function quizes() {
-        return view('quizes');
+    public function quizzes() {
+        return view('quizzes');
     }
 
     public function labs() {

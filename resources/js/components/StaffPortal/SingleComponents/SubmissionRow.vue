@@ -32,8 +32,11 @@
             },
             updateSubmission: function() {
                 var self = this;
-                window.axios.put(`/api/submissions/${self.submission.id}`, self.submission)
+                window.axios.put(`/api/submissions/${self.submission['pivot.submission.id']}`, {grade: self.submission['pivot.submission.grade']})
                     .then(function(result) {
+                        console.log(self.submission['pivot.submission.id']);
+                        console.log(result.data);
+                        console.log({grade: self.submission['pivot.submission.grade']});
                         self.editing = false;
                         window.toastr.success("Grade updated")
                     })

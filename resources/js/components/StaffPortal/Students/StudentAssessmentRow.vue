@@ -40,9 +40,12 @@
 			},
 			updateSubmission: function() {
                 var self = this;
-                window.axios.put(`/api/submissions/${self.assessment.pivot.submission.id}`, self.assessment.pivot.submission)
+                window.axios.put(`/api/submissions/${self.assessment['pivot.submission.id']}`,
+                    {grade: self.assessment['pivot.submission.grade']})
                     .then(function(result) {
                         self.editingGrade = false;
+                        console.log(self.assessment['pivot.submission.id'])
+                        console.log({grade: self.assessment['pivot.submission.grade']})
                         window.toastr.success("Grade updated")
                     })
 			}

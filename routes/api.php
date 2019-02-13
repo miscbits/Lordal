@@ -10,7 +10,7 @@ Route::post('login/google/callback', 'Auth\LoginController@handleStaffProviderCa
 Route::middleware(['auth:api', 'auth.staff'])->group(function () {
     Route::apiResource('assessments', 'AssessmentsController');
     Route::apiResource('labs', 'LabsController')->only(['index', 'store']);
-    Route::apiResource('quizes', 'QuizesController')->only(['index', 'store']);
+    Route::apiResource('quizzes', 'QuizzesController')->only(['index', 'store']);
     Route::apiResource('exams', 'ExamsController')->only(['index', 'store']);
     Route::apiResource('comments', 'CommentsController');
     Route::apiResource('submissions', 'SubmissionsController');

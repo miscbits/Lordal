@@ -63,13 +63,13 @@
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.assessments.new') }}">New Assignment</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.labs') }}">Labs</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.exams') }}">Exams</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.quizes') }}">Quizes</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.quizzes') }}">Quizzes</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('staffportal.tokens') }}">API</a></li>
                             @elseif(Auth::user()->isStudent())
                                 <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.profile') }}">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.labs') }}">Labs</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.exams') }}">Exams</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.quizes') }}">Quizes</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('studentportal.quizzes') }}">Quizzes</a></li>
                                 <li class="nav-item"><a class="nav-link" target="_blank" href="https://github.com/{{ Auth::user()->student->github_username }}/repositories">My Github</a></li>
                             @endif
                                 <li class="nav-item dropdown">
