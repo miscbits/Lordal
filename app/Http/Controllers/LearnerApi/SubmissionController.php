@@ -50,7 +50,7 @@ class SubmissionController extends Controller
             ['submission_url' => $request->input('submission_url')]
         );
 
-        if ( $assessment->gradable ) {
+        if ( $assessment->gradable && $assessment->autograde) {
             GradeAssessment::dispatch($submission, $assessment);
         }
 
