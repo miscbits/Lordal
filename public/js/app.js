@@ -70665,6 +70665,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(238)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(195)
@@ -70673,7 +70677,7 @@ var __vue_template__ = __webpack_require__(196)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -70756,6 +70760,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -70765,9 +70782,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 url: "",
                 level: "",
                 gradable: false,
+                autograde: false,
                 max_score: null,
                 assigned_date: null,
                 due_date: ""
+
             },
             options: {
                 format: 'YYYY-MM-DD HH:mm:ss'
@@ -70780,6 +70799,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 window.location.replace("/staff/assessments");
                 window.toastr.success("Assessment Created");
             });
+        },
+        toggleAutograde: function toggleAutograde() {
+            this.assessment.autograde = !this.assessment.autograde;
+        },
+        toggleGradable: function toggleGradable() {
+            this.assessment.gradable = !this.assessment.gradable;
         }
     }
 });
@@ -70947,54 +70972,126 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "form-group col-md-6 col" }, [
-        _c("label", { staticClass: "form-label", attrs: { for: "gradable" } }, [
-          _vm._v("Gradeable")
-        ]),
+        _c("p", { staticClass: "form-label" }, [_vm._v("Gradeable?")]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.assessment.gradable,
-              expression: "assessment.gradable"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "checkbox", name: "gradable" },
-          domProps: {
-            checked: Array.isArray(_vm.assessment.gradable)
-              ? _vm._i(_vm.assessment.gradable, null) > -1
-              : _vm.assessment.gradable
+        _c(
+          "label",
+          {
+            staticClass: "switch",
+            attrs: { for: "gradable" },
+            on: { click: _vm.toggleGradable }
           },
-          on: {
-            change: function($event) {
-              var $$a = _vm.assessment.gradable,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = null,
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 &&
-                    _vm.$set(_vm.assessment, "gradable", $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    _vm.$set(
-                      _vm.assessment,
-                      "gradable",
-                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                    )
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.assessment.gradable,
+                  expression: "assessment.gradable"
                 }
-              } else {
-                _vm.$set(_vm.assessment, "gradable", $$c)
+              ],
+              attrs: { type: "checkbox", name: "gradable" },
+              domProps: {
+                checked: Array.isArray(_vm.assessment.gradable)
+                  ? _vm._i(_vm.assessment.gradable, null) > -1
+                  : _vm.assessment.gradable
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.assessment.gradable,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(_vm.assessment, "gradable", $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.assessment,
+                          "gradable",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.assessment, "gradable", $$c)
+                  }
+                }
               }
-            }
-          }
-        })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "slider" })
+          ]
+        ),
+        _vm._v(" "),
+        _vm.assessment.gradable
+          ? _c("span", [_vm._v("Yes")])
+          : _c("span", [_vm._v("No")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "w-100" }),
+      _c("div", { staticClass: "form-group col-md-6 col" }, [
+        _c("p", { staticClass: "form-label" }, [_vm._v("Autograde?")]),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "switch",
+            attrs: { for: "autograde" },
+            on: { click: _vm.toggleAutograde }
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.assessment.autograde,
+                  expression: "assessment.autograde"
+                }
+              ],
+              attrs: { type: "checkbox", name: "autograde", checked: "" },
+              domProps: {
+                checked: Array.isArray(_vm.assessment.autograde)
+                  ? _vm._i(_vm.assessment.autograde, null) > -1
+                  : _vm.assessment.autograde
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.assessment.autograde,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(_vm.assessment, "autograde", $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.assessment,
+                          "autograde",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.assessment, "autograde", $$c)
+                  }
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "slider" })
+          ]
+        ),
+        _vm._v(" "),
+        _vm.assessment.autograde
+          ? _c("span", [_vm._v("Yes")])
+          : _c("span", [_vm._v("No")])
+      ]),
       _vm._v(" "),
       _vm.assessment.gradable
         ? _c("div", { staticClass: "form-group col-md-6" }, [
@@ -73888,6 +73985,50 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(239);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(142)("c1f3dab4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a72b44ce\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentForm.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a72b44ce\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AssessmentForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider {\n  background-color: #2196F3;\n}\ninput:focus + .slider {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n.slider.round:before {\n  border-radius: 50%;\n}\n\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
