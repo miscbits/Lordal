@@ -16,6 +16,10 @@
                     <button v-on:click="submitAssignment" class="btn btn-primary">Submit</button>
                 </div>
             </div>
+
+            <div v-if="assignment.submission && assignment.submission.grader_output" class="row col-8 justify-content-center">
+                <textarea class="col-12" rows=50 disabled="true">{{assignment.submission.grader_output}}</textarea>
+            </div>
         </div>
     </div>
 
@@ -24,8 +28,12 @@
 <script>
     export default {
         data: function() {
+            let url = null;
+            if (this.assignment.submission) {
+                url = this.assignment.submission.submission_url;
+            }
             return {
-                submission_url: null
+                submission_url: url
             }
         },
         props: ['assignment'],

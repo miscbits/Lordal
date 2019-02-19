@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\LearnerApi;
 
+use Log;
+use Carbon\Carbon;
 use App\Submission;
 use App\Assignment;
 use Illuminate\Http\Request;
@@ -50,7 +52,10 @@ class SubmissionController extends Controller
             ['submission_url' => $request->input('submission_url')]
         );
 
-        if ( $assessment->gradable && $assessment->autograde) {
+        Log::info($assessment->due_date);
+        Log::info(Carbon::now());
+
+        if ( $assessment->gradable && $assessment->autograde && $assessment->due_date < Carbon::now()) {
             GradeAssessment::dispatch($submission, $assessment);
         }
 

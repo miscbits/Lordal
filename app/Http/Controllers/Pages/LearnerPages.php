@@ -36,7 +36,7 @@ class LearnerPages extends Controller
     }
 
     public function submission(Request $request, $assignment_id) {
-        $assignment = Assignment::with('assessment')->find($assignment_id);
+        $assignment = Assignment::with(['assessment', 'submission'])->find($assignment_id);
 
         $user = $request->user();
         if ($user->student->id != $assignment->student_id) {
