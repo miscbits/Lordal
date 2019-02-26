@@ -60,6 +60,10 @@ class StaffPages extends Controller
         return view('tokens');
     }
 
+    public function reports() {
+        return view('reports');
+    }
+
     public function updateAssessment($assessment_id) {
         return view('update_assessment')
             ->with(['assessment_id' => $assessment_id]);
