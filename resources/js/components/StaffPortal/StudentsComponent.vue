@@ -14,7 +14,7 @@
                     <tr v-for="student in sortStudents">
                       <td><a :href="'/staff/students/' + student.id">{{student["id"]}}</a></td>
                       <td><a :href="'/staff/students/' + student.id">{{student["user.name"]}}</a></td>
-                      <td><a :href="'/staff/students/' + student.id">{{student["github_username"]}}</a></td>
+                      <td><a target="_blank" :href="'https://github.com/' + student['github_username']">{{student["github_username"]}}</a></td>
                       <td><a :href="'/staff/students/' + student.id">{{student["user.email"]}}</a></td>
                     </tr>
                 </tbody>

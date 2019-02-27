@@ -69860,7 +69860,12 @@ var render = function() {
                 _c("td", [
                   _c(
                     "a",
-                    { attrs: { href: "/staff/students/" + student.id } },
+                    {
+                      attrs: {
+                        target: "_blank",
+                        href: "https://github.com/" + student["github_username"]
+                      }
+                    },
                     [_vm._v(_vm._s(student["github_username"]))]
                   )
                 ]),
