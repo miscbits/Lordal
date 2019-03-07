@@ -155,8 +155,9 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.form-control + .bootstrap-datetimepicker-widget {
-  color: #0d0c0c !important;
+.form-control + .bootstrap-datetimepicker-widget * {
+  background-color: #F0F0F0;
+  color: #0F0F0F;
 }
 
 </style>
