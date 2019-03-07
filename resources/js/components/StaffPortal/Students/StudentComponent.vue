@@ -31,7 +31,7 @@
         <h1 class="mt-5">Assessments</h1>
         <div  id="student_assessments" class="justify-content-center mt-5 mb-5">
             <table class="table table-bordered table-striped">
-                <thead>
+                <thead class="bg-primary">
                     <tr>
                         <th @click="sort('id')">#</th>
                         <th @click="sort('url')">url</th>
@@ -122,12 +122,10 @@
         max-height: 500px;
         overflow-y: scroll;
         thead {
-            position: sticky;
             top: 0;
             th {
-                position: sticky;
                 top: -1px;
-                background-color: #eee;
+                z-index: 10;
             }
         }
     }

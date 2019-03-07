@@ -69982,7 +69982,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n#student_assessments[data-v-3d78ed5b] {\n  max-height: 500px;\n  overflow-y: scroll;\n}\n#student_assessments thead[data-v-3d78ed5b] {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n}\n#student_assessments thead th[data-v-3d78ed5b] {\n      position: -webkit-sticky;\n      position: sticky;\n      top: -1px;\n      background-color: #eee;\n}\n", ""]);
+exports.push([module.i, "\n#student_assessments[data-v-3d78ed5b] {\n  max-height: 500px;\n  overflow-y: scroll;\n}\n#student_assessments thead[data-v-3d78ed5b] {\n    top: 0;\n}\n#student_assessments thead th[data-v-3d78ed5b] {\n      top: -1px;\n      z-index: 10;\n}\n", ""]);
 
 // exports
 
@@ -70292,7 +70292,7 @@ var render = function() {
         },
         [
           _c("table", { staticClass: "table table-bordered table-striped" }, [
-            _c("thead", [
+            _c("thead", { staticClass: "bg-primary" }, [
               _c("tr", [
                 _c(
                   "th",
@@ -70751,7 +70751,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider {\n  background-color: #2196F3;\n}\ninput:focus + .slider {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n.slider.round:before {\n  border-radius: 50%;\n}\n\n", ""]);
+exports.push([module.i, "\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider {\n  background-color: #2196F3;\n}\ninput:focus + .slider {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n.slider.round:before {\n  border-radius: 50%;\n}\n.form-control + .bootstrap-datetimepicker-widget {\n  color: #0d0c0c !important;\n}\n\n", ""]);
 
 // exports
 
