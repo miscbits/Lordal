@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-md navbar-light bg-success">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Zip Code Rocks
