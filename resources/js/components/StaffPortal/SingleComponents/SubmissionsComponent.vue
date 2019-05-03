@@ -40,11 +40,13 @@
             window.axios.get(`/api/assessments/${self.assessment_id}/students`)
                 .then(function(results) {
                     results.data.students.forEach(function(student) {
-                        var flatStudent = flattenObject(student);
-                        flatStudent['pivot.submission.submission_url'] = flatStudent['pivot.submission.submission_url'] || "";
-                        flatStudent['pivot.submission.latest_hash'] = flatStudent['pivot.submission.latest_hash'] || "";
-                        flatStudent['pivot.submission.grade'] = flatStudent['pivot.submission.grade'] || 0;
-                        self.submissions.push(flatStudent);
+                        if(student["dont_track"] != true) {
+                            var flatStudent = flattenObject(student);
+                            flatStudent['pivot.submission.submission_url'] = flatStudent['pivot.submission.submission_url'] || "";
+                            flatStudent['pivot.submission.latest_hash'] = flatStudent['pivot.submission.latest_hash'] || "";
+                            flatStudent['pivot.submission.grade'] = flatStudent['pivot.submission.grade'] || 0;
+                            self.submissions.push(flatStudent);
+                        }
                     });
                 });
         },

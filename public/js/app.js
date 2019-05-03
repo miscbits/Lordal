@@ -69724,6 +69724,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -69737,7 +69739,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var self = this;
         window.axios.get('/api/students').then(function (response) {
             response.data.forEach(function (student) {
-                self.students.push(self.$root.flattenObject(student));
+                if (student.dont_track != true) {
+                    self.students.push(self.$root.flattenObject(student));
+                }
             });
             self.activeStudent = self.students[0];
         });
@@ -69833,6 +69837,18 @@ var render = function() {
                   }
                 },
                 [_vm._v("Email")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.sort("user.dismissed")
+                    }
+                  }
+                },
+                [_vm._v("Dismissed?")]
               )
             ])
           ]),
@@ -69875,6 +69891,14 @@ var render = function() {
                     "a",
                     { attrs: { href: "/staff/students/" + student.id } },
                     [_vm._v(_vm._s(student["user.email"]))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/staff/students/" + student.id } },
+                    [_vm._v(_vm._s(student["dismissed"] == 1 ? "Yes" : "No"))]
                   )
                 ])
               ])
@@ -69993,6 +70017,18 @@ exports.push([module.i, "\n#student_assessments[data-v-3d78ed5b] {\n  max-height
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70266,6 +70302,104 @@ var render = function() {
               }
             }
           })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "form-group col-sm-6" }, [
+            _c("label", { attrs: { for: "dismissed" } }, [
+              _vm._v("Dismissed?")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.student.dismissed,
+                  expression: "student.dismissed"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "checkbox", name: "dismissed" },
+              domProps: {
+                checked: Array.isArray(_vm.student.dismissed)
+                  ? _vm._i(_vm.student.dismissed, null) > -1
+                  : _vm.student.dismissed
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.student.dismissed,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(_vm.student, "dismissed", $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.student,
+                          "dismissed",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.student, "dismissed", $$c)
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-sm-6" }, [
+            _c("label", { attrs: { for: "dont_track" } }, [
+              _vm._v("Don't Track")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.student.dont_track,
+                  expression: "student.dont_track"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "checkbox", name: "dont_track" },
+              domProps: {
+                checked: Array.isArray(_vm.student.dont_track)
+                  ? _vm._i(_vm.student.dont_track, null) > -1
+                  : _vm.student.dont_track
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.student.dont_track,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(_vm.student, "dont_track", $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.student,
+                          "dont_track",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.student, "dont_track", $$c)
+                  }
+                }
+              }
+            })
+          ])
         ]),
         _vm._v(" "),
         _c(
@@ -71466,11 +71600,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('/api/assessments/' + self.assessment_id + '/students');
         window.axios.get('/api/assessments/' + self.assessment_id + '/students').then(function (results) {
             results.data.students.forEach(function (student) {
-                var flatStudent = flattenObject(student);
-                flatStudent['pivot.submission.submission_url'] = flatStudent['pivot.submission.submission_url'] || "";
-                flatStudent['pivot.submission.latest_hash'] = flatStudent['pivot.submission.latest_hash'] || "";
-                flatStudent['pivot.submission.grade'] = flatStudent['pivot.submission.grade'] || 0;
-                self.submissions.push(flatStudent);
+                if (student["dont_track"] != true) {
+                    var flatStudent = flattenObject(student);
+                    flatStudent['pivot.submission.submission_url'] = flatStudent['pivot.submission.submission_url'] || "";
+                    flatStudent['pivot.submission.latest_hash'] = flatStudent['pivot.submission.latest_hash'] || "";
+                    flatStudent['pivot.submission.grade'] = flatStudent['pivot.submission.grade'] || 0;
+                    self.submissions.push(flatStudent);
+                }
             });
         });
     },
