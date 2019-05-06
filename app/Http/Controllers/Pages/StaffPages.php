@@ -24,7 +24,7 @@ class StaffPages extends Controller
      */
     public function index()
     {
-        return redirect('/staff/students');
+        return redirect('/staff/feed');
     }
 
     public function assessments() {
@@ -62,6 +62,10 @@ class StaffPages extends Controller
 
     public function reports() {
         return view('reports');
+    }
+
+    public function feed() {
+        return view('feed');
     }
 
     public function updateAssessment($assessment_id) {

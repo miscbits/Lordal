@@ -45,6 +45,7 @@ Vue.component('view-assessment', require('./components/StaffPortal/SingleCompone
 Vue.component('labs', require('./components/StaffPortal/LabsComponent.vue'));
 Vue.component('exams', require('./components/StaffPortal/ExamsComponent.vue'));
 Vue.component('quizzes', require('./components/StaffPortal/QuizzesComponent.vue'));
+Vue.component('comments-feed', require('./components/StaffPortal/FeedComponent.vue'));
 
 // Components for the student portal
 Vue.component('student-profile', require('./components/StudentPortal/StudentPortal.vue'));

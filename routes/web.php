@@ -14,7 +14,8 @@ Route::namespace("Pages")->group(function () {
 	Route::get('/staff/labs', 'StaffPages@labs')->name('staffportal.labs');
 	Route::get('/staff/assessment/{assessment_id}', 'StaffPages@updateAssessment')->name('staffportal.assessment.update');
 	Route::get('/staff/tokens', 'StaffPages@tokens')->name('staffportal.tokens');
-	Route::get('/staff/reports', 'StaffPages@reports')->name('staffportal.reports');
+    Route::get('/staff/reports', 'StaffPages@reports')->name('staffportal.reports');
+    Route::get('/staff/feed', 'StaffPages@feed')->name('staffportal.feed');
 });
 
 Route::get('auth/github', 'Auth\OAuthController@redirectToGithubProvider');
