@@ -13,10 +13,11 @@
                         <th @click="sort('pivot.submission.latest_hash')">Latest Hash</th>
                         <th @click="sort('pivot.submission.latest_hash')">Submitted</th>
                         <th @click="sort('pivot.submission.grade')">Grade</th>
+                        <th> Actions </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <submission-row v-for="submission in sortSubmissions" :submission="submission" :key="submission.id"></submission-row>
+                    <submission-row v-for="submission in sortSubmissions" :submission="submission" :key="submission.id" :gradable="gradable"></submission-row>
                 </tbody>
             </table>
         </div>
@@ -32,7 +33,7 @@
                 currentSort: 'id'
             }
         },
-        props: ['assessment_id'],
+        props: ['assessment_id', 'gradable'],
         mounted() {
             var self = this;
             var flattenObject = self.$root.flattenObject;

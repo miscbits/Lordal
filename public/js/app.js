@@ -71584,6 +71584,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -71593,7 +71594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             currentSort: 'id'
         };
     },
-    props: ['assessment_id'],
+    props: ['assessment_id', 'gradable'],
     mounted: function mounted() {
         var self = this;
         var flattenObject = self.$root.flattenObject;
@@ -71730,7 +71731,9 @@ var render = function() {
                 }
               },
               [_vm._v("Grade")]
-            )
+            ),
+            _vm._v(" "),
+            _c("th", [_vm._v(" Actions ")])
           ])
         ]),
         _vm._v(" "),
@@ -71739,7 +71742,7 @@ var render = function() {
           _vm._l(_vm.sortSubmissions, function(submission) {
             return _c("submission-row", {
               key: submission.id,
-              attrs: { submission: submission }
+              attrs: { submission: submission, gradable: _vm.gradable }
             })
           }),
           1
@@ -71831,6 +71834,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -71838,7 +71844,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editing: false
         };
     },
-    props: ['submission'],
+    props: ['submission', 'gradable'],
     methods: {
         showGradeForm: function showGradeForm() {
             this.editing = true;
@@ -71846,11 +71852,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateSubmission: function updateSubmission() {
             var self = this;
             window.axios.put('/api/submissions/' + self.submission['pivot.submission.id'], { grade: self.submission['pivot.submission.grade'] }).then(function (result) {
-                console.log(self.submission['pivot.submission.id']);
-                console.log(result.data);
-                console.log({ grade: self.submission['pivot.submission.grade'] });
                 self.editing = false;
                 window.toastr.success("Grade updated");
+            });
+        },
+        grade: function grade() {
+            var self = this;
+            window.axios.post('/api/grader/' + self.submission['pivot.id']).then(function (result) {
+                self.editing = false;
+                window.toastr.success("Submission sent to be Graded");
             });
         }
     }
@@ -71897,17 +71907,16 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("td", { attrs: { scope: "col" } }, [
+      _vm._v(_vm._s(_vm.submission["pivot.submission.grade"]))
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { scope: "col" } }, [
       !_vm.editing && _vm.submission["pivot.submission.submission_url"]
         ? _c("div", [
-            _vm._v(
-              "\n            " +
-                _vm._s(_vm.submission["pivot.submission.grade"]) +
-                "\n            "
-            ),
             _c(
               "button",
               { staticClass: "btn btn-info", on: { click: _vm.showGradeForm } },
-              [_vm._v("Modify Grade")]
+              [_vm._v("Modify")]
             )
           ])
         : _vm._e(),
@@ -71946,6 +71955,16 @@ var render = function() {
                 on: { click: _vm.updateSubmission }
               },
               [_vm._v("Update")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.gradable && _vm.submission["pivot.submission.submission_url"]
+        ? _c("div", { staticClass: "my-2" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-warning", on: { click: _vm.grade } },
+              [_vm._v("Regrade")]
             )
           ])
         : _vm._e()
@@ -72313,7 +72332,12 @@ var render = function() {
         [_vm._v("Update Assessment")]
       ),
       _vm._v(" "),
-      _c("submissions", { attrs: { assessment_id: _vm.assessment_id } })
+      _c("submissions", {
+        attrs: {
+          assessment_id: _vm.assessment_id,
+          gradable: _vm.assessment.gradable
+        }
+      })
     ],
     1
   )
