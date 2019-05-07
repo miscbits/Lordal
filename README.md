@@ -1,16 +1,19 @@
 # Lordal
+* This project is the new version of the former _portal.zipcode.rocks_
+* This project is built with `Larvel 5.7` and `VueJS 2.x`
 
-PHP 7.2
+## Software Prerequisitves
+* Ensure that the following software is installed on your local machine before attempting to run this project:
+	* PHP 7.2
+	* Composer
 
-Larvel 5.7
 
-VueJS 2.x
+## Running the Project
+* To run locally:
+	* copy `.env.example` to the `.env` directory
 
-To run locally:
+* Ensure the following variables have been set
 
-copy .env.example to .env
-
-Make sure to have the following variables set
 ```
 DB_CONNECTION=sqlite
 QUEUE_CONNECTION=database
@@ -26,21 +29,27 @@ GOOGLE_CONSUMER_SECRET=
 GOOGLE_URL={https://localhost:8000/auth/google/callback"}
 ```
 
-To learn more about creating oauth tokens for github and google check out
 
-https://developer.github.com/apps/building-oauth-apps/
-https://developers.google.com/adwords/api/docs/guides/authentication
 
-Note: Google requires that your app has SSL set up. You can set this up with a self signed cert, but this can be a bit complicated. For instructions on setting up a local server for Laravel that can be linked with SSL check out https://laravel.com/docs/5.7/valet
 
-When you set up your local instance with valet, just make sure to change your callback urls from localhost to whatever url you gave your site
 
-Once you have all of that set up you should be ready to provision the app. The local database is set up to use sqlite, however if you have a local instance of MySQL I recommend running it on that as that is what the production server runs. Most likely it will not affect your code, however sqlite does not support foreign keys and ignores commands for the orm to set them up. If you are working with data types for the ORM then you most likely will have to test it like this first as not doing so can introduce bugs into production. 
+### External Instructions
+* Click [here](https://laravel.com/docs/5.7/valet) for instructions on setting up a local server for Laravel that can be linked with SSL.
+	* Google requires that your app has SSL set up. You can set this up with a self signed cert, but this can be a bit complicated.
+* Click [here](https://developer.github.com/apps/building-oauth-apps/) to learn more about oath tokens for github.
+* Click [here](https://developers.google.com/adwords/api/docs/guides/authentication) to learn more about oath tokens for google.
 
-For info on doing that securely check out
-https://docs.docker.com/samples/library/mysql/
 
-Once you do you can set up the credentials in the .env file. 
+### Provisioning the Application
+When you set up your local instance with [Laravel Valet](https://laravel.com/docs/5.8/valet), make sure to change your callback urls from `localhost` to whatever url you gave your site.
+
+Once you have all of that set up you should be ready to provision the app.
+The local database is set up to use `SQLite`.
+However, it is recommended that you run on a local instance of `MySQL`, as that is what the production server runs.
+Most likely it will not affect your code.
+However, `SQLite` does not support foreign keys and ignores commands for the orm to set them up. If you are working with data types for the ORM then you most likely will have to test it like this first as not doing so can introduce bugs into production. Click [here](https://docs.docker.com/samples/library/mysql/) for information on how to do that securely.
+
+Once you do you can set up the credentials in the `.env` file. 
 
 If you are not working with datatypes in the ORM then you should be good to go with sqlite. Simply create the file with 
 
