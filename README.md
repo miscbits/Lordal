@@ -76,3 +76,14 @@ After that you can fill up the databse with sample data using
 ```bash
 php artisan db:seed
 ```
+
+Lastly to set up your front end assets (VueJS, bootstrap, webpack, etc), run the asset compilation
+
+```bash
+# This will compile your assets in development mode
+yarn run dev
+
+# This will compile assets in development mode and 
+# then compile every time there is a file change
+yarn run watch
+```
