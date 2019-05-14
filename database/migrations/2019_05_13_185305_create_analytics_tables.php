@@ -17,7 +17,7 @@ class CreateAnalyticsTables extends Migration
             $table->increments('id');
             $table->unsignedInteger('student_id');
             $table->string("student_name");
-            $table->float('lab_completion_percentage' 4, 2);
+            $table->float('lab_completion_percentage', 4, 2);
             $table->timestamps();
         });
 
@@ -25,7 +25,7 @@ class CreateAnalyticsTables extends Migration
             $table->increments('id');
             $table->unsignedInteger('assessment_id');
             $table->string("lab_name");
-            $table->float('completion_rate' 4, 2);
+            $table->float('completion_rate', 4, 2);
             $table->timestamps();
         });
 
@@ -35,7 +35,7 @@ class CreateAnalyticsTables extends Migration
             $table->unsignedInteger('max_score');
             $table->unsignedInteger('min_score');
             $table->string("assessment_name");
-            $table->float('average_grade' 4, 2);
+            $table->float('average_grade', 4, 2);
             $table->timestamps();
         });
 
