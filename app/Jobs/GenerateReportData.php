@@ -64,7 +64,7 @@ class GenerateReportData implements ShouldQueue
                 'lab_name' => $assessment->name,
                 'completion_rate' => $assessment->lab_completion_percentage,
             ];
-        })
+        });
 
         // Get each Test and it's average score as well as ther
         // number of students that passed and failed
@@ -79,7 +79,7 @@ class GenerateReportData implements ShouldQueue
             ->get();
         // Save the data to a persistant source
         DB::table('student_assessments_analytics')->insert($student_lab_percentage_data);
-        DB::table('assessments_analytics')->insert($assessment_percentage_completion_data)
+        DB::table('assessments_analytics')->insert($assessment_percentage_completion_data);
 
         $quiz_and_exam_data->each(function($exam, $key) {
             DB::table('exam_analytics')->updateOrInsert(
@@ -91,7 +91,7 @@ class GenerateReportData implements ShouldQueue
                     'min_score' => $exam->min_score,
                 ]
             );
-        })
+        });
         // Forget old cache and generate cache the data for 96 hours
         // TODO: set up cache
     }
