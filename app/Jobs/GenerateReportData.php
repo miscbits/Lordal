@@ -78,8 +78,8 @@ class GenerateReportData implements ShouldQueue
             ->select(['assessments.id', 'assessments.name', DB::raw('MIN(submissions.grade) as min_score'), DB::raw('MAX(submissions.grade) as max_score'), 'assessments.level', DB::raw("ROUND(AVG(submissions.grade), 2) as average_score"), DB::raw("ROUND(AVG(submissions.grade) / assessments.max_score * 100, 2) as average_percentage")])
             ->get();
         // Save the data to a persistant source
-        DB::table('student_assessments_analytics')->insert($student_lab_percentage_data);
-        DB::table('assessments_analytics')->insert($assessment_percentage_completion_data);
+        DB::table('student_assessments_analytics')->insert($student_lab_percentage_data->toArray());
+        DB::table('assessments_analytics')->insert($assessment_percentage_completion_data->toArray());
 
         $quiz_and_exam_data->each(function($exam, $key) {
             DB::table('exam_analytics')->updateOrInsert(
