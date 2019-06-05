@@ -24,7 +24,7 @@
             var self = this;
             window.axios.get('/api/comments')
                 .then(function(response) {
-                    self.comments = response.data;
+                    self.comments = response.data.reverse();
                 });
         }
     };
