@@ -54,7 +54,7 @@ class SubmissionController extends Controller
         );
 
         if ( $assessment->gradable && $assessment->autograde && $assessment->due_date < Carbon::now()) {
-            $file_name = "gradeable_{$user->id}_{$user->name}_{$submission->id}_{$assessment->id}.json";
+            $file_name = "submissions/gradeable_{$user->id}_{$user->name}_{$submission->id}_{$assessment->id}.json";
             $file_content = json_encode(["submission" => $submission, "assessment" => $assessment]);
             GradeAssessment::dispatch($submission, $assessment);
             Storage::disk('s3')->put(
