@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\LearnerApi;
 
 use Log;
+use Storage;
 use Carbon\Carbon;
 use App\Submission;
 use App\Assignment;
@@ -52,11 +53,13 @@ class SubmissionController extends Controller
             ['submission_url' => $request->input('submission_url')]
         );
 
-        Log::info($assessment->due_date);
-        Log::info(Carbon::now());
-
         if ( $assessment->gradable && $assessment->autograde && $assessment->due_date < Carbon::now()) {
+            $file_name = "gradeable_{$user->id}_{$user->name}_{$submission->id}_{$assessment->id}.json";
+            $file_content = json_encode(["submission" => $submission, "assessment" => $assessment]);
             GradeAssessment::dispatch($submission, $assessment);
+            Storage::disk('s3')->put(
+                $file_name, $file_content
+            );
         }
 
         return $submission;
