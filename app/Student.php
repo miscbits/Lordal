@@ -11,6 +11,7 @@ class Student extends BaseModel
         , 'github_id'
         , 'github_username'
         , 'section'
+        , 'serial_number'
         , 'user_id'
         , 'dismissed'
         , 'dont_track'

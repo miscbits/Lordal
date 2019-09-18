@@ -24,6 +24,11 @@
                 <label for="github_id">Github ID</label>
                 <input class="form-control" type="text" name="github_id" v-model="student.github_id">
             </div>
+            <div class="form-group">
+                <label for="serial_number">Macbook Serial Number</label>
+                <input class="form-control" type="text" name="serial_number" v-model="student.serial_number">
+            </div>
+
 
             <div class="row">            
                 <div class="form-group col-sm-6">

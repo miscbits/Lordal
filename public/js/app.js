@@ -71343,6 +71343,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -71554,6 +71559,34 @@ var render = function() {
                   return
                 }
                 _vm.$set(_vm.student, "github_id", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "serial_number" } }, [
+            _vm._v("Macbook Serial Number")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.student.serial_number,
+                expression: "student.serial_number"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "serial_number" },
+            domProps: { value: _vm.student.serial_number },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.student, "serial_number", $event.target.value)
               }
             }
           })
