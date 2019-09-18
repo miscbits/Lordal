@@ -74739,8 +74739,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         createStudent: function createStudent() {
+            var _this = this;
+
             window.axios.post("/api/students", this.student).then(function (results) {
                 window.toastr.success("Student Created");
+                _this.student.cell_number = "";
+                _this.student.github_username = "";
+                _this.student.name = "";
+                _this.student.email = "";
             });
         }
     }

@@ -39,8 +39,12 @@
         methods: {
             createStudent: function() {
                 window.axios.post("/api/students", this.student)
-                    .then(function(results) {
+                    .then(results => {
                         window.toastr.success("Student Created");
+                        this.student.cell_number = "";
+                        this.student.github_username = "";
+                        this.student.name = "";
+                        this.student.email = "";
                     });
             }
         }
