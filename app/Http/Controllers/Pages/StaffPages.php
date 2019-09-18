@@ -39,6 +39,10 @@ class StaffPages extends Controller
         return view('students');
     }
 
+    public function create_student() {
+        return view('create_student');
+    }
+
     public function student($student_id) {
         return view('show_student')
             ->with(['student_id' => $student_id]);
