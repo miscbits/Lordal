@@ -83,13 +83,13 @@ class OAuthController extends Controller
     {
         $user = Socialite::driver('google')->user();
 
-        if( !isset($user->user['domain']) ) {
+        if( !isset($user->user['hd']) ) {
             toastr()->error('To login as a staff member you must log in with a Zip Code Wilmington email address', 'Invalid Domain');
 
             return redirect($this->redirectError);
         }
 
-        if( $user->user['domain'] != 'zipcodewilmington.com' ) {
+        if( $user->user['hd'] != 'zipcodewilmington.com' ) {
             toastr()->error('To login as a staff member you must log in with a Zip Code Wilmington email address', 'Invalid Domain');
             return redirect($this->redirectError);
         }
