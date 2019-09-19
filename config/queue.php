@@ -53,7 +53,7 @@ return [
         ],
 
         'sqs' => [
-            'driver' => 'sqsfifo',
+            'driver' => 'sqs',
             'key' => env('SQS_KEY', 'your-public-key'),
             'secret' => env('SQS_SECRET', 'your-secret-key'),
             'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
